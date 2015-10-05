@@ -1,2 +1,3 @@
 # ignore potentially private info!
 /market_research/
+.env

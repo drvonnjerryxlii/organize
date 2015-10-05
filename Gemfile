@@ -9,7 +9,8 @@ gem "google_calendar"
 # gem "fullcalendar-wrapper-rails" # gem wrapper for fullcalendar.io
 
 
-# authentication
+# authentication & secrets
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 # may need twitter, github, facebook for oauth
 

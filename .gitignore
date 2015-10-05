@@ -12,6 +12,4 @@
 
 # ignore various secrets & private things
 /market_research
-/features.md
-/product_plan.md
 /.env

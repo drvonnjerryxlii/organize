@@ -1,56 +1,35 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # volunteering home page
+  root "welcome#index"
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # calendars
+  get "/calendar" => "calendars#public", as: "public_calendar"
+  get "/calendar/a" => "calendars#admin", as: "admin_calendar"
+  get "/calendar/v" => "calendars#volunteer", as: "volunteer_calendar"
+  # does it make more sense to nest these like /admin/calendar instead?
+  # or have the logic in the controller decide which view? I like this better
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  # login
+  get "/login", to: "sessions#new", as: "login"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy", as: "logout"
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # admin space
+  resources :admin # admin can add new admin but can only edit self
+  resources :faqs
+  resources :events
+  resources :broadcasts
+  resources :categories
+  resources :volunteers, only: [:index, :show, :new, :create, :destroy] do
+    resources :notes # notes are attached to specific volunteers
+  end
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  # volunteer space
+  resources :volunteers, only: [:show, :edit, :update]
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  # all public faq
+  # specific public faq
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # all faq (pub & priv)
+  # specific faq (pub or priv)
 end

@@ -1,0 +1,14 @@
+<% content_for :styles do %>"welcome"<% end %>
+
+<h1><%= "hello world" %></h1>
+
+<ul>sessions
+  <li><a href="#">login</a></li>
+  <li><a href="#">logout</a></li>
+</ul>
+
+<ul>calendars
+  <li><%= link_to "public calendar", public_calendar_path %></li>
+  <li><%= link_to "admin calendar", admin_calendar_path %></li>
+  <li><%= link_to "volunteer calendar", volunteer_calendar_path %></li>
+</ul>

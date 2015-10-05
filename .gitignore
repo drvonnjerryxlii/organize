@@ -10,5 +10,7 @@
 !/log/.keep
 /tmp
 
-# ignore things that should be private
+# ignore various secrets & private things
 /market_research
+features.md
+.env

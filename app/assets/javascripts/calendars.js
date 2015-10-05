@@ -7,7 +7,25 @@ $(document).ready(function() {
 
   $('#calendar').fullCalendar({
     // put your options and callbacks here
-    header: { center: 'month,agendaWeek,agendaDay' }, // buttons for switching between views
+    customButtons: {
+      admin: {
+        text: 'admin',
+        click: function() {
+          alert('clicked the admin button!');
+        }
+      },
+      public: {
+        text: 'public',
+        click: function() {
+          alert('clicked the public button!');
+        }
+      }
+    },
+
+    header: {
+      left: 'admin,public',
+      center: 'month,agendaWeek,agendaDay'// buttons for switching between views
+    },
 
     views: {
         month: { // name of view
@@ -21,6 +39,8 @@ $(document).ready(function() {
     },
 
     height: "auto"
+
+
 
   })
 });

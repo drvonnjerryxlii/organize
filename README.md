@@ -3,12 +3,15 @@
 - - -
 
 bookmarks for future me:
-- [fullcalendar.io](http://fullcalendar.io)
+- [fullcalendar.io](http://fullcalendar.io) ([doc notes](notes/fullcalendar_notes.md))
+  - [moment.js](http://momentjs.com/docs/)
 - [epiceditor](http://oscargodson.github.io/EpicEditor)
 
 other useful things:
 - [the trello board](https://trello.com/b/ZLYgc2TU/jari-capstone)
 - [prototype specs](https://docs.google.com/document/d/1mQprIVP-J1y6J8KxXg7lsn4uuogzb7og-dW1_j4l9sg/edit?usp=sharing)
+- [very wip product plan](notes/product_plan.md)
+- [very wip features list](notes/features.md)
 
 <!--
 

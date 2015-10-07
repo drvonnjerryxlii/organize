@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "instantiation" do
+    it "cannot be instantiated wihout a user_id"
+    it "cannot be instantiated wihout a note"
+  end
+
+  context "relationships" do
+    it "belongs to a user"
+  end
 end

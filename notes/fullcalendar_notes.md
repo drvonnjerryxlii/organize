@@ -26,6 +26,12 @@ overview
     * event resize:
       triggered when resizing stops and the event has changed in duration
       http://fullcalendar.io/docs/event_ui/eventResize/
+  * default events that drag in!!!1
+    http://fullcalendar.io/js/fullcalendar-2.4.0/demos/external-dragging.html
+  * vacations? application times? what else?
+    http://fullcalendar.io/js/fullcalendar-2.4.0/demos/background-events.html
+  * adding multi-day events by click&drag-selecting multiple days
+    http://fullcalendar.io/js/fullcalendar-2.4.0/demos/selectable.html
 
 <div align="right">^<a href="#questions-overview">top</a></div>
 

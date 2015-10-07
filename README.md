@@ -8,6 +8,7 @@ bookmarks for future me:
 - [epiceditor](http://oscargodson.github.io/EpicEditor)
 
 other useful things:
+- [google developers console](https://console.developers.google.com/)
 - [the trello board](https://trello.com/b/ZLYgc2TU/jari-capstone)
 - [prototype specs](https://docs.google.com/document/d/1mQprIVP-J1y6J8KxXg7lsn4uuogzb7og-dW1_j4l9sg/edit?usp=sharing)
 - [very wip product plan](notes/product_plan.md)

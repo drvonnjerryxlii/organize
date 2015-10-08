@@ -2,7 +2,7 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
+/db/*.sqlite3 # FIXME: at least until I switch over to pg >_>
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
@@ -13,3 +13,6 @@
 # ignore various secrets & private things
 /market_research
 /.env
+
+# we don't need no public test coverage
+/coverage

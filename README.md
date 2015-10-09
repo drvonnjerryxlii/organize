@@ -15,6 +15,11 @@ The goal of this project is to increase volunteer involvement by
 > ## Market Research
 - - -
 
+This analysis is informed by several informal user research interviews with volunteer coordinators, both inside and outside of the Ada organization; Ada volunteers including regular TAs, guest lecturers, and special capstone volunteers; a few expert Outlook users; and some Ada staff members. These interviews may have been affected by personal biases including my experiences as a long time volunteer and as a former non-profit board member and volunteer organizer & my lack of experience with performing user research.
+
+Once the minimum viable product is complete, I intend to perform a second round of interviews -- this time incorporating usability tests. The feedback from this round of interviews will inform the remainder of development. Further rounds of usability interviews will be incorporated as necessary to ensure product meets user needs.
+
+
 ### Competition
 
 There are many products already on the market for managing and scheduling people. Popular systems include paper calendaring, timecards, and native and web apps such as Microsoft Outlook, Google Apps, and a myriad of other human resources, payroll, and people management software suites.
@@ -31,6 +36,7 @@ Google Apps are already available to non-profit organzations free of charge. Thi
 - - -
 > ## User Personas
 - - -
+
 
 - __Prospective Volunteers__:
   These users are people who are exploring the idea of sharing their skills and expertise with Ada. They may know someone who is already involved in the organization, or they may be completely new to the organization. They may not be sure how much time they want to commit, and they may not know what opportunities are available. They need to access information about what kinds of volunteers are needed and about how to get involved or sign up.
@@ -61,7 +67,7 @@ See also the user stories on [this project's Trello board](#).
   - OAuth dev strategy for admin users
 
 
-2. __Wave 1: Integrating Google Apps Part 1__ due 10/23, prefer done by 10/20
+2. __Wave 1: Integrating Google Apps Part 1__ due fri 10/23, prefer done by sun 10/18
   - integrate Google Calendar with CRUD events
   - integrate FullCalendar.io or own custom display with gCal
     - volunteer vs admin view
@@ -83,12 +89,24 @@ See also the user stories on [this project's Trello board](#).
 
 3. __Wave 3: Integrating Google Apps Part 2__
   - integrate Google Forms
+    - linking results to events or other database records
   - pull in or otherwise integrate adadevelopersacademy.wiki
 
 
 5. __Nice To Haves__: <-- bonus awesome
   - as volunteer experience level grows, admin can change to auto-accept shift requests
+  - Twilio SMS notifications
+  - _no login required_ url access tokens interface for volunteer shift requests & cancellations
+  - admin alert messages that display when users log into volunteer portal
+    - optional confirm before redirecting / displaying dashboard
 
+- - -
+- - -
+- - -
+product plan - readme barrier
+- - -
+- - -
+- - -
 
 - - -
 > ### placeholder readme file

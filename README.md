@@ -15,9 +15,9 @@ The goal of this project is to increase volunteer involvement by
 > ## Market Research
 - - -
 
-This analysis is informed by several informal user research interviews with volunteer coordinators, both inside and outside of the Ada organization; Ada volunteers including regular TAs, guest lecturers, and special capstone volunteers; a few expert Outlook users; and some Ada staff members. These interviews may have been affected by personal biases including my experiences as a long time volunteer and as a former non-profit board member and volunteer organizer & my lack of experience with performing user research.
+This analysis is informed by several informal user research interviews with volunteer coordinators, both inside and outside of the Ada organization; some Ada staff members; Ada volunteers including regular TAs, guest lecturers, and special capstone volunteers; and a few expert Outlook users. These interviews may have been affected by personal biases including my experiences as a long time volunteer and as a former non-profit board member and volunteer organizer & my lack of experience with performing user research.
 
-Once the minimum viable product is complete, I intend to perform a second round of interviews -- this time incorporating usability tests. The feedback from this round of interviews will inform the remainder of development. Further rounds of usability interviews will be incorporated as necessary to ensure product meets user needs.
+Once the minimum viable product is complete, I intend to perform a second round of interviews -- this time incorporating usability tests. The feedback from this round of interviews will inform the remainder of development. Further rounds of usability interviews will be incorporated as necessary to ensure product meets user needs and effects of bias are minimized.
 
 
 ### Competition
@@ -27,6 +27,7 @@ There are many products already on the market for managing and scheduling people
 Non-electronic tools for managing volunteers include a large number of pieces of paper, which must be kept organized with lots and lots of filing. For reporting purposes, these tools are cumbersome and in many cases involve duplicating hard copy information in an electronic environment. Since non-profit organizations may be obligated to track volunteer hours as part of fulfilling their public support requirements, a paper system is not ideal for Ada Developers Academy.
 
 The strongest competition for scheduling is Microsoft Outlook, which has a great interface for scheduling people within specific user groups that automatically make available to the group at large free/busy information. Outlook is not an ideal solution for Ada's volunteer scheduling needs, since scheduling is less about finding the right time for several people with conflicting schedules to meet and more about finding a time the volunteer can step aside from their job share knowledge with the Ada students, whose daily schedules are completely at the mercy of Ada staff.
+
 
 ### Differentiation
 

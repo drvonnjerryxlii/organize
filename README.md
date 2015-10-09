@@ -1,6 +1,19 @@
 NOTE: copied product plan into README for ease of access until product is at a point where installation instructions start to make sense
 
 - - -
+> ## Overview
+- - -
+
+- [Problem Statement](#problem-statement)
+- [Market Research & Insights](#market-research)
+  - [Competition](#competition)
+  - [Differentiation](#differentiation)
+- [User Personas](#user personas)
+- [Product Specifications](#product-specifications)
+  - [Deliverables](#deliverables)
+  - [Links to Resources](#resources)
+
+- - -
 > ## Problem Statement
 - - -
 
@@ -10,6 +23,8 @@ The goal of this project is to increase volunteer involvement by
 - making it easier to schedule volunteer time,
 - promoting more volunteer opportunities, and
 - improving the overall volunter experience.
+
+<div align="right">^<a href="#overview">top</a></div>
 
 - - -
 > ## Market Research
@@ -33,6 +48,8 @@ The strongest competition for scheduling is Microsoft Outlook, which has a great
 
 Google Apps are already available to non-profit organzations free of charge. This product will join the Google Apps together into a more unified suite of tools, taking over the process of passing messages between them and displaying the data in a central, easily accessible location. Additionally, it will standardize notification options for both volunteer and admin users and will provide a central location for special messages, like last-minute requests, to be displayed.
 
+<div align="right">^<a href="#overview">top</a></div>
+
 
 - - -
 > ## User Personas
@@ -48,9 +65,8 @@ Google Apps are already available to non-profit organzations free of charge. Thi
 - __Administrators__:
   These users are people who are coordinating with volunteers and working with them in the classroom. Some administrators may be full time volunteer coordinators. They need to access and update information about the volunteers as painlessly as possible. Other administrators may be full time instructors. They need to know how many volunteers will be in the classroom and for what purpose. Administrators of both inclinations may need to adjust volunteer needs or request additional information from them.
 
-<!------------------------------------------------------------------------------
-See also the user stories on [this project's Trello board](#).
-------------------------------------------------------------------------------->
+<div align="right">^<a href="#overview">top</a></div>
+
 
 - - -
 > ## Product Specifications
@@ -101,17 +117,9 @@ See also the user stories on [this project's Trello board](#).
   - admin alert messages that display when users log into volunteer portal
     - optional confirm before redirecting / displaying dashboard
 
-- - -
-- - -
-- - -
-product plan - readme barrier
-- - -
-- - -
-- - -
+### Resources
 
-- - -
-> ### placeholder readme file
-- - -
+- [User Stories (Trello board)][trello]
 
 bookmarks for future me:
 - [fullcalendar.io](http://fullcalendar.io) ([doc notes](notes/fullcalendar_notes.md))
@@ -120,10 +128,26 @@ bookmarks for future me:
 
 other useful things:
 - [google developers console](https://console.developers.google.com/)
-- [the trello board](https://trello.com/b/ZLYgc2TU/jari-capstone)
-- [prototype specs](https://docs.google.com/document/d/1mQprIVP-J1y6J8KxXg7lsn4uuogzb7og-dW1_j4l9sg/edit?usp=sharing)
+- [the trello board][trello]
 - [wip product plan](notes/product_plan.md)
-- [very wip features list](notes/features.md)
+- [wip features list](notes/features.md)
+
+[trello]: https://trello.com/b/ZLYgc2TU/jari-capstone
+
+<!--
+- [wip prototype specs](https://docs.google.com/document/d/1mQprIVP-J1y6J8KxXg7lsn4uuogzb7og-dW1_j4l9sg/edit?usp=sharing)
+-->
+
+<div align="right">^<a href="#overview">top</a></div>
+
+- - -
+- - -
+- - -
+product plan - readme barrier
+- - -
+- - -
+- - -
+
 
 <!--
 

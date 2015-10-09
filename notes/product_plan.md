@@ -1,4 +1,17 @@
 - - -
+> ## Overview
+- - -
+
+- [Problem Statement](#problem-statement)
+- [Market Research & Insights](#market-research)
+  - [Competition](#competition)
+  - [Differentiation](#differentiation)
+- [User Personas](#user personas)
+- [Product Specifications](#product-specifications)
+  - [Deliverables](#deliverables)
+  - [Links to Resources](#resources)
+
+- - -
 > ## Problem Statement
 - - -
 
@@ -9,9 +22,16 @@ The goal of this project is to increase volunteer involvement by
 - promoting more volunteer opportunities, and
 - improving the overall volunter experience.
 
+<div align="right">^<a href="#overview">top</a></div>
+
 - - -
 > ## Market Research
 - - -
+
+This analysis is informed by several informal user research interviews with volunteer coordinators, both inside and outside of the Ada organization; some Ada staff members; Ada volunteers including regular TAs, guest lecturers, and special capstone volunteers; and a few expert Outlook users. These interviews may have been affected by personal biases including my experiences as a long time volunteer and as a former non-profit board member and volunteer organizer & my lack of experience with performing user research.
+
+Once the minimum viable product is complete, I intend to perform a second round of interviews -- this time incorporating usability tests. The feedback from this round of interviews will inform the remainder of development. Further rounds of usability interviews will be incorporated as necessary to ensure product meets user needs and effects of bias are minimized.
+
 
 ### Competition
 
@@ -21,14 +41,18 @@ Non-electronic tools for managing volunteers include a large number of pieces of
 
 The strongest competition for scheduling is Microsoft Outlook, which has a great interface for scheduling people within specific user groups that automatically make available to the group at large free/busy information. Outlook is not an ideal solution for Ada's volunteer scheduling needs, since scheduling is less about finding the right time for several people with conflicting schedules to meet and more about finding a time the volunteer can step aside from their job share knowledge with the Ada students, whose daily schedules are completely at the mercy of Ada staff.
 
+
 ### Differentiation
 
 Google Apps are already available to non-profit organzations free of charge. This product will join the Google Apps together into a more unified suite of tools, taking over the process of passing messages between them and displaying the data in a central, easily accessible location. Additionally, it will standardize notification options for both volunteer and admin users and will provide a central location for special messages, like last-minute requests, to be displayed.
+
+<div align="right">^<a href="#overview">top</a></div>
 
 
 - - -
 > ## User Personas
 - - -
+
 
 - __Prospective Volunteers__:
   These users are people who are exploring the idea of sharing their skills and expertise with Ada. They may know someone who is already involved in the organization, or they may be completely new to the organization. They may not be sure how much time they want to commit, and they may not know what opportunities are available. They need to access information about what kinds of volunteers are needed and about how to get involved or sign up.
@@ -39,9 +63,8 @@ Google Apps are already available to non-profit organzations free of charge. Thi
 - __Administrators__:
   These users are people who are coordinating with volunteers and working with them in the classroom. Some administrators may be full time volunteer coordinators. They need to access and update information about the volunteers as painlessly as possible. Other administrators may be full time instructors. They need to know how many volunteers will be in the classroom and for what purpose. Administrators of both inclinations may need to adjust volunteer needs or request additional information from them.
 
-<!------------------------------------------------------------------------------
-See also the user stories on [this project's Trello board](#).
-------------------------------------------------------------------------------->
+<div align="right">^<a href="#overview">top</a></div>
+
 
 - - -
 > ## Product Specifications
@@ -59,7 +82,7 @@ See also the user stories on [this project's Trello board](#).
   - OAuth dev strategy for admin users
 
 
-2. __Wave 1: Integrating Google Apps Part 1__ due 10/23, prefer done by 10/20
+2. __Wave 1: Integrating Google Apps Part 1__ due fri 10/23, prefer done by sun 10/18
   - integrate Google Calendar with CRUD events
   - integrate FullCalendar.io or own custom display with gCal
     - volunteer vs admin view
@@ -81,13 +104,22 @@ See also the user stories on [this project's Trello board](#).
 
 3. __Wave 3: Integrating Google Apps Part 2__
   - integrate Google Forms
+    - linking results to events or other database records
   - pull in or otherwise integrate adadevelopersacademy.wiki
 
 
 5. __Nice To Haves__: <-- bonus awesome
   - as volunteer experience level grows, admin can change to auto-accept shift requests
+  - Twilio SMS notifications
+  - _no login required_ url access tokens interface for volunteer shift requests & cancellations
+  - admin alert messages that display when users log into volunteer portal
+    - optional confirm before redirecting / displaying dashboard
 
-<!--
-    - requesting shifts
-      - different user levels, some get auto-accepted
--->
+### Resources
+
+- [User Stories (Trello board)][trello]
+
+
+[trello]: https://trello.com/b/ZLYgc2TU/jari-capstone
+
+<div align="right">^<a href="#overview">top</a></div>

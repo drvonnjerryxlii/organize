@@ -8,7 +8,7 @@ NOTE: copied product plan into README for ease of access until product is at a p
 - [Market Research & Insights](#market-research)
   - [Competition](#competition)
   - [Differentiation](#differentiation)
-- [User Personas](#user personas)
+- [User Personas](#user-personas)
 - [Product Specifications](#product-specifications)
   - [Deliverables](#deliverables)
   - [Links to Resources](#resources)

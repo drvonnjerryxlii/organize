@@ -49,28 +49,40 @@ See also the user stories on [this project's Trello board](#).
 
 ### Deliverables
 
-1. __Baseline / Prototype__:
+1. __Baseline / Prototype__ due wed 10/14, prefer done by tue 10/13:
   - provide a base for
-    - adding notes to users
-    - storing messages for display
-    - storing / caching calendar event info
-  - oauth github for volunteer users
+    - signup, login, view/update profile (CRUD users)
+    - adding notes to users (CRUD notes)
+    - storing messages for display (CRUD broadcasts)
+    - adding categories to users, broadcasts (CRUD categories)
+    - storing / caching calendar event info (CRUD events)
+  - OAuth dev strategy for admin users
 
 
-2. __Wave 1: Integrating Google Apps Part 1__ <-- 2/3 of minimum viable product
-  - integrate Google Calendar
-  - integrate FullCalendar.io or own custom display
+2. __Wave 1: Integrating Google Apps Part 1__ due 10/23, prefer done by 10/20
+  - integrate Google Calendar with CRUD events
+  - integrate FullCalendar.io or own custom display with gCal
+    - volunteer vs admin view
+    - request a shift, accept a shift
+  - add volunteer agreement to user signup process
 
 
-3. __Wave 2: Integrating Google Apps Part 2__ <-- 1/3 of minimum viable product
-  - integrate Google Forms
-  - integrate twitter oauth
-
-
-4. __Wave 3: Integrating Notifications__ <-- but really what makes product awesome
+4. __Wave 2: Integrating Notifications & OAuth__ <-- really what makes product awesome
+  - GitHub OAuth for volunteer users
+    - hello, ~~world~~ minimum viable product!
+      - this means it's time to start planning user testing
   - sending email notifications
+    - iCal, gCal attachments
   - notification preferences for users
-  - tweet this broadcast
+  - Twitter OAuth for volunteer users
+    - Tweet this broadcast
+  - __you can has user testing now__
+
+
+3. __Wave 3: Integrating Google Apps Part 2__
+  - integrate Google Forms
+  - pull in or otherwise integrate adadevelopersacademy.wiki
+
 
 5. __Nice To Haves__: <-- bonus awesome
   - as volunteer experience level grows, admin can change to auto-accept shift requests

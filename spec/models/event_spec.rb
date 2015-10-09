@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   context "instantiation" do
-    it "cannot be instantiated wihout a title"
-    it "cannot be instantiated wihout a start time"
-    it "cannot be instantiated wihout an end time"
-    it "cannot be instantiated wihout a google_id"
+    factory = :event
+    required_fields = [:title, :start_time, :end_time, :google_id]
+
+    it_behaves_like "a model class with required fields", factory, required_fields
   end
 
   context "relationships" do

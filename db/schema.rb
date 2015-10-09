@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007010048) do
+ActiveRecord::Schema.define(version: 20151008182511) do
 
   create_table "broadcasts", force: :cascade do |t|
     t.string   "title",             null: false
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20151007010048) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title",      null: false
-    t.datetime "start",      null: false
-    t.datetime "end",        null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time",   null: false
     t.string   "google_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

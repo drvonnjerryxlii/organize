@@ -1,10 +1,10 @@
 require 'rails_helper'
 require 'support/shared_model_examples'
 
-RSpec.describe Note, type: :model do
+RSpec.describe Oauth, type: :model do
   context "instantiation" do
-    factory = :note
-    required_fields = [:user_id, :note]
+    factory = :oauth
+    required_fields = [:user_id, :provider, :provider_uid]
 
     it_behaves_like "a model class with required fields", factory, required_fields
   end

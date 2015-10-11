@@ -9,7 +9,7 @@ RSpec.describe Broadcast, type: :model do
   # example (e.g. `before`, `let`, etc).
   # (RSpec::Core::ExampleGroup::WrongScopeError)
   factory = :broadcast
-  required_fields = [:title, :short_description]
+  required_fields = [:title, :description]
 
   it_behaves_like "a model class with required fields", factory, required_fields
 

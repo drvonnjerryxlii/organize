@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
     password_digest "legit password"
     name "Dr. Shark, MD, DDS, PhD"
-    email "dr.shark@weloveteeth.com"
+    email "dr.shark#{ rand(1000) }@weloveteeth.com"
     type "Volunteer"
 
     factory :volunteer do

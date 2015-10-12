@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/shared_model_examples'
 
 RSpec.describe Cohort, type: :model do
-  context "model validation" do
+  describe "model validation" do
     # these are also datetime_fields # FIXME: validate datetime?
     it { should validate_presence_of(:classroom_start_date) }
     it { should validate_presence_of(:classroom_end_date) }
@@ -14,7 +14,8 @@ RSpec.describe Cohort, type: :model do
     it_behaves_like "a model class with optional fields", factory, optional_fields
   end
 
-  context "relationships" do
-    it "needs fixing" # FIXME: cohort relationships
+  describe "model associations" do
+    it { should have_many(:users) }
+    it { should have_many(:events) }
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/shared_model_examples'
 
 RSpec.describe Oauth, type: :model do
-  context "attributes" do
+  describe "model validations" do
     it { should validate_presence_of(:user_id) }
     it { should validate_presence_of(:provider) }
     it { should validate_length_of(:provider).is_at_most(64) }
@@ -16,7 +16,7 @@ RSpec.describe Oauth, type: :model do
     it_behaves_like "numeric integer fields", factory, integer_fields
   end
 
-  context "relationships" do
-    it "belongs to a user"
+  describe "model associations" do
+    it { should belong_to(:user) }
   end
 end

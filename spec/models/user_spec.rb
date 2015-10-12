@@ -19,4 +19,14 @@ RSpec.describe User, type: :model do
     optional_fields = [:password_digest]
     it_behaves_like "a model class with optional fields", factory, optional_fields
   end
+
+  describe "model associations" do
+    it { should have_and_belong_to_many(:cohorts).through(:cohorts_users) }
+    it { should have_and_belong_to_many(:events).through(:event_attendees) }
+    it { should have_many(:oauths) }
+    it { should have_many(:notes) }
+    it { should have_many(:guest_lectures) }
+    it { should have_and_belong_to_many(:categories).through(:categorizable).source(:category_joins) }
+    it { should have_many(:broadcasts).through(:categories) }
+  end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/shared_model_examples'
 
 RSpec.describe Event, type: :model do
-  context "model validations" do
+  describe "model validations" do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:start_time) }
     it { should validate_presence_of(:end_time) }
@@ -25,9 +25,9 @@ RSpec.describe Event, type: :model do
     # datetime_fields = [:start_time, :end_time] # FIXME: datetime testing?
   end
 
-  context "relationships" do
-    it "has and belongs to many event attendees"
-    it "has many users through its event attendees"
-    it "has many guest lectures through its users"
+  describe "model associations" do
+    it { should belong_to(:cohort) }
+    it { should belong_to(:guest_lecture) }
+    it { should have_many(:event_attendees) }
   end
 end

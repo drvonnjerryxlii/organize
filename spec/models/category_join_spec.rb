@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/shared_model_examples'
 
 RSpec.describe CategoryJoin, type: :model do
-  context "model validations" do
+  describe "model validations" do
     it { should validate_presence_of(:category_id) }
     it { should validate_presence_of(:categorizable_id) }
     it { should validate_presence_of(:categorizable_type) }
@@ -15,5 +15,8 @@ RSpec.describe CategoryJoin, type: :model do
     it_behaves_like "numeric integer fields", factory, integer_fields
   end
 
-  it "has relationships" # FIXME: flesh out category_join relationships
+  describe "model associations" do
+    it { should belong_to(:category) }
+    it { should belong_to(:categorizable) }
+  end
 end

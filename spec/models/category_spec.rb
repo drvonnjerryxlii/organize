@@ -14,6 +14,7 @@ RSpec.describe Category, type: :model do
 
     it_behaves_like "a model class with required fields", factory, required_fields
     it_behaves_like "a model class with optional fields", factory, optional_fields
+    it_behaves_like "fields w/ default values", factory, default_fields
 
     it "has a default color value"
     it "has a default admin_only value"

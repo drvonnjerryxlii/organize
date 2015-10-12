@@ -9,9 +9,12 @@ RSpec.describe Broadcast, type: :model do
   # example (e.g. `before`, `let`, etc).
   # (RSpec::Core::ExampleGroup::WrongScopeError)
   factory = :broadcast
+
   required_fields = [:title, :description]
+  limited_fields = [{ title: 50 }, { description: 500 }]
 
   it_behaves_like "a model class with required fields", factory, required_fields
+  it_behaves_like "text fields w/ limits", factory, limited_fields
 
   context "relationships" do
     it "has and belongs to zero to many categories"

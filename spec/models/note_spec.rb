@@ -3,11 +3,14 @@ require 'support/shared_model_examples'
 
 RSpec.describe Note, type: :model do
   context "attributes" do
-    factory = :note
-    required_fields = [:user_id, :note]
-    integer_fields = [:user_id]
+    it { should validate_presence_of(:note) }
+    it { should validate_presence_of(:user_id) }
 
-    it_behaves_like "a model class with required fields", factory, required_fields
+    # FIXME: shoulda-matchers 3.0.1
+    # it { should validate_numericality_of(:user_id).only_integer }
+
+    factory = :note
+    integer_fields = [:user_id]
     it_behaves_like "numeric integer fields", factory, integer_fields
   end
 

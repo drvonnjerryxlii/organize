@@ -2,20 +2,27 @@ require 'rails_helper'
 require 'support/shared_model_examples'
 
 RSpec.describe Event, type: :model do
-  context "instantiation" do
-    factory = :event
-    required_fields = [:title, :start_time, :end_time, :google_event_id]
-    optional_fields = [:admin_only, :cohort_id]
-    default_fields = [{ admin_only: false }]
-    integer_fields = [:cohort_id]
-    limited_fields = [{ google_event_id: 1024 }]
-    # datetime_fields = [:start_time, :end_time]
+  context "model validations" do
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:start_time) }
+    it { should validate_presence_of(:end_time) }
+    it { should validate_presence_of(:google_event_id) }
+    it { should validate_length_of(:google_event_id).is_at_most(1024) }
 
-    it_behaves_like "a model class with required fields", factory, required_fields
+    # FIXME: shoulda-matchers 3.0.1
+    # it { should validate_numericality_of(:cohort_id).only_integer }
+
+    factory = :event
+    optional_fields = [:admin_only, :cohort_id]
     it_behaves_like "a model class with optional fields", factory, optional_fields
+
+    default_fields = [{ admin_only: false }]
     it_behaves_like "fields w/ default values", factory, default_fields
+
+    integer_fields = [:cohort_id]
     it_behaves_like "numeric integer fields", factory, integer_fields
-    it_behaves_like "text fields w/ limits", factory, limited_fields
+
+    # datetime_fields = [:start_time, :end_time] # FIXME: datetime testing?
   end
 
   context "relationships" do

@@ -38,6 +38,14 @@ gem 'momentjs-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 
 
+group :test do
+  # testing
+  gem 'rspec-rails'
+  gem 'simplecov', require: false # helper for test coverage
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+end
+
 group :development, :test do
   # for debugging
   gem 'pry-rails' # pry <3
@@ -45,16 +53,6 @@ group :development, :test do
   gem 'binding_of_caller' # improve error console in browser
   gem 'byebug' # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'web-console', '~> 2.0' # Access an IRB console on exception pages or by using <%= console %> in views
-
-
-  # testing
-  gem 'rspec-rails'
-  gem 'simplecov', require: false # helper for test coverage
-  gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
-
-
-  # database for early development
 
   # some sort of magic
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

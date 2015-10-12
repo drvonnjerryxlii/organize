@@ -18,6 +18,8 @@ gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 # gem "omniauth-twitter"
 # gem "omniauth-github"
 
+# database
+gem 'pg'
 
 # assets
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
@@ -49,17 +51,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false # helper for test coverage
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 
 
   # database for early development
-  gem 'sqlite3' # Use sqlite3 as the database for Active Record
 
   # some sort of magic
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :production do
-  # database for production?
-  gem 'pg'
 end

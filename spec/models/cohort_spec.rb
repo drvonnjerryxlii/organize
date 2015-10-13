@@ -15,7 +15,7 @@ RSpec.describe Cohort, type: :model do
   end
 
   describe "model associations" do
-    it { should have_many(:users) }
+    it { should have_and_belong_to_many(:users) }
     it { should have_many(:events) }
   end
 end

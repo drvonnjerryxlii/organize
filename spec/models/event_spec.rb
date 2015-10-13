@@ -28,6 +28,6 @@ RSpec.describe Event, type: :model do
   describe "model associations" do
     it { should belong_to(:cohort) }
     it { should belong_to(:guest_lecture) }
-    it { should have_many(:event_attendees) }
+    it { should have_and_belong_to_many(:users) }
   end
 end

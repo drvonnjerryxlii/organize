@@ -21,12 +21,13 @@ RSpec.describe User, type: :model do
   end
 
   describe "model associations" do
-    it { should have_and_belong_to_many(:cohorts).through(:cohorts_users) }
-    it { should have_and_belong_to_many(:events).through(:event_attendees) }
     it { should have_many(:oauths) }
-    it { should have_many(:notes) }
     it { should have_many(:guest_lectures) }
-    it { should have_and_belong_to_many(:categories).through(:categorizable).source(:category_joins) }
+    it { should have_many(:notes) }
+    it { should have_and_belong_to_many(:cohorts) }
+    it { should have_and_belong_to_many(:events) }
+    it { should have_many(:category_joins) } # FIXME: is this right?
+    it { should have_many(:categories).through(:category_joins) }
     it { should have_many(:broadcasts).through(:categories) }
   end
 end

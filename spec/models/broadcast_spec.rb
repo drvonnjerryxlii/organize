@@ -10,6 +10,7 @@ RSpec.describe Broadcast, type: :model do
   end
 
   describe "model associations" do
-    it { should have_and_belong_to_many(:categories).through(:categorizable).source(:category_joins) }
+    it { should have_many(:category_joins) } # FIXME: is this right?
+    it { should have_many(:categories).through(:category_joins) }
   end
 end

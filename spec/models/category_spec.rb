@@ -18,11 +18,12 @@ RSpec.describe Category, type: :model do
     it_behaves_like "fields w/ default values", factory, default_fields
   end
 
+  # TODO: should it have many notes & gl thru users as well; namespace association? user_notes?
   describe "model associations" do
-    it { should have_and_belong_to_many(:broadcasts).through(:categorizable).source(:category_joins) }
-    it { should have_and_belong_to_many(:users).through(:categorizable).source(:category_joins) }
-    it { should have_many(:notes).through(:categorizable).source(:category_joins) }
-    # FIXME: it should have many notes thru users as well; namespace association? user_notes?
-    it { should have_many(:guest_lectures).through(:users) }
+    it { should have_many(:category_joins) }
+    it { should have_many(:broadcasts).through(:category_joins).source(:categorizable) }
+    it { should have_many(:users).through(:category_joins).source(:categorizable) }
+    it { should have_many(:notes).through(:category_joins).source(:categorizable) }
+    it { should have_many(:guest_lectures).through(:category_joins).source(:categorizable) }
   end
 end

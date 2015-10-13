@@ -1,0 +1,17 @@
+user_id,title,description
+10,zero indexing,"it's totally sweet stuff. just start counting from 0, because reasons."
+20,http response cycle,
+17,fish,they're delicious
+15,cats and sharks,carnivores of the land and sea
+17,fish,they're still really tasty
+19,dreamy sharks,and why most of us are viviparous
+20,node 101,asynchronous javascript 101 & MVC in node
+10,hash sets,why they rock & how to make them your jam
+13,traversals: trees (rb),a discussion of several common ways of traversing trees (ruby version)
+13,traversals: linked lists (rb),a discussion of several common ways of traversing linked lists (ruby version)
+13,traversals: trees (c#),a discussion of several common ways of traversing trees (c# version)
+13,traversals: linked lists (c#),a discussion of several common ways of traversing linked lists (c# version)
+13,traversals: fishing nets (www),a discussion of several common ways of traversing fishing nets (world wide water version)
+11,youngsters,"""I like shorts. they're comfy & easy to wear."" -- youngster in pm. blue/red"
+18,aws sharkbait,how to deploy & when to avoid
+19,aws sharkbait,using aws sharkbait to keep other sharks out of your secure areas

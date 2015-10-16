@@ -111,11 +111,11 @@ end
 namespace :spec do
   desc "Enumerate all annotations"
   task :notes do
-    SpecNotes.enumerate "OPTIMIZE|FIXME|TODO", :tag => true
+    SpecNotes.enumerate "OPTIMIZE|FIXME|TODO|AUGH|WTH|NOTE|NOPE", :tag => true
   end
 
   namespace :notes do
-    ["OPTIMIZE", "FIXME", "TODO"].each do |annotation|
+    ["OPTIMIZE", "FIXME", "TODO", "AUGH", "WTH", "NOTE", "NOPE"].each do |annotation|
       desc "Enumerate all #{annotation} annotations"
       task annotation.downcase.intern do
         SpecNotes.enumerate annotation

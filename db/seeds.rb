@@ -23,12 +23,12 @@ end
 
 cohorts = CSV.read(file_base + "cohorts.csv", { headers: true })
 cohorts.each do |cohort|
-  Cohort.create(
+  c = Cohort.create(
     name: cohort["name"],
-    classroom_start_date: cohort["classroom_start_date"],
-    classroom_end_date: cohort["classroom_end_date"],
-    internship_start_date: cohort["internship_start_date"],
-    internship_end_date: cohort["internship_end_date"],
+    classroom_start_date: Date.parse(cohort["classroom_start_date"]),
+    classroom_end_date: Date.parse(cohort["classroom_end_date"]),
+    internship_start_date: Date.parse(cohort["internship_start_date"]),
+    internship_end_date: Date.parse(cohort["internship_end_date"]),
     google_calendar_id: cohort["google_calendar_id"]
   )
 end

@@ -1,0 +1,11 @@
+en:
+  user_mailer:
+    defaults:
+      text_divider: "================================================"
+      signature: "--%{website} Staff"
+    welcome_email:
+      welcome: "Welcome to %{base_domain}, %{name}!"
+      signup_success: "You have successfully signed up."
+      login_reqs: "You can log in with the email and password you provided."
+      login_loc: "To login to the site, just follow this link: %{full_login_path}."
+      closing: "Thanks for joining and have a great day!"

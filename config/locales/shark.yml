@@ -1,0 +1,71 @@
+shark:
+  site:
+    name: "Voluntear Shark"
+    subtitle: "The voluntearnado is coming. Bigger and better than sharknado! Now with 80% more tearing power."
+    base_domain: "http://localhost:3000/"
+
+  errors:
+    require_login: "Only sharks with accounts may see this classified document."
+    require_admin: "Oops! Only sharks with super extra teeth may access this."
+
+  confirmations:
+    delete: "Are you sure you want to rend this from existence forever? You can't undo this."
+
+  links:
+    home: "home"
+    back: "<< Go back"
+    broadcasts: "broadcasts"
+    categories: "categories"
+    cohorts: "cohorts"
+    events: "events"
+    guest_lectures: "guest lectures"
+    notes: "notes"
+    users: "sharks"
+    login: "enter this place"
+    logout: "swim away"
+    resources:
+      create: "+New %{model_name}"
+      delete: "Eat"
+      edit: "Edit"
+      show: "Show"
+
+  headings:
+    actions: "Actions"
+    all: "%{plural_model_name}"
+    editing: "Editing %{model_name}"
+    create: "Create a new %{model_name}"
+
+  resources:
+    broadcast: "broadcast"
+    category: "category"
+    cohort: "cohort"
+    event: "event"
+    guest_lecture: "guest lecture"
+    note: "note"
+    user: "shark"
+
+  attributes:
+    admin_only: "Super extra teeth only?"
+    approved: "Approved?"
+    classroom_start_date: "Ocean start date"
+    classroom_end_date: "Ocean end date"
+    cohort_id: "Associated cohort"
+    color: "Color"
+    description: "Description"
+    email: "Special webnet contact address"
+    empty: "(none)"
+    end_time: "End time"
+    guest_lecture_id: "Associated guest lecture"
+    github: "Octokitty username"
+    google_event_id: "Google event ID"
+    hidden: "Hidden?"
+    id: "IDENTIFICATION NUMBER"
+    internship_start_date: "Pirateship start date"
+    internship_end_date: "Pirateship end date"
+    name: "Name"
+    note: "Note"
+    password: "Password"
+    start_time: "Start time"
+    title: "Title"
+    type: "Type"
+    user_id: "Associated shark"

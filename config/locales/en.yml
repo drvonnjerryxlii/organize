@@ -20,4 +20,66 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  site:
+    name: "Voluntear Shark"
+    subtitle: "The voluntearnado is coming. Bigger and better than sharknado! Now with 80% more tearing power."
+    base_domain: "http://localhost:3000/"
+
+  errors:
+    require_login: "Please login to view this page."
+    require_admin: "Oops! Only admin users can access this page."
+
+  confirmations:
+    delete: "Are you sure you want to delete this? You can't undo this operation."
+
+  links:
+    home: "home"
+    back: "<< Go back"
+    login: "login"
+    logout: "logout"
+    resources:
+      create: "+New %{model_name}"
+      delete: "Delete"
+      edit: "Edit"
+      show: "Show"
+
+  headings:
+    actions: "Actions"
+    all: "%{plural_model_name}"
+    editing: "Editing %{model_name}"
+    create: "Create a new %{model_name}"
+
+  resources:
+    broadcast: "broadcast"
+    category: "category"
+    cohort: "cohort"
+    event: "event"
+    guest_lecture: "guest lecture"
+    note: "note"
+    user: "user"
+
+  attributes:
+    admin_only: "Admin only?"
+    approved: "Approved?"
+    classroom_start_date: "Classroom start date"
+    classroom_end_date: "Classroom end date"
+    cohort_id: "Associated cohort"
+    color: "Color"
+    description: "Description"
+    email: "Email"
+    empty: "(none)"
+    end_time: "End time"
+    guest_lecture_id: "Associated guest lecture"
+    github: "Github username"
+    google_event_id: "Google event ID"
+    hidden: "Hidden?"
+    id: "IDENTIFICATION NUMBER"
+    internship_start_date: "Internship start date"
+    internship_end_date: "Internship end date"
+    name: "Name"
+    note: "Note"
+    password: "Password"
+    start_time: "Start time"
+    title: "Title"
+    type: "Type"
+    user_id: "Associated user"

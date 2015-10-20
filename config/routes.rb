@@ -1,35 +1,43 @@
+require Rails.root.join('lib/build_constraints_regex')
+
 Rails.application.routes.draw do
+
   # volunteering home page
   root "welcome#index"
 
-  # calendars
-  get "/calendar" => "calendars#public", as: "public_calendar"
-  get "/calendar/a" => "calendars#admin", as: "admin_calendar"
-  get "/calendar/v" => "calendars#volunteer", as: "volunteer_calendar"
-  # does it make more sense to nest these like /admin/calendar instead?
-  # or have the logic in the controller decide which view? I like this better
+  # authorization routes -------------------------------------------------------
+  get "/login" => "sessions#login"
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#logout"
 
-  # login
-  get "/login", to: "sessions#new", as: "login"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy", as: "logout"
+  # authorized oauth providers
+  # NOTE: if you change these, you'll need to update the routing specs in spec/routing/sessions_routing_spec
+  authorized_providers = ["twitter", "github", "google_plus"]
+  constraints_regex = build_contraints_regex(authorized_providers)
+  PROVIDER_CONSTRAINTS = { provider: constraints_regex }
 
-  # admin space
-  resources :admin # admin can add new admin but can only edit self
-  resources :faqs
-  resources :events
-  resources :broadcasts
-  resources :categories
-  resources :volunteers, only: [:index, :show, :new, :create, :destroy] do
-    resources :notes # notes are attached to specific volunteers
+  get "/auth/:provider/callback", to: "sessions#oauth", constraints: PROVIDER_CONSTRAINTS
+
+  # authenticated routes --------------------------------------------------
+  # request shift? || request shift from hashed url # TODO: research hashed urls or whatevs they called
+  # request
+
+
+  scope "/:locale" do
+    # categories w/ categorizables inside
+    resources :categories do
+      get "/broadcasts" => "categories#broadcasts"
+      get "/lectures" => "categories#guest_lectures"
+      get "/notes" => "categories#notes"
+      get "/users" => "categories#users"
+    end
+
+    resources :broadcasts
+    resources :cohorts
+    resources :events
+    resources :guest_lectures # FIXME: make this /lectures!
+    resources :notes
+    resources :users
+    # resources :oauths
   end
-
-  # volunteer space
-  resources :volunteers, only: [:show, :edit, :update]
-
-  # all public faq
-  # specific public faq
-
-  # all faq (pub & priv)
-  # specific faq (pub or priv)
 end

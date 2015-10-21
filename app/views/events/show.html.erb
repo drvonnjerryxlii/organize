@@ -1,0 +1,37 @@
+<p>
+  <strong><%= t("attributes.title") %></strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong><%= t("attributes.start_time") %></strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong><%= t("attributes.end_time") %></strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong><%= t("attributes.google_event_id") %></strong>
+  <%= @event.google_event_id %>
+</p>
+
+<p>
+  <strong><%= t("attributes.guest_lecture_id") %></strong>
+  <%= @event.guest_lecture_id %>
+</p>
+
+<p>
+  <strong><%= t("attributes.cohort_id") %></strong>
+  <%= @event.cohort_id || t("attributes.empty") %>
+</p>
+
+<p>
+  <strong><%= t("attributes.admin_only") %></strong>
+  <%= @event.admin_only %>
+</p>
+
+<%= link_to t("links.resources.edit"), edit_event_path(@event) %> |
+<%= link_to t("links.back"), events_path %>

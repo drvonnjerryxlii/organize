@@ -1,0 +1,33 @@
+<h1><%= t("headings.all", plural_model_name: t("resources.category").pluralize) %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t("attributes.name") %></th>
+      <th><%= t("attributes.color") %></th>
+      <th><%= t("attributes.admin_only") %></th>
+      <th><%= t("attributes.approved") %></th>
+      <th><%= t("attributes.hidden") %></th>
+      <th colspan="3"><%= t("headings.actions") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category %></td>
+        <td><%= link_to category.color, category %></td>
+        <td><%= link_to "#{ category.admin_only }", category %></td>
+        <td><%= link_to "#{ category.approved }", category %></td>
+        <td><%= link_to "#{ category.hidden }", category %></td>
+        <td><%= link_to t("links.resources.show"), category %></td>
+        <td><%= link_to t("links.resources.edit"), edit_category_path(category) %></td>
+        <td><%= link_to t("links.resources.delete"), category, method: :delete, data: { confirm: t("confirmations.delete") } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t("links.resources.create", model_name: t("resources.category")), new_category_path %>

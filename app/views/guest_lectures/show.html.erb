@@ -1,0 +1,17 @@
+<p>
+  <strong><%= t("attributes.user_id") %></strong>
+  <%= @guest_lecture.user_id %>
+</p>
+
+<p>
+  <strong><%= t("attributes.title") %></strong>
+  <%= @guest_lecture.title %>
+</p>
+
+<p>
+  <strong><%= t("attributes.description") %></strong>
+  <%= @guest_lecture.description %>
+</p>
+
+<%= link_to t("links.resources.edit"), edit_guest_lecture_path(@guest_lecture) %> |
+<%= link_to t("links.back"), guest_lectures_path %>

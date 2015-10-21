@@ -1,0 +1,6 @@
+<h1><%= t("headings.editing", model_name: t("resources.guest_lecture")) %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t("links.resources.show"), @guest_lecture %> |
+<%= link_to t("links.back"), guest_lectures_path %>

@@ -1,14 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Organize (Jeri's Capstone)</title>
+  <title><%= t("site.title") + t("site.separator") + t("site.subtitle") %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
-  <main class=<%= yield :styles %>>
-    <%= yield %>
-  </main>
+  <div class="container-fluid">
+    <nav class="nav navbar navbar-default navbar-fixed-top">
+      <ul class="nav navbar-nav">
+        <li></li>
+        <li><%= link_to t("links.home"), root_path %></li>
+        <% if @admin %>
+          <!-- begin admin links -->
+          <li><%= link_to t("resources.broadcast").pluralize, broadcasts_path %></li>
+          <li><%= link_to t("resources.category").pluralize, categories_path %></li>
+          <li><%= link_to t("resources.cohort").pluralize, cohorts_path %></li>
+          <li><%= link_to t("resources.event").pluralize, events_path %></li>
+          <li><%= link_to t("resources.guest_lecture").pluralize, guest_lectures_path %></li>
+          <li><%= link_to t("resources.note").pluralize, notes_path %></li>
+          <li><%= link_to t("resources.user").pluralize, users_path %></li>
+          <!-- end admin links -->
+        <% elsif @logged_in_user %>
+          <li><%= link_to "my guest lecture proposals", guest_lectures_path %></li>
+          <li><%= link_to "my cohorts", cohorts_path %></li>
+          <li><%= link_to "my profile", user_path(@logged_in_user) %></li>
+          <li><%= link_to "my settings", root_path %></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if @logged_in_user %>
+          <li><%= link_to t("links.logout"), logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to t("links.login"), login_path %></li>
+        <% end %>
+        <li></li>
+      </ul>
+    </nav>
+
+    <div id="spacer"></div>
+
+    <% if @available_broadcast %>
+      <div class="broadcast col-md-8 col-md-offset-2">
+        <h3><%= @available_broadcast[:title] %></h3>
+        <%= @available_broadcast[:description] %>
+      </div>
+    <% end %>
+
+    <div class="flash-message">
+      <% if flash[:error] %>
+        <%= flash[:error] %>
+      <% end %>
+    </div>
+
+    <main class=<%= yield :stylin %>>
+      <!--  -->
+      <%= yield %>
+    </main>
+  </div>
 </body>
 </html>

@@ -1,0 +1,12 @@
+<p>
+  <strong><%= t("attributes.title") %></strong>
+  <%= @broadcast.title %>
+</p>
+
+<p>
+  <strong><%= t("attributes.description") %></strong>
+  <%= @broadcast.description %>
+</p>
+
+<%= link_to t("links.resources.edit"), edit_broadcast_path(@broadcast) %> |
+<%= link_to t("links.back"), broadcasts_path %>

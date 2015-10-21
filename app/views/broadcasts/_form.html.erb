@@ -1,0 +1,28 @@
+<%= form_for(@broadcast) do |f| %>
+  <% if @broadcast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@broadcast.errors.count, "error") %> prohibited this broadcast from being saved:</h2>
+
+      <ul>
+      <% @broadcast.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label t("attributes.title") %><br>
+    <%= f.text_area :title %>
+  </div>
+  <div class="field form-group">
+    <%= f.label t("attributes.description") %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <%= render 'shared/any_user_categories', :form_name => :broadcast, f: f %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

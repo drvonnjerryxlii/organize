@@ -1,0 +1,28 @@
+<section class="col-md-10 col-md-offset-1">
+  <h1>
+    <%= t("headings.all", plural_model_name: t("resources.cohort").pluralize) %>
+    <small><%= link_to t("links.resources.create", model_name: t("resources.cohort")), new_cohort_path %></small>
+  </h1>
+
+  <div class="row">
+  <% @cohorts.each_with_index do |cohort, index| %>
+    <% if index % 3 == 0 %></div><div class="row"><% end %>
+    <div class="item col-sm-4 col-xs-12">
+      <div class="action-links col-sm-8 col-sm-offset-2 col-xs-12">
+        <h4><%= t("resources.actions") %></h4>
+        <%= link_to t("links.resources.show"), cohort %>
+        <%= link_to t("links.resources.edit"), edit_cohort_path(cohort) %>
+        <%= link_to t("links.resources.delete"), cohort, method: :delete, data: { confirm: t("confirmations.delete") } %>
+      </div>
+      <div class="attributes">
+        <div class="attribute-name col-sm-6 col-xs-12"><%= t("attributes.name") %></div>
+        <div class="attribute-value col-sm-6 col-xs-12"><%= link_to cohort.name, cohort %></div>
+      </div>
+      <div class="attributes">
+        <div class="attribute-name col-sm-6 col-xs-12"><%= t("attributes.classroom_start_date") %></div>
+        <div class="attribute-value col-sm-6 col-xs-12"><%= cohort.classroom_start_date.strftime("%a, %b %d, %Y") %></div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</section>

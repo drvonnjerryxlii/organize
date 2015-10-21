@@ -49,7 +49,9 @@ class EventsController < ApplicationController
         :google_event_id,
         :guest_lecture_id,
         :cohort_id,
-        :admin_only
+        :admin_only,
+        :category_ids => [],
+        :categories_attributes => [:id, :name]
       )
     end
 end

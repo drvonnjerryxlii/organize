@@ -1,0 +1,6 @@
+<h1><%= t("headings.editing", model_name: t("resources.event")) %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t("links.resources.show"), @event %> |
+<%= link_to t("links.back"), events_path %>

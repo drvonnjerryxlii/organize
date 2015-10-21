@@ -1,0 +1,63 @@
+<p>
+  <strong><%= t("attributes.name") %></strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong><%= t("attributes.color") %></strong>
+  <%= @category.color %>
+</p>
+
+<p>
+  <strong><%= t("attributes.admin_only") %></strong>
+  <%= @category.admin_only %>
+</p>
+
+<p>
+  <strong><%= t("attributes.approved") %></strong>
+  <%= @category.approved %>
+</p>
+
+<p>
+  <strong><%= t("attributes.hidden") %></strong>
+  <%= @category.hidden %>
+</p>
+
+<h3>
+  Things belonging to this category<br />
+  <small>Total: <%= @category.category_joins.count %></small>
+</h3>
+<% if @category.broadcasts.any? %>
+  <ul>Broadcasts (Total: <%= @category.broadcasts.count %>)
+  <% @category.broadcasts.each do |thing| %>
+    <li><%= link_to thing.title, thing %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @category.notes.any? %>
+  <ul>Notes (Total: <%= @category.notes.count %>)
+  <% @category.notes.each do |thing| %>
+    <li><%= link_to thing.note, thing %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @category.lectures.any? %>
+  <ul>Guest Lectures (Total: <%= @category.lectures.count %>)
+  <% @category.lectures.each do |thing| %>
+    <li><%= link_to thing.title, thing %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @category.users.any? %>
+  <ul>Users (Total: <%= @category.users.count %>)
+  <% @category.users.each do |thing| %>
+    <li><%= link_to thing.name, user_path(thing) %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= link_to t("links.resources.edit"), edit_category_path(@category) %> |
+<%= link_to t("links.back"), categories_path %>

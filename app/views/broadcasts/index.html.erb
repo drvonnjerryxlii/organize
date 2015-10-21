@@ -1,0 +1,24 @@
+<section class="col-md-10 col-md-offset-1">
+  <h1>
+    <%= t("headings.all", plural_model_name: t("resources.broadcast").pluralize) %>
+    <small><%= link_to t("links.resources.create", model_name: t("resources.broadcast")), new_broadcast_path %></small>
+  </h1>
+
+  <div class="row">
+  <% @broadcasts.each_with_index do |broadcast, index| %>
+    <% if index % 2 == 0 %></div><div class="row"><% end %>
+    <div class="item col-sm-6 col-xs-12">
+      <div class="action-links col-sm-8 col-sm-offset-2 col-xs-12">
+        <h4><%= t("resources.actions") %></h4>
+        <%= link_to t("links.resources.show"), broadcast %>
+        <%= link_to t("links.resources.edit"), edit_broadcast_path(broadcast) %>
+        <%= link_to t("links.resources.delete"), broadcast, method: :delete, data: { confirm: t("confirmations.delete") } %>
+      </div>
+      <div class="broadcast">
+        <h4 class="title"><%= broadcast.title %></h4>
+        <%= broadcast.description %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</section>

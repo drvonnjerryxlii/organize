@@ -1,0 +1,6 @@
+<h1><%= t("headings.editing", model_name: t("resources.user")) %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t("links.resources.show"), user_path(@user) %> |
+<%= link_to t("links.back"), users_path %>

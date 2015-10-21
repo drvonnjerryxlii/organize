@@ -1,0 +1,6 @@
+<h1><%= t("headings.editing", model_name: t("resources.note")) %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t("links.resources.show"), @note %> |
+<%= link_to t("links.back"), notes_path %>

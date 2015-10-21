@@ -14,9 +14,11 @@ class BroadcastsController < ApplicationController
   def edit; end
 
   def create
-    @broadcast = Broadcast.new(broadcast_params)
+    only_broadcast_params = extract_broadcast_params
+    @broadcast = Broadcast.new(only_broadcast_params)
 
     if @broadcast.save
+      @broadcast.update(broadcast_params) # FIXME: error handling
       redirect_to @broadcast
     else
       render :new
@@ -41,7 +43,20 @@ class BroadcastsController < ApplicationController
       @broadcast = Broadcast.find(params[:id])
     end
 
+    def extract_broadcast_params
+      only_broadcast_params = broadcast_params.deep_dup
+      only_broadcast_params.delete(:category_ids)
+      only_broadcast_params.delete(:categories_attributes)
+
+      return only_broadcast_params
+    end
+
     def broadcast_params
-      params.require(:broadcast).permit(:title, :description)
+      params.require(:broadcast).permit(
+        :title,
+        :description,
+        :category_ids => [],
+        :categories_attributes => [:id, :name]
+      )
     end
 end

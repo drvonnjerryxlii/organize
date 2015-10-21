@@ -1,0 +1,12 @@
+<p>
+  <strong><%= t("attributes.user_id") %></strong>
+  <%= @note.user_id %>
+</p>
+
+<p>
+  <strong><%= t("attributes.note") %></strong>
+  <%= @note.note %>
+</p>
+
+<%= link_to t("links.resources.edit"), edit_note_path(@note) %> |
+<%= link_to t("links.back"), notes_path %>

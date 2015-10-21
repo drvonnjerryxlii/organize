@@ -1,0 +1,28 @@
+<%= form_for(@guest_lecture) do |f| %>
+  <% if @guest_lecture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guest_lecture.errors.count, "error") %> prohibited this guest_lecture from being saved:</h2>
+
+      <ul>
+      <% @guest_lecture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label t("attributes.title") %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label t("attributes.description") %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <%= render 'shared/any_user_categories', :form_name => :guest_lecture, f: f %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

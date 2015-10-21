@@ -15,9 +15,11 @@ class NotesController < ApplicationController
   def edit; end
 
   def create
-    @note = Note.new(note_params)
+    only_note_params = extract_note_params
+    @note = Note.new(only_note_params)
 
     if @note.save
+      @note.update(note_params) # FIXME: error handling
       redirect_to @note
     else
       render :new
@@ -42,7 +44,20 @@ class NotesController < ApplicationController
       @note = Note.find(params[:id])
     end
 
+    def extract_note_params
+      only_note_params = note_params.deep_dup
+      only_note_params.delete(:category_ids)
+      only_note_params.delete(:categories_attributes)
+
+      return only_note_params
+    end
+
     def note_params
-      params.require(:note).permit(:user_id, :note)
+      params.require(:note).permit(
+        :user_id,
+        :note,
+        :category_ids => [],
+        :categories_attributes => [:id, :name]
+      )
     end
 end

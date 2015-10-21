@@ -1,0 +1,27 @@
+<h1><%= t("headings.all", plural_model_name: t("resources.note")) %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t("attributes.user_id") %></th>
+      <th><%= t("attributes.note") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.user_id %></td>
+        <td><%= note.note %></td>
+        <td><%= link_to t("links.resources.show"), note %></td>
+        <td><%= link_to t("links.resources.edit"), edit_note_path(note) %></td>
+        <td><%= link_to t("links.resources.delete"), note, method: :delete, data: { confirm: t("confirmations.delete") } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t("links.resources.create", model_name: t("resources.note")), new_note_path %>

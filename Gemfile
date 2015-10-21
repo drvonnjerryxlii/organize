@@ -4,7 +4,7 @@ gem 'rails', '4.2.3' # Bundle edge Rails instead: gem 'rails', github: 'rails/ra
 
 # API helpers
 gem 'google_calendar'
-
+gem 'google-api-client'
 
 # gem 'fullcalendar-wrapper-rails' # gem wrapper for fullcalendar.io
 
@@ -13,16 +13,19 @@ gem 'google_calendar'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 # may need twitter, github, facebook for oauth
-# gem "omniauth"
-# FIXME: these next two omniauth gems might not be legit; check before uncomment
-# gem "omniauth-twitter"
-# gem "omniauth-github"
+gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+# gem 'omniauth-twitter'
 
 # database
 gem 'pg'
 
 # assets
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
+gem 'bootstrap-sass'
+# gem 'neat' # NOPE
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

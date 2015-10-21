@@ -14,4 +14,33 @@
 //= require jquery_ujs
 //= require moment
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+  function pushContentBelowNavbar() {
+    // get height of navbar
+    var nav = $('nav');
+    var navHeight = nav.height();
+
+    // adjust spacer to bump content down by same height
+    var spacer = $('#spacer');
+    spacer.css({ "min-height": navHeight + 30 + 'px' });
+
+    // drop padding from main element
+    var main = $('main');
+    main.css({ "padding": 0 });
+  }
+
+  // run once after document ready
+  pushContentBelowNavbar();
+
+  // repeat whenever the size of the navbar might change
+  $(window).resize(function() {
+    pushContentBelowNavbar();
+  });
+
+  $(window).load(function() {
+    pushContentBelowNavbar();
+  });
+});

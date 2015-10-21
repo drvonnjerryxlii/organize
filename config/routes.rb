@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # authorized oauth providers
   # NOTE: if you change these, you'll need to update the routing specs in spec/routing/sessions_routing_spec
-  authorized_providers = ["twitter", "github", "google_oauth2"]
+  authorized_providers = ["github", "google_oauth2"]
   constraints_regex = build_contraints_regex(authorized_providers)
   PROVIDER_CONSTRAINTS = { provider: constraints_regex }
 
@@ -37,6 +37,5 @@ Rails.application.routes.draw do
     resources :guest_lectures # FIXME: make this /lectures!
     resources :notes
     resources :users
-    # resources :oauths
   end
 end

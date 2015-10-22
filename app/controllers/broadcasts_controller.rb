@@ -55,6 +55,7 @@ class BroadcastsController < ApplicationController
       params.require(:broadcast).permit(
         :title,
         :description,
+        :active,
         :category_ids => [],
         :categories_attributes => [:id, :name]
       )

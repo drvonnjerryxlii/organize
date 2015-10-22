@@ -1,15 +1,146 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// colors
+$light-blue: #abbade;
+$dark-blue: #162955;
+$light-green: #bbeeee;
+$dark-green: #0d4d4d;
+$light-yellow: #ffe3aa;
+$dark-yellow: #804515;
+$black: #000;
+
+body {
+  // background-color: $light-yellow;
+}
+
+main {
+  margin-top: 5rem;
+}
+
+a, a:link {
+  border-bottom: 1px $black dotted;
+  color: $black;
+  padding: 2px;
+}
+
+a:visited {
+  color: $dark-yellow;
+}
+
+a:hover, a:active {
+  background-color: $dark-yellow;
+  color: $light-yellow;
+  text-decoration: none;
+}
+
+nav.nav {
+  background-color: $dark-green;
+  color: $light-green;
+  text-align: center;
+
+  ul.navbar-nav {
+    li {
+      display: inline-block;
+      padding: 5px 10px;
+
+      a, a:link, a:visited {
+        border: 0;
+        color: $light-green;
+        padding: 4px;
+        text-decoration: none;
+      }
+
+      a:hover, a:active {
+        border-radius: 40%;
+        background-color: $light-green;
+        color: $dark-green;
+      }
+    }
+  }
+}
+
+#spacer {
+  height: 3rem;
+}
+
+main {
+  text-align: center;
+
+  .item {
+    margin: 0;
+    padding: 1rem;
+
+    span.badge {
+      font-weight: normal;
+    }
+
+    .inactive {
+      color: #888;
+    }
+
+    .attribute-name {
+      font-weight: bold;
+    }
+
+    .action-links {
+      a {
+        border: 0;
+        &:link, &:visited {
+          color: inherit;
+        }
+      }
+
+      h4 {
+        margin: 0;
+        padding: 0.1rem;
+      }
+    }
+  }
+}
+
+div.item:nth-of-type(3n+1) {
+  .action-links {
+    background-color: $light-yellow;
+    color: $dark-yellow;
+    a:hover, a:active {
+      color: $light-yellow;
+    }
+  }
+}
+
+div.item:nth-of-type(3n+2) {
+  .action-links {
+    background-color: $light-green;
+    color: $dark-green;
+    a:hover, a:active {
+      background-color: $dark-green;
+      color: $light-green;
+    }
+  }
+}
+
+div.item:nth-of-type(3n) {
+  .action-links {
+    background-color: $light-blue;
+    color: $dark-blue;
+    a:hover, a:active {
+      background-color: $dark-blue;
+      color: $light-blue;
+    }
+  }
+}
+
+div.broadcast {
+  h3 {
+    display: inline-block;
+  }
+}
+
+span.inactive {
+  background-color: #eee;
+  border-radius: 40%;
+  display: block;
+  margin: auto;
+  width: 8rem;
+}

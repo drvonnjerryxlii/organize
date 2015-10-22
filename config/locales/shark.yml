@@ -1,6 +1,7 @@
 shark:
   site:
     name: "Voluntear Shark"
+    separator: ">> "
     subtitle: "The voluntearnado is coming. Bigger and better than sharknado! Now with 80% more tearing power."
     base_domain: "http://localhost:3000/"
 
@@ -45,7 +46,6 @@ shark:
     placeholders:
       email: "shark1724@shark.com"
       password: "Super Secret Password"
-
 
   attributes:
     active: "Active?"

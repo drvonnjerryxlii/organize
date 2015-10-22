@@ -21,21 +21,6 @@ class UsersController < ApplicationController
     auth = request.env["omniauth.auth"]
     oauth = Oauth.find_by(provider_uid: auth["uid"], provider: auth["provider"])
 
-    # :provider => "google_oauth2",
-    # :uid => "123456789",
-    #
-    # :info => {
-    #   :name => "John Doe",
-    #   :email => "john@company_name.com",
-    # },
-    #
-    # :credentials => {
-    #   :token => "token",
-    #   :refresh_token => "another_token",
-    #   :expires_at => 1354920555,
-    #   :expires => true
-    # }
-
     if oauth
       user = User.find_by(id: oauth.user_id)
       session[:user_id] = user.id

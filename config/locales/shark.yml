@@ -12,17 +12,12 @@ shark:
     delete: "Are you sure you want to rend this from existence forever? You can't undo this."
 
   links:
-    home: "home"
+    home: "Home"
     back: "<< Go back"
-    broadcasts: "broadcasts"
-    categories: "categories"
-    cohorts: "cohorts"
-    events: "events"
-    guest_lectures: "guest lectures"
-    notes: "notes"
-    users: "sharks"
-    login: "enter this place"
-    logout: "swim away"
+    login: "Enter This New World"
+    login-github: "Enter This New World via Github"
+    login-google: "Enter This New World via Google"
+    logout: "Swim Away, Fugufish!"
     resources:
       create: "+New %{model_name}"
       delete: "Eat"
@@ -36,15 +31,24 @@ shark:
     create: "Create a new %{model_name}"
 
   resources:
-    broadcast: "broadcast"
-    category: "category"
-    cohort: "cohort"
-    event: "event"
-    guest_lecture: "guest lecture"
-    note: "note"
-    user: "shark"
+    broadcast: "Broadcast"
+    category: "Category"
+    cohort: "Cohort"
+    event: "Event"
+    guest_lecture: "Guest Lecture"
+    note: "Note"
+    user: "Shark"
+
+  forms:
+    admin_only_categories: "Super Extra Toothy Categories"
+    categories: "Categories"
+    placeholders:
+      email: "shark1724@shark.com"
+      password: "Super Secret Password"
+
 
   attributes:
+    active: "Active?"
     admin_only: "Super extra teeth only?"
     approved: "Approved?"
     classroom_start_date: "Ocean start date"

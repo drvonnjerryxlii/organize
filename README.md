@@ -1,5 +1,44 @@
 NOTE: copied product plan into README for ease of access until product is at a point where installation instructions start to make sense
 
+
+- - -
+> ## Setup
+- - -
+
+- calendar setup:
+  - google developer console: services public/private key set
+    - drop your private key in your .env
+  - share all calendars with service account's email address __<-- super annoying & worth writing a utility__
+- oauth setup for users:
+  - callback is http://wobsite.com/auth/:provider/callback
+  - register github oauth app http://wobsite.com/auth/github/callback
+  - register google oauth app http://wobsite.com/auth/google_oauth2/callback
+- test suite setup:
+  - create a dummy calendar & store its ID in your .env
+
+## Nice to haves
+- batch support for calendar API interactions
+- welcome email
+- reset password
+- volunteer agreement integration
+
+## Must haves
+- mailer
+  - welcome email
+  - shift auto emeail
+- green specs
+  - chef says: test the happy path / what you're going to demo -- the path of no errors
+- display calendar
+  - edit calendar things
+- scheduling jobs
+- running jobs
+
+## Next week
+
+- deploy to heroku
+- setup ssl
+- setup jobs
+
 - - -
 > ## Overview
 - - -

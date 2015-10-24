@@ -97,7 +97,7 @@ module GCalV3Wrapper
       response = authorized_client.execute(
         :api_method => service.events.get,
         :parameters => {
-          'calendarId' => params[:calender_id],
+          'calendarId' => params[:calendar_id],
           'eventId' => params[:event_id]
         }
       )
@@ -107,28 +107,25 @@ module GCalV3Wrapper
     end
 
     def self.update(params) # TODO: test
-      GCalV3Wrapper.require_params([:calendar_id, :event_id, :event_params], params)
+      GCalV3Wrapper.require_params([:calendar_id, :event_id, :event], params)
 
       authorized_client = Auth.write
       service = authorized_client.discovered_api('calendar', 'v3')
 
-      calendar_id = params[:calender_id]
-      event_id = params[:event_id]
-      update_params = params[:update_params]
-      event = result.data
-      event.summary = 'Appointment at Somewhere'
       result = authorized_client.execute(
         :api_method => service.events.update,
-        :parameters => { 'calendarId' => 'primary', 'eventId' => event.id },
-        :body_object => event,
+        :parameters => {
+          'calendarId' => params[:calendar_id],
+          'eventId' => params[:event_id]
+        },
+        :body_object => params[:event],
         :headers => { 'Content-Type' => 'application/json' }
       )
 
-      binding.pry
-      return result
+      return result.status == 200
     end
 
-    def self.move(params) # TODO: test
+    def self.move(params) # TODO: integrate / test
       GCalV3Wrapper.require_params([:old_calendar_id, :new_calendar_id, :event_id], params)
 
       authorized_client = Auth.write
@@ -149,13 +146,11 @@ module GCalV3Wrapper
 
     def self.destroy(params) # TODO: test
       GCalV3Wrapper.require_params([:calendar_id, :event_id], params)
-      raise StandardError unless params[:calendar_id].class == String
-      puts params[:calendar_id]
 
       authorized_client = Auth.write
       service = authorized_client.discovered_api('calendar', 'v3')
 
-      result1 = authorized_client.execute(
+      result = authorized_client.execute(
         :api_method => service.events.delete,
         :parameters => {
           'calendarId' => params[:calendar_id],
@@ -163,16 +158,7 @@ module GCalV3Wrapper
         }
       )
 
-      result2 = authorized_client.execute(
-        :api_method => service.events.delete,
-        :parameters => {
-          'calendarId' => params[:calendar_id],
-          'eventId' => params[:event_id]
-        }
-      )
-
-      binding.pry
-      return result.status == 204 ? true : false
+      return result.status == 204
     end
   end
 end

@@ -7,9 +7,9 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   # Callbacks ------------------------------------------------------------------
-  after_create :create_google_event
-  after_update :update_google_event
-  before_destroy :destroy_google_event
+  after_create :create_gcal_event
+  after_update :update_gcal_event
+  before_destroy :destroy_gcal_event
 
   # Validations ----------------------------------------------------------------
   validates_presence_of :title, :start_time, :end_time, :calendar_id
@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
   DEFAULT_ADDRESS = "1215 4th Ave #1050, Seattle, WA 98161"
 
   private
-    def create_google_event
+    def create_gcal_event
       google_id = GCalV3Wrapper::Event.create({
         calendar_id: calendar.google_calendar_id,
         event: event_params
@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
       self.update_column(:google_event_id, google_id)
     end
 
-    def update_google_event
+    def update_gcal_event
       GCalV3Wrapper::Event.update({
         calendar_id: calendar.google_calendar_id,
         event_id: google_event_id,
@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
       })
     end
 
-    def destroy_google_event
+    def destroy_gcal_event
       cid = calendar.google_calendar_id
       eid = google_event_id
 
@@ -46,8 +46,6 @@ class Event < ActiveRecord::Base
         calendar_id: calendar.google_calendar_id,
         event_id: google_event_id
       })
-
-      raise
 
       return result
     end

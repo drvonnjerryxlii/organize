@@ -46,11 +46,13 @@ shark:
     placeholders:
       email: "shark1724@shark.com"
       password: "Super Secret Password"
+      location: "Steve's Shark House, Under the Sea, Pacific Ocean"
 
   attributes:
     active: "Active?"
     admin_only: "Super extra teeth only?"
     approved: "Approved?"
+    calendar_id: "Associated scheduling device"
     classroom_start_date: "Ocean start date"
     classroom_end_date: "Ocean end date"
     cohort_id: "Associated cohort"
@@ -66,6 +68,7 @@ shark:
     id: "IDENTIFICATION NUMBER"
     internship_start_date: "Pirateship start date"
     internship_end_date: "Pirateship end date"
+    location: "Place where it all went down"
     name: "Name"
     note: "Note"
     password: "Password"
@@ -73,3 +76,5 @@ shark:
     title: "Title"
     type: "Type"
     user_id: "Associated shark"
+
+  possessive: "'s"

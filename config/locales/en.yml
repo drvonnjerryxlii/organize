@@ -46,11 +46,13 @@ en:
     placeholders:
       email: "shark1724@shark.com"
       password: "Super Secret Password"
+      location: "1234 Fake St SW N, Chicago, IL 60652"
 
   attributes:
     active: "Active?"
     admin_only: "Admin Only?"
     approved: "Approved?"
+    calendar_id: "Associated Calendar"
     classroom_start_date: "Classroom Start Date"
     classroom_end_date: "Classroom End Date"
     cohort_id: "Associated Cohort"
@@ -66,6 +68,7 @@ en:
     id: "IDENTIFICATION NUMBER"
     internship_start_date: "Internship Start Date"
     internship_end_date: "Internship End Date"
+    location: "Location"
     name: "Name"
     note: "Note"
     password: "Password"
@@ -73,3 +76,5 @@ en:
     title: "Title"
     type: "Type"
     user_id: "Associated User"
+
+  possessive: "'s"

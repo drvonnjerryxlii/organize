@@ -1,59 +1,21 @@
 module GCalV3Wrapper
   class Event
-    DEFAULT_ADDRESS = "1215 4th Ave #1050, Seattle, WA 98161"
     DEFAULT_TIME_ZONE = "America/Los_Angeles"
 
     def self.create(params)
-      GCalV3Wrapper.require_params([:calendar_id, :event_params], params)
+      GCalV3Wrapper.require_params([:calendar_id, :event], params)
 
       authorized_client = Auth.write
       service = authorized_client.discovered_api('calendar', 'v3')
 
-      calendar_id = params[:calender_id]
-      event_params = params[:event_params]
-      # event = {
-      #   'summary' => 'New Event Title',
-      #   'description' => 'The description',
-      #   'location' => params[:location] || DEFAULT_ADDRESS,
-      #   'start' => { 'dateTime' => GCalV3Wrapper.to_iso8601(params[:start_time]) },
-      #   'end' => { 'dateTime' => GCalV3Wrapper.to_iso8601(params[:end_time]) },
-      #   'attendees' => [
-      #     { "email" => 'drvonnjerryxlii@gmail.com' },
-      #     { "email" =>'jeri9067@gmail.com' }
-      #   ]
-      # }
-
-
-      set_event = authorized_client.execute(
+      event = authorized_client.execute(
         :api_method => service.events.insert,
-        :parameters => { 'calendarId' => 'primary' },
-        :body => JSON.dump(event),
+        :parameters => { 'calendarId' => params[:calendar_id] },
+        :body => JSON.dump(params[:event]),
         :headers => { 'Content-Type' => 'application/json' }
       )
 
-      # {
-      #   "kind"=>"calendar#event",
-      #   "etag"=>"\"2891092289772000\"",
-      #   "id"=>"fnmtrvokpav3saime3jgd6bjis",
-      #   "status"=>"confirmed",
-      #   "htmlLink"=>"https://www.google.com/calendar/event?eid=Zm5tdHJ2b2twYXYzc2FpbWUzamdkNmJqaXMgNDIxNDk3ODY2NTE4LW43NW4ycHJocHQxYWw5MWJ2cHVsbjJvZzVqcTMxb2ExQGRldmVsb3Blci5nc2VydmljZWFjY291bnQuY29t",
-      #   "created"=>"2015-10-22T20:35:44.000Z",
-      #   "updated"=>"2015-10-22T20:35:44.886Z",
-      #   "summary"=>"New Event Title",
-      #   "description"=>"The description",
-      #   "location"=>"Location",
-      #   "creator"=>{"email"=>"421497866518-n75n2prhpt1al91bvpuln2og5jq31oa1@developer.gserviceaccount.com", "self"=>true},
-      #   "organizer"=>{"email"=>"421497866518-n75n2prhpt1al91bvpuln2og5jq31oa1@developer.gserviceaccount.com", "self"=>true},
-      #   "start"=>{"dateTime"=>"2015-10-22T23:00:00Z"},
-      #   "end"=>{"dateTime"=>"2015-10-22T23:00:00Z"},
-      #   "iCalUID"=>"fnmtrvokpav3saime3jgd6bjis@google.com",
-      #   "sequence"=>0,
-      #   "attendees"=> [
-      #     {"email"=>"drvonnjerryxlii@gmail.com", "displayName"=>"Jeri Sommers", "responseStatus"=>"needsAction"},
-      #    {"email"=>"jeri9067@gmail.com", "displayName"=>"Jeri Szomething", "responseStatus"=>"needsAction"}],
-      #   "reminders"=>{"useDefault"=>true}}
-
-      return set_event # FIXME: return event id or whole return?
+      return event.data.id
     end
 
     def self.in_range(params)

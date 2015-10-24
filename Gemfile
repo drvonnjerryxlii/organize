@@ -1,23 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.3' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.3'
 
 # API helpers
-gem 'google_calendar'
 gem 'google-api-client'
-
-# gem 'fullcalendar-wrapper-rails' # gem wrapper for fullcalendar.io
-
 
 # authentication & secrets
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
-# may need twitter, github, facebook for oauth
-gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-oauth2', '1.3.1' # 1.4.0 causes redirect uri issues for google_oauth2
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
-# gem 'omniauth-twitter'
 
 # database
 gem 'pg'
@@ -25,26 +19,21 @@ gem 'pg'
 # assets
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'bootstrap-sass'
-# gem 'neat' # NOPE
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# gem 'neat' # NOPE sorry
 
 # javascript magics
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'jquery-rails' # Use jquery as the JavaScript library
-gem 'turbolinks' # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'momentjs-rails'
-
+gem 'turbolinks' # Read more: https://github.com/rails/turbolinks
 
 # documentation helpers
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
-
 
 group :test do
   # testing
   gem 'rspec-rails'
   gem 'simplecov', require: false # helper for test coverage
+  gem 'codeclimate-test-reporter', require: nil
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 end
@@ -54,10 +43,7 @@ group :development, :test do
   gem 'pry-rails' # pry <3
   gem 'better_errors' # improve error console in browser
   gem 'binding_of_caller' # improve error console in browser
-  gem 'byebug' # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'web-console', '~> 2.0' # Access an IRB console on exception pages or by using <%= console %> in views
 
-  # some sort of magic
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # for keeping server running and stuff
+  gem 'spring' # Read more: https://github.com/rails/spring
 end

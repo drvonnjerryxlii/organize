@@ -149,20 +149,30 @@ module GCalV3Wrapper
 
     def self.destroy(params) # TODO: test
       GCalV3Wrapper.require_params([:calendar_id, :event_id], params)
+      raise StandardError unless params[:calendar_id].class == String
+      puts params[:calendar_id]
 
       authorized_client = Auth.write
       service = authorized_client.discovered_api('calendar', 'v3')
 
-      result = authorized_client.execute(
+      result1 = authorized_client.execute(
         :api_method => service.events.delete,
         :parameters => {
-          'calendarId' => params[:calender_id],
+          'calendarId' => params[:calendar_id],
+          'eventId' => params[:event_id]
+        }
+      )
+
+      result2 = authorized_client.execute(
+        :api_method => service.events.delete,
+        :parameters => {
+          'calendarId' => params[:calendar_id],
           'eventId' => params[:event_id]
         }
       )
 
       binding.pry
-      return result
+      return result.status == 204 ? true : false
     end
   end
 end

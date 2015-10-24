@@ -11,6 +11,7 @@ module GCalV3Wrapper
       )
 
       # load and decrypt private key
+      # key = OpenSSL::PKCS12.new(ENV['GOOGLE_KEY'], 'notasecret').key
       key = Google::APIClient::KeyUtils.load_from_pkcs12(
         "#{ Rails.root }/goggle583e06af4ecd.p12", # best file name ever
         'notasecret'
@@ -21,7 +22,7 @@ module GCalV3Wrapper
         :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
         :audience => 'https://accounts.google.com/o/oauth2/token',
         :scope => scope,
-        :issuer => '421497866518-n75n2prhpt1al91bvpuln2og5jq31oa1@developer.gserviceaccount.com',
+        :issuer => ENV['GOOGLE_ISSUER'],
         :signing_key => key
       )
 
@@ -35,11 +36,11 @@ module GCalV3Wrapper
     end
 
     def self.write
-      return self.get_authorized_client(WRITE_ACCESS_URI)
+      get_authorized_client(WRITE_ACCESS_URI)
     end
 
     def self.readonly
-      return self.get_authorized_client(READONLY_ACCESS_URI)
+      get_authorized_client(READONLY_ACCESS_URI)
     end
   end
 end

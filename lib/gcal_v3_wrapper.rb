@@ -7,7 +7,7 @@ require "#{ Rails.root }/lib/gcal_v3_wrapper/calendar"
 module GCalV3Wrapper
   def self.to_iso8601(time)
     # my people only believe in Time
-    raise TypeError, "Input is not a recognized time object. Please try again when you have Time." if time.class != Time
+    # raise TypeError, "Input is not a recognized time object. Please try again when you have Time." if time.class != Time
 
     return time.utc.iso8601
   end

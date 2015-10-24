@@ -44,11 +44,13 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(
         :title,
+        :description,
+        :location,
         :start_time,
         :end_time,
+        :calendar_id,
         :google_event_id,
         :guest_lecture_id,
-        :cohort_id,
         :admin_only,
         :category_ids => [],
         :categories_attributes => [:id, :name]

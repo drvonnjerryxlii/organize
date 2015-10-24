@@ -5,6 +5,7 @@ users = CSV.read(file_base + "users.csv", { headers: true })
 users.each do |user|
   User.create(
     email: user["email"],
+    github: user["github"],
     name: user["name"],
     type: user["type"],
     password: user["password"],
@@ -15,29 +16,25 @@ end
 broadcasts = CSV.read(file_base + "broadcasts.csv", { headers: true })
 broadcasts.each do |broadcast|
   Broadcast.create(
-    # active: broadcast["active"],
+    # active: broadcast["active"], # FIXME: uncomment after seeds updated
     title: broadcast["title"],
     description: broadcast["description"]
   )
 end
 
-cohorts = CSV.read(file_base + "cohorts.csv", { headers: true })
-cohorts.each do |cohort|
-  c = Cohort.create(
-    name: cohort["name"],
-    classroom_start_date: Date.parse(cohort["classroom_start_date"]),
-    classroom_end_date: Date.parse(cohort["classroom_end_date"]),
-    internship_start_date: Date.parse(cohort["internship_start_date"]),
-    internship_end_date: Date.parse(cohort["internship_end_date"]),
-    google_calendar_id: cohort["google_calendar_id"]
+calendars = CSV.read(file_base + "cohorts.csv", { headers: true })
+calendars.each do |calendar|
+  c = Calendar.create(
+    name: calendar["name"],
+    google_calendar_id: calendar["google_calendar_id"]
   )
 end
 
-cohorts_users = CSV.read(file_base + "cohorts_users.csv", { headers: true })
-cohorts_users.each do |cohort_user|
-  user = User.find(cohort_user["user_id"])
-  cohort = Cohort.find(cohort_user["cohort_id"])
-  user.cohorts << cohort unless user.cohorts.include? cohort
+calendars_users = CSV.read(file_base + "cohorts_users.csv", { headers: true })
+calendars_users.each do |calendar_user|
+  user = User.find(calendar_user["user_id"])
+  calendar = Calendar.find(calendar_user["cohort_id"])
+  user.calendars << calendar unless user.calendars.include? calendar
 end
 
 notes = CSV.read(file_base + "notes.csv", { headers: true })
@@ -59,13 +56,13 @@ end
 
 events = CSV.read(file_base + "events.csv", { headers: true })
 events.each do |event|
-  Event.create(
+  c = Calendar.find((1..5).to_a.sample)
+  e = Event.create(
     title: event["title"],
     start_time: event["start_time"],
     end_time: event["end_time"],
-    google_event_id: event["google_event_id"],
     guest_lecture_id: event["guest_lecture_id"],
-    cohort_id: event["cohort_id"]
+    calendar_id: c.id
   )
 end
 

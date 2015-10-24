@@ -24,10 +24,15 @@ class ApplicationController < ActionController::Base
     end
 
     def set_broadcasts
-      session[:broadcasts] = nil
-      unless session[:broadcasts] || (session[:updated_at] && session[:updated_at] < Date.yesterday.to_s)
+      unless session[:broadcasts] && session[:updated_at] < Date.yesterday.to_s
         broadcasts = @logged_in_user.broadcasts.active
-        broadcasts = broadcasts.map { |b| { title: b.title, description: b.description } }
+
+        # OPTIMIZE: only select desired attributes by chaining scopes or whatevs
+        # make a special query to only grab title & description
+        broadcasts = broadcasts.map do |broadcast| # then you can destroy this superfluous enumerator
+          { title: broadcast.title, description: broadcast.description }
+        end
+
         session[:broadcasts] = broadcasts
         session[:updated_at] = Date.today
       end

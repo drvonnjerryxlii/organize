@@ -1,27 +1,27 @@
-name,email,password,type
-Dr. Sharkface,sharkface@shark.com,sharkface_password,Admin
-Mr. Faceshark,faceshark@shark.com,faceshark_password,Student
-Lady Shark,shark@shark.com,shark_password,Admin
-Queen Toothy,toothy@shark.com,toothy_password,Admin
-King Sharkfin,sharkfin@shark.com,sharkfin_password,Admin
-Duke Face,face@shark.com,face_password,Student
-Die Frau,frau@shark.com,frau_password,Student
-Der Mann,mann@shark.com,mann_password,Student
-Captain Sparkles,sparkles@shark.com,sparkles_password,Student
-Lieutenant Hammerhead,hammerhead@shark.com,hammerhead_password,Volunteer
-Great White,greatwhite@shark.com,greatwhite_password,Volunteer
-The Majestic Sixgill,sixgill@shark.com,sixgill_password,Volunteer
-Dogfish,dogfish@shark.com,dogfish_password,Volunteer
-Sharkfish,sharkfish@shark.com,sharkfish_pasword,Student
-Catshark,catshark@shark.com,catshark_password,Volunteer
-Fish,fish@shark.com,fish_password,Student
-Tiger,tiger@shark.com,tiger_password,Volunteer
-Blue,blue@shark.com,blue_password,Volunteer
-Requiem,requiem@shark.com,requiem_password,Volunteer
-Smoothhound,smoothhound@shark.com,smoothhound_password,Volunteer
-Octopus Infiltrator #1,octopus1@shark.com,octopus_agent,Admin
-Octopus Secret Agent #2,octopus2@shark.com,octopus_agent,Volunteer
-Octopus Spy #3,octopus3@shark.com,octopus_agent,Volunteer
-Octopus The Most Clandestine #4,octopus4@shark.com,octopus_agent,Student
-Octopus Classified #5,octopus5@shark.com,octopus_agent,Student
-Octopus 007 #6,octopus6@shark.com,octopus_agent,Student
+name,email,password,type,github
+Dr. Sharkface,sharkface@shark.com,sharkface_password,Admin,sharkface
+Mr. Faceshark,faceshark@shark.com,faceshark_password,Student,faceshark
+Lady Shark,shark@shark.com,shark_password,Admin,shark
+Queen Toothy,toothy@shark.com,toothy_password,Admin,toothy
+King Sharkfin,sharkfin@shark.com,sharkfin_password,Admin,sharkfin
+Duke Face,face@shark.com,face_password,Student,face
+Die Frau,frau@shark.com,frau_password,Student,frau
+Der Mann,mann@shark.com,mann_password,Student,mann
+Captain Sparkles,sparkles@shark.com,sparkles_password,Student,sparkles
+Lieutenant Hammerhead,hammerhead@shark.com,hammerhead_password,Volunteer,hammerhead
+Great White,greatwhite@shark.com,greatwhite_password,Volunteer,white
+The Majestic Sixgill,sixgill@shark.com,sixgill_password,Volunteer,sixgill
+Dogfish,dogfish@shark.com,dogfish_password,Volunteer,dogfish
+Sharkfish,sharkfish@shark.com,sharkfish_pasword,Student,sharkfish
+Catshark,catshark@shark.com,catshark_password,Volunteer,catshark
+Fish,fish@shark.com,fish_password,Student,fish
+Tiger,tiger@shark.com,tiger_password,Volunteer,tiger
+Blue,blue@shark.com,blue_password,Volunteer,blue
+Requiem,requiem@shark.com,requiem_password,Volunteer,requiem
+Smoothhound,smoothhound@shark.com,smoothhound_password,Volunteer,smoothhound
+Octopus Infiltrator #1,octopus1@shark.com,octopus_agent,Admin,infiltrator
+Octopus Secret Agent #2,octopus2@shark.com,octopus_agent,Volunteer,octopus
+Octopus Spy #3,octopus3@shark.com,octopus_agent,Volunteer,spy
+Octopus The Most Clandestine #4,octopus4@shark.com,octopus_agent,Student,clandestine
+Octopus Classified #5,octopus5@shark.com,octopus_agent,Student,classified
+Octopus 007 #6,octopus6@shark.com,octopus_agent,Student,octopus007

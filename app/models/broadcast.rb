@@ -7,4 +7,10 @@ class Broadcast < ActiveRecord::Base
   # Associations ---------------------------------------------------------------
   has_many :category_joins, as: :categorizable
   has_many :categories, through: :category_joins
+
+  # Scopes ---------------------------------------------------------------------
+  scope :active, -> { where(active: true) }
+
+  # Nested Attributes ----------------------------------------------------------
+  accepts_nested_attributes_for :categories
 end

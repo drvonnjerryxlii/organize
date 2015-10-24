@@ -26,4 +26,9 @@ FactoryGirl.define do
     user.sequence(:email) { |n| "dr.shark#{ n }@weloveteeth.com" }
     user.type "Student"
   end
+
+  factory :invalid_user do |user|
+    user.email "this email address is not valid"
+    user.type "Shark"
+  end
 end

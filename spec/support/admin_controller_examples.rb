@@ -1,9 +1,11 @@
 require 'support/shared_controller_examples'
 
+# Setup ------------------------------------------------------------------------------------------------------
 RSpec.shared_examples "admin-only resource controller" do |options_hash|
   # FIXME: needs documentation for set up for using this shared example
   # FIXME: needs handling for single except, only (outside array)
   # FIXME: handling for if both except & only?
+  # FIXME: make sure normal assigns not assigned for unqualified users
 
   except = options_hash[:except].map { |e| e.to_s } if options_hash[:except] # in case user passes symbols
   only = options_hash[:only].map { |o| o.to_s } if options_hash[:only] # in case user passes symbols
@@ -38,6 +40,7 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
 
   valid_session = { user_id: admin_user.id }
 
+  # Index ----------------------------------------------------------------------------------------------------
   if (only && (only.include? "index")) || (except && !(except.include? "index")) || do_everything
     describe "GET #index" do
       template = "index"
@@ -84,8 +87,10 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
     end
   end
 
+  # Show -----------------------------------------------------------------------------------------------------
   if (only && (only.include? "show")) || (except && !(except.include? "show")) || do_everything
     describe "GET #show" do
+      template = "show"
 
       context "for qualified (admin) users" do
         it "assigns the requested #{ factory } as @#{ factory }" do
@@ -99,13 +104,14 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
     end
   end
 
+  # New ------------------------------------------------------------------------------------------------------
   if (only && (only.include? "new")) || (except && !(except.include? "new")) || do_everything
     describe "GET #new" do
       template = "new"
 
       context "for qualified (admin) users" do
         it "assigns a new #{ factory } as @#{ factory }" do
-          get :new, {}, valid_session
+          get template, {}, valid_session
           expect(assigns(factory)).to be_a_new(class_name)
         end
       end
@@ -114,6 +120,7 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
     end
   end
 
+  # Edit -----------------------------------------------------------------------------------------------------
   if (only && (only.include? "edit")) || (except && !(except.include? "edit")) || do_everything
     describe "GET #edit" do
       template = "edit"
@@ -122,7 +129,7 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
       context "for qualified (admin) users" do
         it "assigns the requested #{ factory } as @#{ factory }" do
           instance = create factory
-          get :edit, { id: instance.id }, valid_session
+          get template, { id: instance.id }, valid_session
           expect(assigns(factory)).to eq(instance)
         end
       end
@@ -131,24 +138,27 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
     end
   end
 
+  # Create ---------------------------------------------------------------------------------------------------
   if (only && (only.include? "create")) || (except && !(except.include? "create")) || do_everything
     describe "POST #create" do
+      template = "create"
+
       context "for qualified (admin) users" do
         context "with valid params" do
           it "creates a new #{ class_name }" do
             expect {
-              post :create, valid_params, valid_session
+              post template, valid_params, valid_session
             }.to change(class_name, :count).by(1)
           end
 
           it "assigns a newly created #{ factory } as @#{ factory }" do
-            post :create, valid_params, valid_session
+            post template, valid_params, valid_session
             expect(assigns(factory)).to be_a(class_name)
             expect(assigns(factory)).to be_persisted
           end
 
           it "redirects to the created #{ factory }" do
-            post :create, valid_params, valid_session
+            post template, valid_params, valid_session
             expect(response).to redirect_to(class_name.last)
             # FIXME: polymorphism doesn't like this url helper trigger
             # undefined method `volunteer_url' for #<UsersController:0x007fba8881f048>
@@ -157,12 +167,12 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
 
         context "with invalid params" do
           it "assigns a newly created but unsaved #{ factory } as @#{ factory }" do
-            post :create, invalid_params, valid_session
+            post template, invalid_params, valid_session
             expect(assigns(factory)).to be_a_new(class_name)
           end
 
           it "re-renders the 'new' template" do
-            post :create, invalid_params, valid_session
+            post template, invalid_params, valid_session
             expect(response).to render_template("new")
           end
         end
@@ -172,7 +182,7 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
         context "unauthenticated / guest users" do
           it "does not create a new #{ class_name }" do
             expect {
-              post :create, valid_params
+              post template, valid_params
             }.to change(class_name, :count).by(0)
           end
 
@@ -186,26 +196,29 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
     end
   end
 
+  # Update ---------------------------------------------------------------------------------------------------
   if (only && (only.include? "update")) || (except && !(except.include? "update")) || do_everything
     describe "PUT #update" do
+      template = "update"
+
       context "for qualified (admin) users" do
         context "with valid params" do
           it "updates the requested #{ factory }" do
             instance = create factory
-            put :update, { id: instance.id, factory => update_params }, valid_session
+            put template, { id: instance.id, factory => update_params }, valid_session
             instance.reload
             expect(instance[factory]).to eq(update_params[factory])
           end
 
           it "assigns the requested #{ factory } as @#{ factory }" do
             instance = create factory
-            put :update, { id: instance.id, factory => update_params }, valid_session
+            put template, { id: instance.id, factory => update_params }, valid_session
             expect(assigns(factory)).to eq(instance)
           end
 
           it "redirects to the #{ factory }" do
             instance = create factory
-            put :update, { id: instance.id, factory => update_params }, valid_session
+            put template, { id: instance.id, factory => update_params }, valid_session
             expect(response).to redirect_to(instance)
           end
         end
@@ -213,13 +226,13 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
         context "with invalid params" do
           it "assigns the #{ factory } as @#{ factory }" do
             instance = create factory
-            put :update, { id: instance.id, factory => invalid_params }, valid_session
+            put template, { id: instance.id, factory => invalid_params }, valid_session
             expect(assigns(factory)).to eq(instance)
           end
 
           it "re-renders the 'edit' template" do
             instance = create factory
-            put :update, { id: instance.id, factory => invalid_params }, valid_session
+            put template, { id: instance.id, factory => invalid_params }, valid_session
             expect(response).to render_template("edit")
           end
         end
@@ -230,7 +243,7 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
       #     it "does not update the #{ factory }" do
       #       instance = create factory
       #       expect {
-      #         put :update, { id: instance.id, factory => update_params }
+      #         put template, { id: instance.id, factory => update_params }
       #       }.to change(class_name, :count).by(0)
       #     end
       #
@@ -243,7 +256,7 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
       #         before :each do
       #           instance = create factory
       #           user = create user_type
-      #           put :update, { id: instance.id, factory => update_params }, { user_id: user.id }
+      #           put template, { id: instance.id, factory => update_params }, { user_id: user.id }
       #         end
       #         it_behaves_like "a redirect to the home page"
       #       end
@@ -253,19 +266,22 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
     end
   end
 
+  # Destroy --------------------------------------------------------------------------------------------------
   if (only && (only.include? "destroy")) || (except && !(except.include? "destroy")) || do_everything
     describe "DELETE #destroy" do
+      template = "destroy"
+
       context "for qualified (admin) users" do
         it "destroys the requested #{ factory }" do
           instance = create factory
           expect {
-            delete :destroy, { id: instance.id }, valid_session
+            delete template, { id: instance.id }, valid_session
           }.to change(class_name, :count).by(-1)
         end
 
         it "redirects to the #{ class_plural } list" do
           instance = create factory
-          delete :destroy, { id: instance.id }, valid_session
+          delete template, { id: instance.id }, valid_session
           all_path = class_plural.to_s # eg, :note -> "note" -> "notes", :category -> "category" -> "categories"
           all_path += "_path" # eg "notes" -> "notes_path", "categories" -> "categories_path"
           all_path = eval(all_path) # eg "notes_path" -> notes_path, "categories_path" -> categories_path
@@ -278,10 +294,10 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
           it "does not delete the #{ factory }" do
             instance = create factory
             expect {
-              delete :destroy, { id: instance.id }
+              delete template, { id: instance.id }
             }.to change(class_name, :count).by(0)
           end
-
+          
           # it_behaves_like "a redirect to the login page" # FIXME: fix this test set
         end
 
@@ -290,8 +306,10 @@ RSpec.shared_examples "admin-only resource controller" do |options_hash|
             it "does not delete the #{ factory }" do
               instance = create factory
               user = create user_type
+              puts user_type
+              puts user.valid?
               expect {
-                delete :destroy, { id: instance.id }, { user_id: user.id }
+                delete template, { id: instance.id }, { user_id: user.id }
               }.to change(class_name, :count).by(0)
             end
 

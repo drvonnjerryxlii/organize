@@ -1,35 +1,8 @@
 # TODO: reminder that in rspec you can match arrays: expect(collection.to_a).to match_array([1, 2])
-
-
-# this shared example needs two parameters to be passed in when called:
-#    1. a model factory
-#    2. an array of required field symbols
-# here is an example call:
-# it_behaves_like "a model class with required fields", :broadcast, [:title, :description]
-RSpec.shared_examples "a model class with required fields" do |factory, required_fields|
-  describe "an instance" do
-    required_fields.each do |field|
-      it "can't have a null value in #{ field }" do
-        valid_instance = create factory
-        expect(valid_instance).to be_valid
-        expect(valid_instance.errors.keys).not_to include(field)
-
-        # create
-        invalid_instance = build factory, field => nil
-        invalid_instance.save
-        expect(invalid_instance).not_to be_valid
-        expect(invalid_instance.errors.keys).to include(field)
-
-        # update
-        another_invalid_instance = create factory
-        another_invalid_instance[field] = nil
-        another_invalid_instance.save
-        expect(another_invalid_instance).not_to be_valid
-        expect(another_invalid_instance.errors.keys).to include(field)
-      end
-    end
-  end
-end
+# TODO: test uniqueness
+# FIXME: test defaults? maybe w/ special factories missing defaults? >_<
+# TODO: test relationships? http://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/
+# FIXME: update numericality tests after shoulda-matchers gets to 3.0.1 per closed issue #801 https://github.com/thoughtbot/shoulda-matchers/issues/801 (currently broken for number columns)
 
 # this shared example needs two parameters to be passed in when called:
 #    1. a model factory
@@ -65,45 +38,14 @@ RSpec.shared_examples "numeric integer fields" do |factory, integer_fields|
       expect(valid_instance.errors.keys).not_to include(field)
 
       # create
-      invalid_instance = build factory, field => "one"
+      invalid_instance = build factory, field => 1.1
       invalid_instance.save
       expect(invalid_instance).not_to be_valid
       expect(invalid_instance.errors.keys).to include(field)
 
       # update
       another_invalid_instance = create factory, field => 1
-      another_invalid_instance[field] = "one"
-      another_invalid_instance.save
-      expect(another_invalid_instance).not_to be_valid
-      expect(another_invalid_instance.errors.keys).to include(field)
-    end
-  end
-end
-
-# this shared example needs two parameters to be passed in when called:
-#    1. a model factory
-#    2. an array of text field tuples (key: field; value: limit as integer)
-# here is an example call:
-# it_behaves_like "text fields w/ limits", :note, [{title: 50}, {description: 500}]
-RSpec.shared_examples "text fields w/ limits" do |factory, text_fields|
-  text_fields.each do |field_tuple|
-    field = field_tuple.keys.pop
-    limit = field_tuple[field]
-
-    it "can't have a #{ field } that's over #{ limit } characters" do
-      valid_instance = create factory, field => "a" * limit
-      expect(valid_instance).to be_valid
-      expect(valid_instance.errors.keys).not_to include(field)
-
-      # create
-      invalid_instance = create factory, field => "a" * (limit + 1)
-      invalid_instance.save
-      expect(invalid_instance).not_to be_valid
-      expect(invalid_instance.errors.keys).to include(field)
-
-      # update
-      another_invalid_instance = create factory
-      another_invalid_instance[field] = "a" * (limit + 1)
+      another_invalid_instance[field] = 1.1
       another_invalid_instance.save
       expect(another_invalid_instance).not_to be_valid
       expect(another_invalid_instance.errors.keys).to include(field)

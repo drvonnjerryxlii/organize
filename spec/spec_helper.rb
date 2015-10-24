@@ -1,7 +1,9 @@
 require 'simplecov'
 require 'factory_girl'
+require 'codeclimate-test-reporter'
 
 RSpec.configure do |config|
+  CodeClimate::TestReporter.start
   SimpleCov.start
   config.include FactoryGirl::Syntax::Methods
 

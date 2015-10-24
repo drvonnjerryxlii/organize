@@ -8,5 +8,10 @@
   <%= @broadcast.description %>
 </p>
 
+<p>
+  <strong><%= t("attributes.active") %></strong>
+  <%= @broadcast.active %>
+</p>
+
 <%= link_to t("links.resources.edit"), edit_broadcast_path(@broadcast) %> |
 <%= link_to t("links.back"), broadcasts_path %>

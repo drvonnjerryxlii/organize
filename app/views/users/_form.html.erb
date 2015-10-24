@@ -1,4 +1,4 @@
-<%= form_for :user, url: "./", method: @user.id ? "put" : "post" do |f| %>
+<%= form_for :user, url: session[:oauth] ? users_path : "./", method: @user.id ? "put" : "post" do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -31,9 +31,8 @@
       <%= f.label t("attributes.type") %><br>
       <%= f.text_area :type %>
     </div>
+    <%= render 'shared/any_user_categories', :form_name => :user, f: f %>
   <% end %>
-
-  <%= render 'shared/any_user_categories', :form_name => :user, f: f %>
 
   <div class="actions">
     <%= f.submit %>

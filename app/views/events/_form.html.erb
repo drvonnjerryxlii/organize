@@ -16,6 +16,14 @@
     <%= f.text_area :title %>
   </div>
   <div class="field">
+    <%= f.label t("attributes.description") %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label t("attributes.location") %><br>
+    <%= f.text_area :location %>
+  </div>
+  <div class="field">
     <%= f.label t("attributes.start_time") %><br>
     <%= f.datetime_select :start_time %>
   </div>
@@ -32,8 +40,8 @@
     <%= f.text_area :guest_lecture_id, width: 500 %>
   </div>
   <div class="field">
-    <%= f.label t("attributes.cohort_id") %><br>
-    <%= f.number_field :cohort_id %>
+    <%= f.label t("attributes.calendar_id") %><br>
+    <%= f.number_field :calendar_id %>
   </div>
   <div class="field">
     <%= f.label t("attributes.admin_only") %><br>

@@ -4,6 +4,16 @@
 </p>
 
 <p>
+  <strong><%= t("attributes.description") %></strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong><%= t("attributes.location") %></strong>
+  <%= @event.location %>
+</p>
+
+<p>
   <strong><%= t("attributes.start_time") %></strong>
   <%= @event.start_time %>
 </p>
@@ -20,12 +30,12 @@
 
 <p>
   <strong><%= t("attributes.guest_lecture_id") %></strong>
-  <%= @event.guest_lecture_id %>
+  <%= @event.guest_lecture_id || t("attributes.empty") %>
 </p>
 
 <p>
-  <strong><%= t("attributes.cohort_id") %></strong>
-  <%= @event.cohort_id || t("attributes.empty") %>
+  <strong><%= t("attributes.calendar_id") %></strong>
+  <%= @event.calendar_id || t("attributes.empty") %>
 </p>
 
 <p>

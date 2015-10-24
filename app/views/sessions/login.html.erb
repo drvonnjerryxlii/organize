@@ -1,13 +1,16 @@
 <%= form_for :session, role: "form", html: { class: "form-inline" } do |f| %>
   <div class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, placeholder: "shark1724@shark.com", class: "form-control" %>
+    <%= f.label t("attributes.email") %>
+    <%= f.text_field :email, placeholder: t("forms.placeholders.email"), class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, placeholder: "Super Secret Password", class: "form-control" %>
+    <%= f.label t("attributes.password") %>
+    <%= f.password_field :password, placeholder: t("forms.placeholders.password"), class: "form-control" %>
   </div>
 
-  <%= f.submit "Login", class: "btn btn-default" %>
+  <%= f.submit t("links.login"), class: "btn btn-default" %>
 <% end %>
+
+<%= link_to t("links.login-github"), "/auth/github" %>
+<%= link_to t("links.login-google"), "/auth/google_oauth2" %>

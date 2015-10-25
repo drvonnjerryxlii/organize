@@ -15,8 +15,8 @@
 - test suite setup:
   - create a dummy calendar & store its ID in your .env
 
+<!--
 ## Nice to haves
-- batch support for calendar API interactions
 - welcome email
 - reset password
 - volunteer agreement integration
@@ -28,7 +28,7 @@
 - green specs
   - chef says: test the happy path / what you're going to demo -- the path of no errors
 - display calendar
-  - edit calendar things
+  - ~~edit calendar things~~
 - scheduling jobs
 - running jobs
 
@@ -218,3 +218,5 @@ This project is not yet far enough along to allow for installation.
 - _Service Oriented Architecture (SOA)_ ?
 - _Secure Socket Layer (SSL)_ ?
 - _Live Events (notifications, live updates, think back to Philip's AWS presentation)_ ?
+
+-->

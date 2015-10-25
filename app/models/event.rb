@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
 
   # Callbacks ------------------------------------------------------------------
   after_create :create_gcal_event
+  before_update :move_gcal_event, if: :calendar_id_changed?
   after_update :update_gcal_event
   before_destroy :destroy_gcal_event
 
@@ -39,12 +40,26 @@ class Event < ActiveRecord::Base
     end
 
     def destroy_gcal_event
-      cid = calendar.google_calendar_id
-      eid = google_event_id
-
       result = GCalV3Wrapper::Event.destroy({
         calendar_id: calendar.google_calendar_id,
         event_id: google_event_id
+      })
+
+      return result
+    end
+
+    def move_gcal_event
+      changes = self.changes[:calendar_id]
+      old_calendar_id = changes[0]
+      new_calendar_id = changes[1]
+
+      old_gcal_id = Calendar.find(old_calendar_id).google_calendar_id
+      new_gcal_id = Calendar.find(new_calendar_id).google_calendar_id
+
+      result = GCalV3Wrapper::Event.move({
+        old_calendar_id: old_gcal_id,
+        new_calendar_id: new_gcal_id,
+        event_id: self.google_event_id
       })
 
       return result

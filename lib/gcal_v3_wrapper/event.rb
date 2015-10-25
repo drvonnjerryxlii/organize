@@ -125,7 +125,7 @@ module GCalV3Wrapper
       return result.status == 200
     end
 
-    def self.move(params) # TODO: integrate / test
+    def self.move(params) # TODO: test
       GCalV3Wrapper.require_params([:old_calendar_id, :new_calendar_id, :event_id], params)
 
       authorized_client = Auth.write
@@ -140,8 +140,7 @@ module GCalV3Wrapper
         }
       )
 
-      binding.pry
-      return result
+      return result.status == 200
     end
 
     def self.destroy(params) # TODO: test

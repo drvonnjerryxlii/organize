@@ -3,8 +3,8 @@
 <head>
   <title><%= t("site.name") + t("site.separator") + t("site.subtitle") %></title>
   <!-- <meta name="description" content="Ada Developers Academy is an intensive software development training program for women in Seattle." /> -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
@@ -16,6 +16,7 @@
         <li><%= link_to t("links.home"), root_path %></li>
         <% if @admin %>
           <!-- begin admin links -->
+          <li><%= link_to t("resources.calendar"), calendars_path %></li>
           <li><%= link_to t("resources.broadcast").pluralize, broadcasts_path %></li>
           <li><%= link_to t("resources.category").pluralize, categories_path %></li>
           <li><%= link_to t("resources.event").pluralize, events_path %></li>
@@ -50,6 +51,8 @@
       </div>
     <% end %>
 
+    <div id="modal-holder"></div>
+
     <div class="flash-message">
       <% if flash[:error] %>
         <%= flash[:error] %>
@@ -57,7 +60,6 @@
     </div>
 
     <main class=<%= yield :stylin %>>
-      <!--  -->
       <%= yield %>
     </main>
   </div>

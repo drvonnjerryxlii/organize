@@ -27,7 +27,6 @@ gem 'font-awesome-sass'
 # javascript magics
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'jquery-rails' # Use jquery as the JavaScript library
-gem 'turbolinks' # Read more: https://github.com/rails/turbolinks
 
 # documentation helpers
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.

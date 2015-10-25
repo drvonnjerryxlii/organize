@@ -110,7 +110,26 @@ events.each do |event|
   )
 end
 
-puts "seeded events"
+puts "seeded special events"
+
+calendars = Calendar.all.map { |c| c.id }
+volunteers = Volunteer.all
+calendars.each do |cal|
+  5.times do |count|
+    v = volunteers.sample
+    Event.create(
+      title: "TA: #{ v.name }",
+      start_time: Time.parse("#{ Date.today.at_beginning_of_week + count } 1pm"),
+      end_time: Time.parse("#{ Date.today.at_beginning_of_week + count } 5pm"),
+      ta: true,
+      gl: false,
+      user_id: v.id,
+      calendar_id: cal
+    )
+  end
+end
+
+puts "seeded generic TA events"
 
 # events_users = CSV.read(file_base + "events_users.csv", { headers: true })
 # events_users.each do |event_user|
@@ -118,7 +137,7 @@ puts "seeded events"
 #   event = Cohort.find(event_user["event_id"])
 #   user.events << event unless user.events.include? event
 # end
-
+#
 categories = CSV.read(file_base + "categories.csv", { headers: true })
 categories.each do |category|
   Category.create(

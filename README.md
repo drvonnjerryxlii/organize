@@ -1,5 +1,4 @@
-NOTE: copied product plan into README for ease of access until product is at a point where installation instructions start to make sense
-
+[![Code Climate](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/badges/cecbf42982df6abc5ae7/gpa.svg)](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/feed)
 
 - - -
 > ## Setup

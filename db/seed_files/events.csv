@@ -1,16 +1,19 @@
-title,start_time,end_time,calendar_id,guest_lecture_id
-Totally Legit Event,"November 8, 2015, 1:00:00 PM","November 8, 2015, 5:00:00 PM",2,
-Another Totally Legit Event,"November 9, 2015, 1:00:00 PM","November 9, 2015, 5:00:00 PM",5,
-Yet Another Totally Legit Event,"November 10, 2015, 1:00:00 PM","November 10, 2015, 5:00:00 PM",3,
-THIS IS THE BEST EVENT,"November 11, 2015, 1:00:00 PM","November 11, 2015, 5:00:00 PM",1,
-"No, THIS is the best event.","November 12, 2015, 1:00:00 PM","November 12, 2015, 5:00:00 PM",4,
-I'm a boring event.,"November 8, 2015, 1:00:00 PM","November 8, 2015, 5:00:00 PM",2,
-TA: John Jacob Jingleheimer Schmidt,"November 9, 2015, 1:00:00 PM","November 9, 2015, 5:00:00 PM",4,
-TA: Boss Lady,"November 10, 2015, 1:00:00 PM","November 10, 2015, 5:00:00 PM",6,
-TA: A Ghost,"November 11, 2015, 1:00:00 PM","November 11, 2015, 5:00:00 PM",4,
-TA: Shark Tank,"November 12, 2015, 1:00:00 PM","November 12, 2015, 5:00:00 PM",5,
-TA: Jorge Ramos,"November 8, 2015, 1:00:00 PM","November 8, 2015, 5:00:00 PM",2,
-TA: Jorge Ramos,"November 9, 2015, 1:00:00 PM","November 9, 2015, 5:00:00 PM",1,
-TA: Jorge Ramos,"November 10, 2015, 1:00:00 PM","November 10, 2015, 5:00:00 PM",5,
-TA: Jorge Ramos,"November 11, 2015, 1:00:00 PM","November 11, 2015, 5:00:00 PM",5,
-TA: Jorge Ramos,"November 12, 2015, 1:00:00 PM","November 12, 2015, 5:00:00 PM",5,
+title,start_time,end_time,calendar_id,guest_lecture_id,user_id,ta,gl
+Legit Event,"November 8, 2015, 1:00:00 PM","November 8, 2015, 5:00:00 PM",1,,12,FALSE,FALSE
+Another Legit Event,"November 9, 2015, 1:00:00 PM","November 9, 2015, 5:00:00 PM",4,,13,FALSE,FALSE
+Yet Another Legit Event,"November 10, 2015, 1:00:00 PM","November 10, 2015, 5:00:00 PM",2,,20,FALSE,FALSE
+THIS IS THE BEST EVENT,"November 11, 2015, 1:00:00 PM","November 11, 2015, 5:00:00 PM",4,,15,FALSE,FALSE
+"No, THIS is the best event.","November 12, 2015, 1:00:00 PM","November 12, 2015, 5:00:00 PM",4,,14,FALSE,FALSE
+I'm a boring event.,"November 8, 2015, 1:00:00 PM","November 8, 2015, 5:00:00 PM",5,,6,FALSE,FALSE
+I'm a boring event in the morning!,"November 8, 2015, 9:00:00 AM","November 8, 2015, 11:00:00 AM",6,,5,FALSE,FALSE
+TA: John Jacob Jingleheimer Schmidt,"November 9, 2015, 1:00:00 PM","November 9, 2015, 5:00:00 PM",3,,30,TRUE,FALSE
+TA: Boss Lady,"November 10, 2015, 1:00:00 PM","November 10, 2015, 5:00:00 PM",3,,29,TRUE,FALSE
+TA: A Ghost,"November 11, 2015, 1:00:00 PM","November 11, 2015, 5:00:00 PM",3,,31,TRUE,FALSE
+TA: Shark Tank,"November 12, 2015, 1:00:00 PM","November 12, 2015, 5:00:00 PM",3,,28,TRUE,FALSE
+TA: Jorge Ramos,"November 8, 2015, 1:00:00 PM","November 8, 2015, 5:00:00 PM",3,,27,TRUE,FALSE
+TA: Jorge Ramos,"November 9, 2015, 1:00:00 PM","November 9, 2015, 5:00:00 PM",3,,27,TRUE,FALSE
+TA: Jorge Ramos,"November 10, 2015, 1:00:00 PM","November 10, 2015, 5:00:00 PM",1,,27,TRUE,FALSE
+TA: Jorge Ramos,"November 11, 2015, 1:00:00 PM","November 11, 2015, 5:00:00 PM",6,,27,TRUE,FALSE
+TA: Jorge Ramos,"November 12, 2015, 1:00:00 PM","November 12, 2015, 5:00:00 PM",5,,27,TRUE,FALSE
+GL: AWS Sharkbait,"November 9, 2015, 1:00:00 PM","November 9, 2015, 2:00:00 PM",5,16,18,FALSE,TRUE
+GL: Net Working,"November 11, 2015, 4:00:00 PM","November 11, 2015, 5:00:00 PM",4,3,17,FALSE,TRUE

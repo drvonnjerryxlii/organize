@@ -12,5 +12,18 @@
   <%= f.submit t("links.login"), class: "btn btn-default" %>
 <% end %>
 
-<%= link_to t("links.login-github"), "/auth/github" %>
-<%= link_to t("links.login-google"), "/auth/google_oauth2" %>
+<div class="row col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+  <div class="col-xs-12 col-sm-6">
+    <%= link_to "/auth/github", class: "btn btn-default" do %>
+      <i class="fa fa-github-alt"></i> <%= t("links.login-github") %>
+    <% end %>
+  </div>
+
+
+
+  <div class="col-xs-12 col-sm-6">
+    <%= link_to "/auth/google_oauth2", class: "btn btn-default" do %>
+      <i class="fa fa-google-plus"></i> <%= t("links.login-google") %>
+    <% end %>
+  </div>
+</div>

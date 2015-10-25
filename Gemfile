@@ -21,6 +21,7 @@ gem 'pg'
 # assets
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 # gem 'neat' # NOPE sorry
 
 # javascript magics

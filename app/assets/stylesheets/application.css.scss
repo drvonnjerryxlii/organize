@@ -5,7 +5,8 @@
 
 // colors
 $blue: #08f;
-$red: #f00;
+$light-red: #fcc;
+$red: #f30;
 $light-blue: #abbade;
 $dark-blue: #162955;
 $light-green: #bbeeee;
@@ -145,10 +146,20 @@ span.inactive {
   width: 8rem;
 }
 
-table td.full .icon {
-  color: $middle-green;
+table {
+  td.full .icon {
+    color: $middle-green;
+  }
+
+  td.vacancy .icon {
+    color: $red;
+  }
 }
 
-table td.vacancy .icon {
-  color: $black;
-}
+// table td.full .icon {
+//   background-color: $middle-green;
+// }
+//
+// table td.vacancy .icon {
+//   background-color: $black;
+// }

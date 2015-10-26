@@ -9,10 +9,10 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       event = authorized_client.execute(
-        :api_method => service.events.insert,
-        :parameters => { 'calendarId' => params[:calendar_id] },
-        :body => JSON.dump(params[:event]),
-        :headers => { 'Content-Type' => 'application/json' }
+        api_method: service.events.insert,
+        parameters: { 'calendarId' => params[:calendar_id] },
+        body: JSON.dump(params[:event]),
+        headers: { 'Content-Type' => 'application/json' }
       )
 
       return event.data.id
@@ -25,8 +25,8 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       response = authorized_client.execute(
-        :api_method => service.events.list,
-        :parameters => {
+        api_method: service.events.list,
+        parameters: {
           'calendarId' => params[:calendar_id],
           'timeMin' => GCalV3Wrapper.to_iso8601(params[:time_min]),
           'timeMax' => GCalV3Wrapper.to_iso8601(params[:time_max]),
@@ -95,8 +95,8 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       response = authorized_client.execute(
-        :api_method => service.events.get,
-        :parameters => {
+        api_method: service.events.get,
+        parameters: {
           'calendarId' => params[:calendar_id],
           'eventId' => params[:event_id]
         }
@@ -113,13 +113,13 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       result = authorized_client.execute(
-        :api_method => service.events.update,
-        :parameters => {
+        api_method: service.events.update,
+        parameters: {
           'calendarId' => params[:calendar_id],
           'eventId' => params[:event_id]
         },
-        :body_object => params[:event],
-        :headers => { 'Content-Type' => 'application/json' }
+        body_object: params[:event],
+        headers: { 'Content-Type' => 'application/json' }
       )
 
       return result.status == 200
@@ -132,8 +132,8 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       result = authorized_client.execute(
-        :api_method => service.events.move,
-        :parameters => {
+        api_method: service.events.move,
+        parameters: {
           'calendarId' => params[:old_calendar_id],
           'eventId' => params[:event_id],
           'destination' => params[:new_calendar_id]
@@ -150,8 +150,8 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       result = authorized_client.execute(
-        :api_method => service.events.delete,
-        :parameters => {
+        api_method: service.events.delete,
+        parameters: {
           'calendarId' => params[:calendar_id],
           'eventId' => params[:event_id]
         }

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # this seems sorta useful, yep
 gem 'rails', '4.2.3'
+gem 'rails_12factor' # for heroku
 
 # calendar helpers
 gem 'google-api-client'

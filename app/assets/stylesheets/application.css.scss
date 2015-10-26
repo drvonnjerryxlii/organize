@@ -12,14 +12,6 @@ $light-yellow: #ffe3aa;
 $dark-yellow: #804515;
 $black: #000;
 
-body {
-  // background-color: $light-yellow;
-}
-
-main {
-  margin-top: 5rem;
-}
-
 a, a:link {
   border-bottom: 1px $black dotted;
   color: $black;
@@ -105,9 +97,10 @@ div.item:nth-of-type(3n+1) {
   .action-links {
     background-color: $light-yellow;
     color: $dark-yellow;
-    a:hover, a:active {
-      color: $light-yellow;
-    }
+  }
+
+  a:hover, a:active {
+    color: $light-yellow;
   }
 }
 
@@ -115,10 +108,11 @@ div.item:nth-of-type(3n+2) {
   .action-links {
     background-color: $light-green;
     color: $dark-green;
-    a:hover, a:active {
-      background-color: $dark-green;
-      color: $light-green;
-    }
+  }
+
+  a:hover, a:active {
+    background-color: $dark-green;
+    color: $light-green;
   }
 }
 
@@ -126,10 +120,11 @@ div.item:nth-of-type(3n) {
   .action-links {
     background-color: $light-blue;
     color: $dark-blue;
-    a:hover, a:active {
-      background-color: $dark-blue;
-      color: $light-blue;
-    }
+  }
+
+  a:hover, a:active {
+    background-color: $dark-blue;
+    color: $light-blue;
   }
 }
 

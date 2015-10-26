@@ -33,7 +33,7 @@ en:
 
   resources:
     broadcast: "Broadcast"
-    calendar: "Calender"
+    calendar: "Calendar"
     calendar_with_name: "%{name} Calendar"
     category: "Category"
     event: "Event"
@@ -41,6 +41,10 @@ en:
     note: "Note"
     schedule: "Schedule"
     user: "User"
+    users:
+      admin: "Admin"
+      student: "Students"
+      volunteer: "Volunteers"
 
   forms:
     admin_only_categories: "Admin-only Categories"

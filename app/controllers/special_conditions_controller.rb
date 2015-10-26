@@ -1,0 +1,2 @@
+class SpecialConditionsController < ApplicationController
+end

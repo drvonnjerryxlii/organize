@@ -33,7 +33,7 @@ shark:
 
   resources:
     broadcast: "Broadcast"
-    calendar: "Calender"
+    calendar: "Calendar"
     calendar_with_name: "Ye Olde Calendar o'%{name}"
     category: "Category"
     event: "Event"
@@ -41,6 +41,10 @@ shark:
     note: "Note"
     schedule: "Doings & Goings"
     user: "Shark"
+    users:
+      admin: "Super Extra Toothy"
+      student: "Learning To Be Toothy"
+      volunteer: "Tooth Experts"
 
   forms:
     admin_only_categories: "Super Extra Toothy Categories"

@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   # but ran into override problem like http://stackoverflow.com/questions/4637110/skip-before-filter-ignores-conditionals
 
   def index
-    @users = User.all
+    @admins = Admin.all
+    @students = Student.all
+    @volunteers = Volunteer.all
   end
 
   def show; end

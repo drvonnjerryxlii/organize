@@ -1,0 +1,33 @@
+<section class="col-md-10 col-md-offset-1">
+  <h1>
+    <%= t("headings.all", plural_model_name: t("resources.users.#{ type }")) %>
+    <small><%= link_to t("links.resources.create", model_name: t("resources.user")), new_user_path %></small>
+  </h1>
+
+  <div class="row">
+  <% users.each_with_index do |user, index| %>
+    <% if index % 3 == 0 %>
+      </div><div class="row">
+    <% end %>
+
+    <div class="item col-sm-4 col-xs-12">
+      <div class="action-links hidden-xs col-sm-8 col-sm-offset-2 col-xs-12">
+        <h4><%= t("resources.actions") %></h4>
+        <%= link_to t("links.resources.show"), user_path(user) %>
+        <%= link_to t("links.resources.edit"), edit_user_path(user) %>
+        <%= link_to t("links.resources.delete"), user_path(user), method: :delete, data: { confirm: t("confirmations.delete") } %>
+      </div>
+
+      <div class="col-xs-12">
+        <%= link_to user.name, user_path(user) %>
+      </div>
+      <% if user.github %>
+        <div class="col-xs-12">
+          <i class="fa fa-github"></i>
+          <%= link_to user.github, "https://github.com/#{ user.github }" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</section>

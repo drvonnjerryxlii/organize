@@ -1,6 +1,0 @@
-require 'rails_helper'
-require 'support/shared_model_examples'
-
-RSpec.describe Admin, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end

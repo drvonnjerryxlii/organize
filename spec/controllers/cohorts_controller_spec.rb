@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/admin_controller_examples'
 
-RSpec.describe CohortsController, type: :controller do
+RSpec.describe CalendarsController, type: :controller do
   # NOTE: we can't use a factory for this, because it's not possible to build or
   # create or really use factories outside of it or before blocks. ;_;
   # if valid_params is attributes_for :broadcast, we get the following error:

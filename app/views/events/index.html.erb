@@ -3,45 +3,26 @@
     <%= t("headings.all", plural_model_name: t("resources.event").pluralize) %>
     <small><%= link_to t("links.resources.create", model_name: t("resources.event")), new_event_path %></small>
   </h1>
-  <div class="row calendar">
 
+  <div class="row">
+  <% @events.each_with_index do |event, index| %>
+    <% if index % 3 == 0 %></div><div class="row"><% end %>
+    <div class="item col-sm-4 col-xs-12">
+      <div class="action-links col-sm-8 col-sm-offset-2 col-xs-12">
+        <h4><%= t("resources.actions") %></h4>
+        <%= link_to t("links.resources.show"), event %>
+        <%= link_to t("links.resources.edit"), edit_event_path(event) %>
+        <%= link_to t("links.resources.delete"), event, method: :delete, data: { confirm: t("confirmations.delete") } %>
+      </div>
+      <div class="attributes">
+        <div class="attribute-name col-xs-12"><%= t("attributes.title") %></div>
+        <div class="attribute-value col-xs-12"><%= link_to event.title, event %></div>
+      </div>
+      <div class="attributes">
+        <div class="attribute-name col-xs-12"><%= t("attributes.start_time") %></div>
+        <div class="attribute-value col-xs-12"><%= event.start_time.strftime("%a, %b %d, %Y") %></div>
+      </div>
+    </div>
+  <% end %>
   </div>
 </section>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= t("attributes.title") %></th>
-      <th><%= t("attributes.description") %></th>
-      <th><%= t("attributes.location") %></th>
-      <th><%= t("attributes.start_time") %></th>
-      <th><%= t("attributes.end_time") %></th>
-      <th><%= t("attributes.google_event_id") %></th>
-      <th><%= t("attributes.guest_lecture_id") %></th>
-      <th><%= t("attributes.calendar_id") %></th>
-      <th><%= t("attributes.admin_only") %></th>
-      <th colspan="3"><%= t("resources.actions") %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.location %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= event.google_event_id %></td>
-        <td><%= event.guest_lecture_id %></td>
-        <td><%= event.calendar_id %></td>
-        <td><%= event.admin_only %></td>
-        <td><%= link_to t("links.resources.show"), event %></td>
-        <td><%= link_to t("links.resources.edit"), edit_event_path(event) %></td>
-        <td><%= link_to t("links.resources.delete"), event, method: :delete, data: { confirm: t("confirmations.delete") } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>

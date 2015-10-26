@@ -13,5 +13,5 @@ class CategoryJoin < ActiveRecord::Base
   categorizable_types = ["Broadcast", "GuestLecture", "Note", "User"]
   CATEGORIZABLE_CONSTRAINTS = build_contraints_regex(categorizable_types)
 
-  validates_format_of :type, with: CATEGORIZABLE_CONSTRAINTS
+  validates_format_of :categorizable_type, with: CATEGORIZABLE_CONSTRAINTS
 end

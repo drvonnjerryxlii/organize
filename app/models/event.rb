@@ -19,6 +19,24 @@ class Event < ActiveRecord::Base
   validates :calendar_id, numericality: { only_integer: true }
   validate :start_time_must_be_before_end_time
 
+  # Scopes ---------------------------------------------------------------------
+  scope :ta, -> { where(ta: true) }
+  scope :gl, -> { where(gl: true) }
+
+  scope :in_range, lambda { |date1, date2|
+    where("start_time BETWEEN ? AND ?", date1, date2)
+  }
+
+  scope :month, lambda { |m = Time.now.month, yyyy = Time.now.year|
+    in_range(Time.parse("#{ yyyy }/#{ m }/1"), Time.parse("#{ yyyy }/#{ m + 1 }/1"))
+  }
+
+  scope :today, -> { in_range(Time.parse(Date.today.to_s), Time.parse(Date.tomorrow.to_s)) }
+  # scope :today, -> { where("? BETWEEN start_time AND end_time", Date.today) }
+  # scope :this_month -> { where("start_time BETWEEN ? AND ?", Date.today.at_beginning_of_month, Date.today.at_end_of_month) }
+  scope :future, -> { where("start_time > ?", Date.yesterday) }
+  scope :chronological, -> { order(:start_time) } # this should happen last, because expensive
+
   DEFAULT_ADDRESS = "1215 4th Ave #1050, Seattle, WA 98161"
 
   private

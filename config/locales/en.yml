@@ -33,11 +33,13 @@ en:
 
   resources:
     broadcast: "Broadcast"
+    calendar: "Calender"
+    calendar_with_name: "%{name} Calendar"
     category: "Category"
-    cohort: "Cohort"
     event: "Event"
     guest_lecture: "Guest Lecture"
     note: "Note"
+    schedule: "Schedule"
     user: "User"
 
   forms:

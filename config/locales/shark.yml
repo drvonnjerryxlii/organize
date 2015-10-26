@@ -33,11 +33,13 @@ shark:
 
   resources:
     broadcast: "Broadcast"
+    calendar: "Calender"
+    calendar_with_name: "Ye Olde Calendar o'%{name}"
     category: "Category"
-    cohort: "Cohort"
     event: "Event"
     guest_lecture: "Guest Lecture"
     note: "Note"
+    schedule: "Doings & Goings"
     user: "Shark"
 
   forms:

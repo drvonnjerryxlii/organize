@@ -1,4 +1,12 @@
-<h1><%= t("headings.all", plural_model_name: t("resources.event").pluralize) %></h1>
+<section class="col-md-10 col-md-offset-1">
+  <h1>
+    <%= t("headings.all", plural_model_name: t("resources.event").pluralize) %>
+    <small><%= link_to t("links.resources.create", model_name: t("resources.event")), new_event_path %></small>
+  </h1>
+  <div class="row calendar">
+
+  </div>
+</section>
 
 <table>
   <thead>
@@ -37,5 +45,3 @@
 </table>
 
 <br>
-
-<%= link_to t("links.resources.create", model_name: t("resources.event")), new_event_path %>

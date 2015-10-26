@@ -10,12 +10,7 @@
       <%= date.day %>
 
       <% events.each do |event| %>
-        <div>
-          <%= link_to event_path(event) do %>
-            <i class="fa fa-star"></i>
-          <% end %>
-          <%= "OPEN" if event.count < 4 %>
-        </div>
+        <div class="event"></div>
       <% end %>
     <% end %>
   </div>

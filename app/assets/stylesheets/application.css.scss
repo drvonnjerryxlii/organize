@@ -4,9 +4,12 @@
 @import "font-awesome";
 
 // colors
+$blue: #08f;
+$red: #f00;
 $light-blue: #abbade;
 $dark-blue: #162955;
 $light-green: #bbeeee;
+$middle-green: #3c8;
 $dark-green: #0d4d4d;
 $light-yellow: #ffe3aa;
 $dark-yellow: #804515;
@@ -140,4 +143,12 @@ span.inactive {
   display: block;
   margin: auto;
   width: 8rem;
+}
+
+table td.full .icon {
+  color: $middle-green;
+}
+
+table td.vacancy .icon {
+  color: $black;
 }

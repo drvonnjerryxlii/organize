@@ -7,7 +7,6 @@ class CalendarsController < ApplicationController
 
   def show
     @events = prepare_calendar
-    # @events = @calendar.ta_events
   end
 
   private
@@ -28,12 +27,8 @@ class CalendarsController < ApplicationController
       end
 
       vacancies = []
-      map.keys.each do |key|
-        vacancies.push(Struct.new({
-          start_time: key,
-          count: map[key]
-        }))
-      end
+      Struct.new("CalEvent", :start_time, :count)
+      map.keys.each { |key| vacancies.push(Struct::CalEvent.new(key, map[key])) }
 
       return vacancies
     end

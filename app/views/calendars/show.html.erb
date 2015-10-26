@@ -1,0 +1,22 @@
+<section class="col-md-10 col-md-offset-1 accordion">
+  <h1 class="col-sm-6 col-xs-12">
+    <%= @calendar.name %>
+  </h1>
+  <h3 class="col-sm-6 col-xs-12">
+    <small><%= link_to t("links.resources.create", model_name: t("resources.event")), new_event_path %></small>
+  </h3>
+  <div class="row calendar col-sm-6 col-sm-offset-3 col-xs-12">
+    <%= month_calendar events: @events do |date, events| %>
+      <%= date.day %>
+
+      <% events.each do |event| %>
+        <div>
+          <%= link_to event_path(event) do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+          <%= "OPEN" if event.count < 4 %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

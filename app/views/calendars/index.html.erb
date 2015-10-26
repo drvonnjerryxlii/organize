@@ -1,0 +1,25 @@
+<section class="col-md-10 col-md-offset-1">
+  <h1>
+    <%= t("headings.all", plural_model_name: t("resources.calendar").pluralize) %>
+    <small><%= link_to t("links.resources.create", model_name: t("resources.calendar")), new_calendar_path %></small>
+  </h1>
+
+  <div class="row">
+  <% @calendars.each_with_index do |calendar, index| %>
+    <% if index % 3 == 0 %></div><div class="row"><% end %>
+    <div class="item col-sm-4 col-xs-12">
+      <div class="row">
+        <div class="action-links col-sm-8 col-sm-offset-2 col-xs-12">
+          <h4><%= t("resources.actions") %></h4>
+          <%= link_to t("links.resources.show"), calendar %>
+          <%= link_to t("links.resources.edit"), edit_calendar_path(calendar) %>
+          <%= link_to t("links.resources.delete"), calendar, method: :delete, data: { confirm: t("confirmations.delete") } %>
+        </div>
+      </div>
+      <h4 class="title">
+        <%= link_to t("resources.calendar_with_name", name: calendar.name), calendar %>
+      </h4>
+    </div>
+  <% end %>
+  </div>
+</section>

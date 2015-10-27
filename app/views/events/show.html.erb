@@ -43,5 +43,5 @@
   <%= @event.admin_only %>
 </p>
 
-<%= link_to t("links.resources.edit"), edit_event_path(@event) %> |
-<%= link_to t("links.back"), events_path %>
+<%= link_to t("links.resources.edit"), edit_calendar_event_path(@calendar, @event) %> |
+<%= link_to t("links.back"), calendar_events_path(@calendar) %>

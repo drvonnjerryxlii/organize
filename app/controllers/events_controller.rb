@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_calendar
 
   def index
     @events = Event.chronological
@@ -37,6 +38,10 @@ class EventsController < ApplicationController
   end
 
   private
+    def set_calendar
+      @calendar = Calendar.find(params[:calendar_id])
+    end
+
     def set_event
       @event = Event.find(params[:id])
     end

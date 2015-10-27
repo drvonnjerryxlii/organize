@@ -1,4 +1,4 @@
-# require Rails.root.join('lib/build_constraints_regex')
+require Rails.root.join('lib/build_constraints_regex')
 
 class CategoryJoin < ActiveRecord::Base
   # Associations ---------------------------------------------------------------

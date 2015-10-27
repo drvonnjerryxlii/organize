@@ -1,3 +1,5 @@
+require Rails.root.join('lib/build_constraints_regex')
+
 class User < ActiveRecord::Base
   # Callbacks ------------------------------------------------------------------
   after_create :schedule_welcome_email

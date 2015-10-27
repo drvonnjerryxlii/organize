@@ -15,20 +15,21 @@
         <li></li>
         <li><%= link_to t("links.home"), root_path %></li>
         <% if @admin %>
-          <!-- begin admin links -->
+          <%# begin admin links %>
           <li><%= link_to t("resources.calendar"), calendars_path %></li>
           <li><%= link_to t("resources.broadcast").pluralize, broadcasts_path %></li>
           <li><%= link_to t("resources.category").pluralize, categories_path %></li>
-          <li><%= link_to t("resources.event").pluralize, events_path %></li>
           <li><%= link_to t("resources.guest_lecture").pluralize, guest_lectures_path %></li>
           <li><%= link_to t("resources.note").pluralize, notes_path %></li>
           <li><%= link_to t("resources.user").pluralize, users_path %></li>
-          <!-- end admin links -->
+          <%# end admin links %>
         <% elsif @logged_in_user %>
-          <li><%= link_to "my guest lecture proposals", guest_lectures_path %></li>
-          <li><%= link_to "my cohorts", cohorts_path %></li>
+          <%# begin logged in user links %>
+          <li><%= link_to t("resources.guest_lecture"), guest_lectures_path %></li>
+          <li><%= link_to t("resources.calendar"), calendars_path %></li>
           <li><%= link_to "my profile", user_path(@logged_in_user) %></li>
           <li><%= link_to "my settings", root_path %></li>
+          <%# end logged in user links %>
         <% end %>
       </ul>
 

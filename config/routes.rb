@@ -21,11 +21,15 @@ Rails.application.routes.draw do
 
     # normal resources
     resources :broadcasts
-    resources :calendars
-    resources :events
+    # resources :events
     resources :guest_lectures, :path => "lectures"
     resources :notes
     resources :users
+
+    # calendars w/ events inside
+    resources :calendars do
+      resources :events
+    end
 
     # categories w/ categorizables inside
     resources :categories do

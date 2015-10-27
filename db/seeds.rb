@@ -58,11 +58,12 @@ end
 
 puts "seeded broadcasts"
 
-calendars = CSV.read(file_base + "cohorts.csv", { headers: true })
+calendars = CSV.read(file_base + "calendars.csv", { headers: true })
 calendars.each do |calendar|
   Calendar.create(
     name: calendar["name"],
-    google_calendar_id: calendar["google_calendar_id"]
+    google_calendar_id: calendar["google_calendar_id"],
+    curriculum_href: calendar["curriculum_href"]
   )
 end
 
@@ -74,6 +75,8 @@ calendars_users.each do |calendar_user|
   calendar = Calendar.find(calendar_user["cohort_id"])
   user.calendars << calendar unless user.calendars.include? calendar
 end
+
+puts "seeded each calendar's students"
 
 notes = CSV.read(file_base + "notes.csv", { headers: true })
 notes.each do |note|

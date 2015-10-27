@@ -15,19 +15,19 @@
           <div class="event"></div>
         <% end %>
       <% end %>
-      <h3>
-        <small><%= link_to t("links.resources.create", model_name: t("resources.event")), new_calendar_event_path(@calendar) %></small>
-      </h3>
-      <h3>
-        <small><%= link_to t("links.resources.create", model_name: t("resources.event")), new_calendar_event_path(@calendar) %></small>
-      </h3>
+      <p>
+        <% if @admin %>
+          <%= link_to t("links.resources.create", model_name: t("resources.event")), new_calendar_event_path(@calendar) %>
+        <% else %>
+          <%= link_to t("links.request_shift"), new_calendar_event_path(@calendar) %>
+        <% end %>
+      </p>
+      <% if @calendar.curriculum_href %>
+        <h4><%= link_to t("attributes.curriculum_href"), @calendar.curriculum_href %></h4>
+      <% end %>
     </div>
 
     <div class="col-sm-6 col-xs-12">
       <%= render partial: 'users', locals: { users: @students, type: "student" } %>
     </div>
-</section>
-
-<section class="col-md-12">
-  <%= link_to t("attributes.curriculum_href"), @calendar.curriculum_href %>
 </section>

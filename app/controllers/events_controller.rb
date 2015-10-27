@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :set_calendar
 
   def index
-    @events = Event.chronological
+    @events = @calendar.events.chronological
   end
 
   def show; end

@@ -63,6 +63,7 @@ shark:
     classroom_end_date: "Ocean End Date"
     cohort_id: "Associated Cohort"
     color: "Color"
+    curriculum_href: "Sophisticated Learnings Plan"
     description: "Description"
     email: "Special Webnet Contact Address"
     empty: "(none)"

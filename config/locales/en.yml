@@ -63,6 +63,7 @@ en:
     classroom_end_date: "Classroom End Date"
     cohort_id: "Associated Cohort"
     color: "Color"
+    curriculum_href: "View Curriculum"
     description: "Description"
     email: "Email"
     empty: "(none)"

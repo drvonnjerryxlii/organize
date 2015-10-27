@@ -10,12 +10,8 @@ module GCalV3Wrapper
         application_version: '0.0.1'
       )
 
-      # load and decrypt private key
-      # key = OpenSSL::PKCS12.new(ENV['GOOGLE_KEY'], 'notasecret').key
-      key = Google::APIClient::KeyUtils.load_from_pkcs12(
-        "#{ Rails.root }/goggle583e06af4ecd.p12", # best file name ever
-        'notasecret'
-      )
+      # load private key
+      key = ENV['GOOGLE_PRIVATE_KEY']
 
       # generate request body for authorization
       client.authorization = Signet::OAuth2::Client.new(

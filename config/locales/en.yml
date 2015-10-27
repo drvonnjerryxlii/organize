@@ -1,9 +1,9 @@
 en:
   site:
-    name: "Voluntear Shark"
+    name: "Ada Developers Academy"
     separator: ": "
-    subtitle: "The voluntearnado is coming. Bigger and better than sharknado! Now with 80% more tearing power."
-    base_domain: "http://localhost:3000/"
+    subtitle: "Volunteer Portal"
+    base_domain: "https://tranquil-scrubland-1984.herokuapp.com/"
 
   errors:
     require_login: "Please login to view this page."

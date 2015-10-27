@@ -16,11 +16,12 @@ class Category < ActiveRecord::Base
 
   # Scopes ---------------------------------------------------------------------
   scope :alphabetized, -> { order(:name) }
+  scope :not_admin, -> { where(admin_only: false) }
+  scope :admin, -> { where(admin_only: true) }
   scope :visible, -> { where(hidden: false).where(approved: true).alphabetized }
-  scope :admin, -> { alphabetized.where(admin_only: true) }
   scope :tags, -> { where(user_related: true) }
   scope :topics, -> { where(topic_related: true) }
-  scope :any_user, -> { visible.where(admin_only: false) }
-  scope :any_user_tags, -> { visible.tags }
-  scope :any_user_topics, -> { visible.topics }
+  scope :any_user, -> { visible.not_admin }
+  scope :any_user_tags, -> { any_user.tags }
+  scope :any_user_topics, -> { any_user.topics }
 end

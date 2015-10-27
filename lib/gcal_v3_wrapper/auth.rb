@@ -11,7 +11,7 @@ module GCalV3Wrapper
       )
 
       # load private key
-      key = ENV['GOOGLE_PRIVATE_KEY']
+      key = OpenSSL::PKey::RSA.new ENV['GOOGLE_PRIVATE_KEY'], 'notasecret'
 
       # generate request body for authorization
       client.authorization = Signet::OAuth2::Client.new(

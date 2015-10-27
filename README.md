@@ -1,22 +1,51 @@
 [![Code Climate](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/badges/cecbf42982df6abc5ae7/gpa.svg)](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/feed)
 
+<!--
+- add panel to forms
+-->
+
 - - -
 > ## Setup
 - - -
 
-- calendar setup:
-  - google developer console: services public/private key set
-    - drop your private key in your .env
-  - share all calendars with service account's email address __<-- super annoying & worth writing a utility__
-- oauth setup for users:
-  - callback is http://wobsite.com/auth/:provider/callback
-  - register github oauth app http://wobsite.com/auth/github/callback
-  - register google oauth app http://wobsite.com/auth/google_oauth2/callback
+
+### Google Calendar API
+
+1. Add Google services (server to server) credentials to your project.
+2. Download the p12 version of your private key.
+3. [Decrypt the key and store it in your ENV variables.][heroku_private_key]
+4. Grab your issuer ID and store it in your ENV variables.
+5. Share all relevant calendars with your service account's email address.
+   - Give read and write access!
+   - Super annoying & worth writing a utility.
+
+### Google OAuth2
+
+1. Add Google OAuth2 credentials to your project.
+2. Add https://{insert_your_domain_here}/auth/google_oauth2/callback to your callbacks.
+3. Store the client ID and secret in your ENV variables.
+
+[heroku_private_key]: http://ar.zu.my/how-to-store-private-key-files-in-heroku/
+
+
+### Github OAuth2
+
+1. Add Github credentials to your project.
+2. Add https://{insert_your_domain_here}/auth/github/callback to your callbacks.
+3. Store the client ID and secret in your ENV variables.
+
+### Postgres
+
+This app is configured to work with Postgres and takes advantage of the citext datatype. You may need to install Postgres or adjust the code that handles case-insensitive text if Postgres is not the right database for your installation.
+
+You may need to explicitly enable citext (`CREATE EXTENSION citext;`).
+
+
+<!--
+
 - test suite setup:
   - create a dummy calendar & store its ID in your .env
 
-<!--
-http://ar.zu.my/how-to-store-private-key-files-in-heroku/
 ## Nice to haves
 - welcome email
 - reset password
@@ -173,9 +202,7 @@ other useful things:
 
 [trello]: https://trello.com/b/ZLYgc2TU/jari-capstone
 
-<!--
 - [wip prototype specs](https://docs.google.com/document/d/1mQprIVP-J1y6J8KxXg7lsn4uuogzb7og-dW1_j4l9sg/edit?usp=sharing)
--->
 
 <div align="right">^<a href="#overview">top</a></div>
 
@@ -186,21 +213,6 @@ product plan - readme barrier
 - - -
 - - -
 - - -
-
-
-<!--
-
-- - -
-> ### Setup / Installation
-- - -
-
-This project is not yet far enough along to allow for installation.
-
-- - -
-> ### Dependencies
-- - -
-
--->
 
 - - -
 > ### Integration Choices

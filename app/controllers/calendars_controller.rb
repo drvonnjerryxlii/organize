@@ -7,6 +7,7 @@ class CalendarsController < ApplicationController
 
   def show
     @events = prepare_calendar
+    @students = @calendar.students
   end
 
   private

@@ -1,6 +1,7 @@
 class Calendar < ActiveRecord::Base
   # Associations ---------------------------------------------------------------
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :students, association_foreign_key: "user_id"
   has_many :events
   has_many :special_conditions
 

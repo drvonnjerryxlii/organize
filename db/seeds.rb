@@ -161,12 +161,14 @@ category_joins.each do |category_join|
   )
 end
 
-cohorts = Category.where("name LIKE ?", "%cohort%")
+students = Student.all
+calendars = Calendar.all
 
-while (first_generic_student == last_generic_student) do
-  student = User.find(first_generic_student)
-  student.categories << cohorts.sample
-  first_generic_student += 1
+students.each do |stud|
+  calendar = calendars.sample
+  stud.calendars << calendar
+  cohort = Category.where("name LIKE ?", "%#{ calendar.name.downcase }%")
+  stud.categories << cohort
 end
 
 puts "seeded categorizables"

@@ -15,11 +15,11 @@ module GCalV3Wrapper
 
       # generate request body for authorization
       client.authorization = Signet::OAuth2::Client.new(
-        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-        :audience => 'https://accounts.google.com/o/oauth2/token',
-        :scope => scope,
-        :issuer => ENV['GOOGLE_ISSUER'],
-        :signing_key => key
+        token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+        audience: 'https://accounts.google.com/o/oauth2/token',
+        scope: scope,
+        issuer: ENV['GOOGLE_ISSUER'],
+        signing_key: key
       )
 
       # fetch access token

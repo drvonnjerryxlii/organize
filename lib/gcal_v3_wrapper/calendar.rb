@@ -5,11 +5,11 @@ module GCalV3Wrapper
       service = authorized_client.discovered_api('calendar', 'v3')
 
       response = authorized_client.execute(
-        :api_method => service.calendar_list.list
+        api_method: service.calendar_list.list
       )
 
-      result = JSON.parse(response.body)["items"]
-      result = result.map { |c| { id: c["id"], name: c["summary"], }}
+      result = response.data.items
+      result = result.map { |c| { id: c.id, name: c.summary, }}
 
       return result
       # [{:id=>"0qr050pqdb2v1aegceoirnneg4@group.calendar.google.com", :name=>"fake c[1] calendar"},

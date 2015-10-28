@@ -7,7 +7,9 @@
         <%= t("headings.all", plural_model_name: t("resources.users.student")) %>
       </h1>
     </div>
+
     <div class="calendar col-sm-6 col-xs-12">
+
       <%= month_calendar events: @events do |date, events| %>
         <%= date.day %>
 
@@ -15,13 +17,17 @@
           <div class="event"></div>
         <% end %>
       <% end %>
-      <p>
+
+      <div id="legend" class="row"></div>
+
+      <p class="links">
         <% if @admin %>
           <%= link_to t("links.resources.create", model_name: t("resources.event")), new_calendar_event_path(@calendar) %>
         <% else %>
           <%= link_to t("links.request_shift"), new_calendar_event_path(@calendar) %>
         <% end %>
       </p>
+
       <% if @calendar.curriculum_href %>
         <h4><%= link_to t("attributes.curriculum_href"), @calendar.curriculum_href %></h4>
       <% end %>

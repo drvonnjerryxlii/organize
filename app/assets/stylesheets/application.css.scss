@@ -155,16 +155,30 @@ span.inactive {
   }
 }
 
-table {
-  td.full .icon {
-    color: $middle-green;
+.full .icon {
+  color: $middle-green;
+}
+
+.one-short .icon {
+  color: $middle-yellow;
+}
+
+.two-plus-short .icon {
+  color: $red;
+}
+
+#legend {
+  margin-top: -1rem;
+
+  .right {
+    text-align: right;
   }
 
-  td.one-short .icon {
-    color: $middle-yellow;
+  .left {
+    text-align: left;
   }
+}
 
-  td.two-plus-short .icon {
-    color: $red;
-  }
+.links {
+  margin-top: 3rem;
 }

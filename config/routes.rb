@@ -28,7 +28,10 @@ Rails.application.routes.draw do
 
     # calendars w/ events inside
     resources :calendars do
-      resources :events
+      resources :events do
+        patch "/request" => "events#request"
+        patch "/approve" => "events#approve"
+      end
     end
 
     # categories w/ categorizables inside

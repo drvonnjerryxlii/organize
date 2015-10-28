@@ -1,0 +1,11 @@
+<% @events.each do |event| %>
+  name: <%= event.title %><br />
+  start: <%= event.start_time %><br />
+  end: <%= event.end_time %><br />
+  <%= button_to "APPROVE ME" %>
+<% end %>
+
+<% @categories.each do |category| %>
+  name: <%= category.name %><br />
+  <%= button_to "APPROVE ME" %>
+<% end %>

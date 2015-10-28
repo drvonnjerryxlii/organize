@@ -98,6 +98,7 @@ guest_lectures.each do |guest_lecture|
 end
 
 puts "seeded guest lectures"
+Event.skip_callback(:create, :after, :create_gcal_event)
 
 events = CSV.read(file_base + "events.csv", { headers: true })
 events.each do |event|
@@ -109,6 +110,7 @@ events.each do |event|
     gl: event["gl"],
     guest_lecture_id: event["guest_lecture_id"],
     user_id: event["user_id"],
+    approved: true,
     calendar_id: event["calendar_id"]
   )
 end
@@ -127,8 +129,32 @@ calendars.each do |cal|
       ta: true,
       gl: false,
       user_id: v.id,
+      approved: true,
       calendar_id: cal
     )
+  end
+end
+
+puts "seeded example TA events"
+
+calendars.each do |cal|
+  60.times do |count|
+    extra_tas = (1..5).to_a.sample
+    extra_tas.times do |inside_count|
+      v = volunteers.sample
+      approved = !(inside_count == 0 && Date.today.at_beginning_of_month + count > Date.today)
+      Event.create(
+        title: "TA: (s) #{ v.name }",
+        start_time: Time.parse("#{ Date.today.at_beginning_of_month + count } 1pm"),
+        end_time: Time.parse("#{ Date.today.at_beginning_of_month + count } 5pm"),
+        ta: true,
+        gl: false,
+        google_event_id: "fake event for calendar demo",
+        user_id: v.id,
+        approved: approved,
+        calendar_id: cal
+      )
+    end
   end
 end
 

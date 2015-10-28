@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   # Associations ---------------------------------------------------------------
   belongs_to :calendar # calendars_users join table to store viewing permissions?
   belongs_to :guest_lecture
+  belongs_to :user
   has_and_belongs_to_many :users
 
   # Callbacks ------------------------------------------------------------------
@@ -20,8 +21,10 @@ class Event < ActiveRecord::Base
   validate :start_time_must_be_before_end_time
 
   # Scopes ---------------------------------------------------------------------
-  scope :ta, -> { where(ta: true) }
-  scope :gl, -> { where(gl: true) }
+  scope :approved, -> { where(approved: true) }
+  scope :pending, -> { where(approved: false) }
+  scope :ta, -> { approved.where(ta: true) }
+  scope :gl, -> { approved.where(gl: true) }
 
   scope :in_range, lambda { |date1, date2|
     where("start_time BETWEEN ? AND ?", date1, date2)

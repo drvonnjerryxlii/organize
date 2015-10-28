@@ -32,6 +32,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def request_shift
+
+  end
+
+  def approve_shift
+
+  end
+
   def destroy
     @event.destroy
     redirect_to events_path

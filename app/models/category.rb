@@ -15,6 +15,7 @@ class Category < ActiveRecord::Base
     source_type: 'User'
 
   # Scopes ---------------------------------------------------------------------
+  scope :pending, -> { where(approved: false) }
   scope :alphabetized, -> { order(:name) }
   scope :not_admin, -> { where(admin_only: false) }
   scope :admin, -> { where(admin_only: true) }

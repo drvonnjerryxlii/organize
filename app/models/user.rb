@@ -1,6 +1,17 @@
 require Rails.root.join('lib/build_constraints_regex')
 
 class User < ActiveRecord::Base
+  # Associations ---------------------------------------------------------------
+  has_many :oauths
+  has_many :guest_lectures
+  has_many :notes
+  has_many :events
+  has_and_belongs_to_many :calendars
+  has_many :category_joins, as: :categorizable
+  has_many :categories, through: :category_joins
+  has_many :broadcasts, through: :categories
+  # has_and_belongs_to_many :events
+
   # Callbacks ------------------------------------------------------------------
   after_create :schedule_welcome_email
 
@@ -16,15 +27,6 @@ class User < ActiveRecord::Base
   validates :email, length: { maximum: 320 }, uniqueness: { case_sensitive: false }
   # validate :has_secure_password_or_has_omniauth # FIXME: this isn't fully tested
 
-  # Associations ---------------------------------------------------------------
-  has_many :oauths
-  has_many :guest_lectures
-  has_many :notes
-  has_and_belongs_to_many :calendars
-  has_many :category_joins, as: :categorizable
-  has_many :categories, through: :category_joins
-  has_many :broadcasts, through: :categories
-  # has_and_belongs_to_many :events
 
   accepts_nested_attributes_for :categories
 

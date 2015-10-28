@@ -45,11 +45,11 @@ function addBattery(day, taCount, tasRequired) {
 function addLegend(legendDiv) {
   var empty = $('<div class="two-plus-short left col-xs-4"></div>');
   empty.text(" = Not enough TAs.");
-  empty.prepend('<i class="icon fa fa-battery-three-quarters"></i>');
+  empty.prepend('<i class="icon fa fa-battery-quarter"></i>');
 
   var medium = $('<div class="one-short col-xs-4"></div>');
   medium.text(" = Almost there.");
-  medium.prepend('<i class="icon fa fa-battery-quarter"></i>');
+  medium.prepend('<i class="icon fa fa-battery-three-quarters"></i>');
 
   var full = $('<div class="full right col-xs-4"></div>');
   full.text(" = Full!");

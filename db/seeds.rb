@@ -74,39 +74,6 @@ calendars.each do |calendar|
   )
 end
 
-Event.create(
-  title: "TA: #{ jeri.name }",
-  start_time: Time.parse("2015 Nov 2nd 1pm"),
-  end_time: Time.parse("2015 Nov 2nd 5pm"),
-  ta: true,
-  gl: false,
-  user_id: jeri.id,
-  approved: false,
-  calendar_id: 3
-)
-
-Event.create(
-  title: "TA: #{ jeri2.name }",
-  start_time: Time.parse("2015 Nov 2nd 1pm"),
-  end_time: Time.parse("2015 Nov 2nd 5pm"),
-  ta: true,
-  gl: false,
-  user_id: jeri2.id,
-  approved: false,
-  calendar_id: 4
-)
-
-Event.create(
-  title: "TA: #{ jeri3.name }",
-  start_time: Time.parse("2015 Nov 2nd 1pm"),
-  end_time: Time.parse("2015 Nov 2nd 5pm"),
-  ta: true,
-  gl: false,
-  user_id: jeri3.id,
-  approved: false,
-  calendar_id: 4
-)
-
 puts "seeded calendars"
 
 calendars_users = CSV.read(file_base + "cohorts_users.csv", { headers: true })

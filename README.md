@@ -1,7 +1,9 @@
 [![Code Climate](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/badges/cecbf42982df6abc5ae7/gpa.svg)](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/feed)
 
 <!--
-- add panel to forms
+- add panel to forms?
+- Rating.skip_callback(:create, :after, :notify_admins)
+  - http://sparkmasterflex.com/seeding-like-a-boss/
 -->
 
 - - -
@@ -57,17 +59,31 @@ You may need to explicitly enable citext (`CREATE EXTENSION citext;`).
   - shift auto emeail
 - green specs
   - chef says: test the happy path / what you're going to demo -- the path of no errors
-- display calendar
+- ~~display calendar~~
   - ~~edit calendar things~~
 - scheduling jobs
 - running jobs
 
 ## Next week
 
-- deploy to heroku
+- ~~deploy to heroku~~
 - setup ssl
 - setup jobs
+-->
 
+- - -
+> ## Contributing
+- - -
+
+<!-- https://github.com/thoughtbot/shoulda-matchers/blob/master/CONTRIBUTING.md -->
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+<!--
 - - -
 > ## Overview
 - - -

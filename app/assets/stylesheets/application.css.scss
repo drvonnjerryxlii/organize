@@ -4,8 +4,6 @@
 @import "font-awesome";
 
 // colors
-$blue: #08f;
-$light-red: #fcc;
 $red: #f30;
 $light-blue: #abbade;
 $dark-blue: #162955;
@@ -13,6 +11,7 @@ $light-green: #bbeeee;
 $middle-green: #3c8;
 $dark-green: #0d4d4d;
 $light-yellow: #ffe3aa;
+$middle-yellow: #ddab12;
 $dark-yellow: #804515;
 $black: #000;
 
@@ -161,7 +160,11 @@ table {
     color: $middle-green;
   }
 
-  td.vacancy .icon {
+  td.one-short .icon {
+    color: $middle-yellow;
+  }
+
+  td.two-plus-short .icon {
     color: $red;
   }
 }

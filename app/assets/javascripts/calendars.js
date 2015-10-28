@@ -3,24 +3,34 @@
 // otherwise, put in a full battery icon
 $(document).ready(function() {
   var visibleDays = $('.day');
-  var tasRequired = 1;
 
   // looping through the days
   for (var i = 0; i < visibleDays.length; i++) {
     var day = visibleDays[i];
-    var taCount = $(day).children().length;
+    var tasRequired = 3 || $(day).attr('data-tas-required');
+    var taCount = $(day).children('.event').length;
 
     // we don't care about weekends
     if (!$(day).hasClass('wday-0') && !$(day).hasClass('wday-6')) {
-      if (taCount < tasRequired) {
-        $(day).addClass('vacancy');
-        var icon = $('<div class="icon"><i class="fa fa-battery-quarter"></i></div>');
+      var icon = $('<div class="icon"></div>');
+
+      if (taCount +1 == tasRequired) {
+        $(day).addClass('one-short');
+        icon.append('<i class="fa fa-battery-three-quarters"></i>');
+      } else if (taCount < tasRequired) {
+        $(day).addClass('two-plus-short');
+        icon.append('<i class="fa fa-battery-quarter"></i>');
+        icon.append("-", tasRequired - taCount);
         $(day).append(icon);
       } else {
         $(day).addClass('full');
-        var icon = $('<div class="icon"><i class="fa fa-battery-full"></i></div>');
-        $(day).append(icon);
+        icon.append('<i class="fa fa-battery-full"></i>');
+        if (taCount > tasRequired) {
+          icon.append("+", taCount - tasRequired);
+        }
       }
+
+      $(day).append(icon);
     }
   }
 })

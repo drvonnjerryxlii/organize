@@ -3,13 +3,17 @@ file_base = "#{ Rails.root }/db/seed_files/"
 
 users = CSV.read(file_base + "users.csv", { headers: true })
 users.each do |user|
+  type = "Volunteer" if user["type"] == "Admin"
+  password_length = (20..30).to_a.sample
+  current_password = SecureRandom.base64(password_length)
+
   User.create(
     email: user["email"],
     github: user["github"],
     name: user["name"],
-    type: user["type"],
-    password: user["password"],
-    password_confirmation: user["password"]
+    type: type || user["type"],
+    password: current_password,
+    password_confirmation: current_password
   )
 end
 
@@ -33,13 +37,16 @@ last_names = [
 first_generic_student = User.last.id + 1
 
 (1...100).to_a.each do |n|
+  password_length = (20..30).to_a.sample
+  current_password = SecureRandom.base64(password_length)
+
   User.create(
     email: "student#{ n }@shark.com",
     github: "#{ emails.sample }#{ n }",
     name: "#{ first_names.sample } #{ last_names.sample }",
     type: "Student",
-    password: "password",
-    password_confirmation: "password"
+    password: current_password,
+    password_confirmation: current_password
   )
 end
 
@@ -66,6 +73,39 @@ calendars.each do |calendar|
     curriculum_href: calendar["curriculum_href"]
   )
 end
+
+Event.create(
+  title: "TA: #{ jeri.name }",
+  start_time: Time.parse("2015 Nov 2nd 1pm"),
+  end_time: Time.parse("2015 Nov 2nd 5pm"),
+  ta: true,
+  gl: false,
+  user_id: jeri.id,
+  approved: false,
+  calendar_id: 3
+)
+
+Event.create(
+  title: "TA: #{ jeri2.name }",
+  start_time: Time.parse("2015 Nov 2nd 1pm"),
+  end_time: Time.parse("2015 Nov 2nd 5pm"),
+  ta: true,
+  gl: false,
+  user_id: jeri2.id,
+  approved: false,
+  calendar_id: 4
+)
+
+Event.create(
+  title: "TA: #{ jeri3.name }",
+  start_time: Time.parse("2015 Nov 2nd 1pm"),
+  end_time: Time.parse("2015 Nov 2nd 5pm"),
+  ta: true,
+  gl: false,
+  user_id: jeri3.id,
+  approved: false,
+  calendar_id: 4
+)
 
 puts "seeded calendars"
 
@@ -142,7 +182,6 @@ calendars.each do |cal|
     extra_tas = (1..5).to_a.sample
     extra_tas.times do |inside_count|
       v = volunteers.sample
-      approved = !(inside_count == 0 && Date.today.at_beginning_of_month + count > Date.today)
       Event.create(
         title: "TA: (s) #{ v.name }",
         start_time: Time.parse("#{ Date.today.at_beginning_of_month + count } 1pm"),
@@ -151,7 +190,7 @@ calendars.each do |cal|
         gl: false,
         google_event_id: "fake event for calendar demo",
         user_id: v.id,
-        approved: approved,
+        approved: true,
         calendar_id: cal
       )
     end

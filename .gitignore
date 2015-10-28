@@ -10,6 +10,7 @@
 # ignore various secrets & private things
 /market_research
 /.env
+/secrets.md
 
 # we don't need no public test coverage
 /coverage

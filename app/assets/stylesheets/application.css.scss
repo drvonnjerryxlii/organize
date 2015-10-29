@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -173,10 +174,6 @@ span.inactive {
   .left {
     text-align: left;
   }
-}
-
-.links {
-  margin-top: 3rem;
 }
 
 #event-notifications {

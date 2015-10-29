@@ -7,10 +7,12 @@ gem 'rails_12factor' # for heroku
 # calendar helpers
 gem 'google-api-client'
 gem 'simple_calendar'
+gem 'momentjs-rails' # specifically for forms
+gem 'bootstrap3-datetimepicker-rails'
 
 # authentication & secrets
 gem 'dotenv-rails', :groups => [:development, :test]
-gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-oauth2', '1.3.1' # 1.4.0 causes redirect uri issues for google_oauth2
 gem 'omniauth'
 gem 'omniauth-github'
@@ -20,14 +22,14 @@ gem 'omniauth-google-oauth2'
 gem 'pg'
 
 # assets
-gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 # gem 'neat' # NOPE sorry
 
 # javascript magics
-gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
-gem 'jquery-rails' # Use jquery as the JavaScript library
+gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
 
 # documentation helpers
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.

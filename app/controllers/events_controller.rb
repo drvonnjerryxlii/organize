@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :approve, :request]
   before_action :set_calendar
+  before_action :require_admin, unless: :user_associated?
 
   def index
     @events = @calendar.events.chronological
@@ -32,10 +33,18 @@ class EventsController < ApplicationController
     end
   end
 
-  # def request
-  #   raise
-  #   redirect_to root_path
-  # end
+  def request_shift
+    @event = Event.new(ta_request_params)
+
+    if @event.save
+      flash[:success] = "SHIFT REQUESTED YAYZERS" # FIXME: internationalize this
+    else
+      raise
+      flash[:error] = "OH NO SOME ERROR HAPPEN ;_;" # FIXME: internationalize this
+    end
+
+    redirect_to calendar_path(@calendar)
+  end
 
   def approve
     if @event.approve
@@ -61,6 +70,22 @@ class EventsController < ApplicationController
       @event = Event.find(params[:event_id] || params[:id])
     end
 
+    def ta_request_params
+      form = params.require(:event).permit(:date, :start_time, :end_time)
+
+      event = {}
+      event[:title] = "TA: #{ @logged_in_user.name }"
+      event[:ta] = true
+      event[:approved] = false
+      event[:user_id] = @logged_in_user.id
+      event[:calendar_id] = @calendar.id
+      event[:start_time] = Time.parse("#{ form[:date] } #{ form[:start_time] }")
+      event[:end_time] = Time.parse("#{ form[:date] } #{ form[:end_time] }")
+      event[:admin_only] = false
+
+      return event
+    end
+
     def event_params
       params.require(:event).permit(
         :title,
@@ -71,9 +96,13 @@ class EventsController < ApplicationController
         :calendar_id,
         :google_event_id,
         :guest_lecture_id,
-        :admin_only,
-        :category_ids => [],
-        :categories_attributes => [:id, :name]
+        :admin_only#,
+        # :category_ids => [],
+        # :categories_attributes => [:id, :name]
       )
+    end
+
+    def user_associated?
+      return @calendar.users.include? @logged_in_user
     end
 end

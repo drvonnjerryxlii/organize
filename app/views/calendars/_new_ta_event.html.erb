@@ -1,53 +1,69 @@
-<%= form_for [@calendar, @event], url: calendar_events_path(@calendar) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="panel panel-default">
+  <div class="panel-heading collapsed" role="tab" id="heading-event"
+    role="button" href="#collapse-event"
+    data-toggle="collapse" data-parent="#accordion"
+    aria-expanded="<%= @admin ? 'false' : 'true' %>" aria-controls="collapse-event">
+      <h1 class="panel-title">Request Shift</h1>
+  </div>
 
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <div id="collapse-event" class="panel-collapse collapse<%= ' in' unless @admin %>"
+    role="tabpanel" aria-labelledby="heading-event">
+
+    <section class="panel-body">
+
+      <%= form_for [@calendar, @event], url: calendar_request_path(@calendar) do |f| %>
+        <% if @event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+            <ul>
+            <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.hidden_field :title, :value => "TA: #{ @logged_in_user.name }" %>
+        <%= f.hidden_field :user_id, value: @logged_in_user.id %>
+        <%= f.hidden_field :calendar_id, value: @calendar.id %>
+
+        <div class="form-group col-md-6 col-md-offset-3 col-xs-12">
+            <label>Date
+            <div class='datepicker input-group date'>
+                <input type='text' name="event[date]" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            </label>
+        </div>
+
+        <div class="form-group col-md-6 col-md-offset-3 col-xs-12">
+            <%= f.label t("attributes.start_time") %>
+            <div class='timepicker-start input-group date'>
+                <input type='text' name="event[start_time]" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-6 col-md-offset-3 col-xs-12">
+            <%= f.label t("attributes.end_time") %><br>
+            <div class='timepicker-end input-group date'>
+                <input type='text' name="event[end_time]" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="actions col-xs-12">
+          <%= f.submit %>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :title, :value => "TA: #{ @logged_in_user.name }" %>
-  <%= f.hidden_field :user_id, value: @logged_in_user.id %>
-  <%= f.hidden_field :calendar_id, value: @calendar.id %>
-
-  <div class="form-group col-md-6 col-md-offset-3 col-xs-12">
-      <label>Date
-      <div class='datepicker input-group date'>
-          <input type='text' class="form-control" />
-          <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
-          </span>
-      </div>
-      </label>
+    </section>
   </div>
-
-  <div class="form-group col-md-6 col-md-offset-3 col-xs-12">
-      <%= f.label t("attributes.start_time") %>
-      <div class='timepicker-start input-group date'>
-          <input type='text' class="form-control" />
-          <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time"></span>
-          </span>
-      </div>
-  </div>
-
-
-  <div class="form-group col-md-6 col-md-offset-3 col-xs-12">
-      <%= f.label t("attributes.end_time") %><br>
-      <div class='timepicker-end input-group date'>
-          <input type='text' class="form-control" />
-          <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time"></span>
-          </span>
-      </div>
-  </div>
-
-  <div class="actions col-xs-12">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -24,7 +24,6 @@
 
   <div class="col-sm-6 col-xs-12">
     <div class="panel-group" id="accordion" role="tablist">
-
       <% if @calendar.curriculum_href %>
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -40,27 +39,12 @@
           </div>
       <% end %>
 
-      <div class="panel panel-default">
-        <div class="panel-heading collapsed" role="tab" id="heading-event"
-          role="button" href="#collapse-event"
-          data-toggle="collapse" data-parent="#accordion"
-          aria-expanded="false" aria-controls="collapse-event">
-            <h1 class="panel-title">Request Shift</h1>
-        </div>
 
-        <div id="collapse-event" class="panel-collapse collapse"
-          role="tabpanel" aria-labelledby="heading-event">
-
-          <section class="panel-body">
-            <% if @admin %>
-              <%= render partial: 'new_admin_event' %>
-            <% else %>
-              <%= render partial: 'new_ta_event' %>
-            <% end %>
-          </section>
-        </div>
-      </div>
-
+      <% if @admin %>
+        <%= render partial: 'new_admin_event' %>
+      <% else %>
+        <%= render partial: 'new_ta_event' %>
+      <% end %>
 
       <% if @admin %>
         <%= render partial: 'events', locals: { events: @pending_events } %>

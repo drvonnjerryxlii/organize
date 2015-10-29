@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
     # calendars w/ events inside
     resources :calendars do
+      post "/request" => "events#request_shift"
       resources :events do
-        patch "/request" => "events#request"
         patch "/approve" => "events#approve"
       end
     end

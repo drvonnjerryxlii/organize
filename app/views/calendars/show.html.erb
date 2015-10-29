@@ -1,43 +1,67 @@
 <section class="col-md-12">
-    <div class="row">
-      <h1 class="col-sm-6 col-xs-12">
-        <%= t("resources.calendar_with_name", name: @calendar.name) %>
-      </h1>
-      <!-- <h1 class="col-sm-6 hidden-xs">
-        <%= t("headings.all", plural_model_name: t("resources.users.student")) %>
-      </h1> -->
-    </div>
+  <div class="row">
+    <h1 class="col-sm-6 col-xs-12">
+      <%= t("resources.calendar_with_name", name: @calendar.name) %>
+    </h1>
+  </div>
 
-    <div class="calendar col-sm-6 col-xs-12">
+  <div class="calendar col-sm-6 col-xs-12">
 
-      <%= month_calendar events: @events, pendings: @pending_events do |date, events, pendings| %>
-        <%= date.day %>
+    <%= month_calendar events: @events, pendings: @pending_events do |date, events, pendings| %>
+      <%= date.day %>
 
-        <% events.each do |event| %>
-          <% if event.approved %>
-            <div class="event"></div>
-          <% else %>
-            <div class="pending"></div>
-          <% end %>
+      <% events.each do |event| %>
+        <% if event.approved %>
+          <div class="event"></div>
+        <% else %>
+          <div class="pending"></div>
         <% end %>
       <% end %>
+    <% end %>
 
-      <div id="legend" class="row"></div>
+    <div id="legend" class="row"></div>
+  </div>
 
-      <p class="links">
-        <% if @admin %>
-          <%= link_to t("links.resources.create", model_name: t("resources.event")), new_calendar_event_path(@calendar) %>
-        <% else %>
-          <%= link_to t("links.request_shift"), new_calendar_event_path(@calendar) %>
-        <% end %>
-      </p>
+  <div class="col-sm-6 col-xs-12">
+    <div class="panel-group" id="accordion" role="tablist">
 
       <% if @calendar.curriculum_href %>
-        <h4><%= link_to t("attributes.curriculum_href"), @calendar.curriculum_href %></h4>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h1 class="panel-title">
+                <% if @calendar.curriculum_href.include? "github" %>
+                  <i class="fa fa-github"></i>
+                <% elsif @calendar.curriculum_href.include? "google" %>
+                  <i class="fa fa-google-plus"></i>
+                <% end %>
+                <%= link_to t("attributes.curriculum_href"), @calendar.curriculum_href %>
+              </h1>
+            </div>
+          </div>
       <% end %>
-    </div>
 
-    <div class="col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading collapsed" role="tab" id="heading-event"
+          role="button" href="#collapse-event"
+          data-toggle="collapse" data-parent="#accordion"
+          aria-expanded="false" aria-controls="collapse-event">
+            <h1 class="panel-title">Request Shift</h1>
+        </div>
+
+        <div id="collapse-event" class="panel-collapse collapse"
+          role="tabpanel" aria-labelledby="heading-event">
+
+          <section class="panel-body">
+            <% if @admin %>
+              <%= render partial: 'new_admin_event' %>
+            <% else %>
+              <%= render partial: 'new_ta_event' %>
+            <% end %>
+          </section>
+        </div>
+      </div>
+
+
       <% if @admin %>
         <%= render partial: 'events', locals: { events: @pending_events } %>
         <%= render partial: 'users', locals: { users: @volunteers, type: "volunteer" } %>
@@ -45,4 +69,5 @@
 
       <%= render partial: 'users', locals: { users: @students, type: "student" } %>
     </div>
+  </div>
 </section>

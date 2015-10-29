@@ -11,7 +11,7 @@ module GCalV3Wrapper
       event = authorized_client.execute(
         api_method: service.events.insert,
         parameters: { 'calendarId' => params[:calendar_id] },
-        body: params[:event],
+        body: JSON.dump(params[:event]),
         headers: { 'Content-Type' => 'application/json' }
       )
 
@@ -116,7 +116,8 @@ module GCalV3Wrapper
         api_method: service.events.update,
         parameters: {
           'calendarId' => params[:calendar_id],
-          'eventId' => params[:event_id]
+          'eventId' => params[:event_id],
+          'sendNotifications' => params[:sendNotifications] || false
         },
         body_object: params[:event],
         headers: { 'Content-Type' => 'application/json' }

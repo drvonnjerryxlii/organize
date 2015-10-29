@@ -42,6 +42,18 @@ class Event < ActiveRecord::Base
 
   DEFAULT_ADDRESS = "1215 4th Ave #1050, Seattle, WA 98161"
 
+  def approve
+    event = event_params
+    event['attendees'] = [{ 'email' => user.email }]
+
+    notify = true
+    if update_gcal_event(event, notify)
+      update_column(:approved, true)
+    else
+      errors.add(:approved, "oops something went wrong what happen bro") # FIXME: internationalize this error
+    end
+  end
+
   private
     def create_gcal_event
       google_id = GCalV3Wrapper::Event.create({
@@ -52,11 +64,12 @@ class Event < ActiveRecord::Base
       self.update_column(:google_event_id, google_id)
     end
 
-    def update_gcal_event
+    def update_gcal_event(event=event_params, notify=false)
       GCalV3Wrapper::Event.update({
         calendar_id: calendar.google_calendar_id,
         event_id: google_event_id,
-        event: event_params
+        sendNotifications: notify,
+        event: event
       })
     end
 

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :approve, :request]
   before_action :set_calendar
 
   def index
@@ -32,17 +32,24 @@ class EventsController < ApplicationController
     end
   end
 
-  def request_shift
+  # def request
+  #   raise
+  #   redirect_to root_path
+  # end
 
-  end
+  def approve
+    if @event.approve
+      flash[:success] = "APPROVED" # FIXME: internationalize this
+    else
+      flash[:error] = "NOT APPROVED SOME ERROR HAPPEN" # FIXME: internationalize this
+    end
 
-  def approve_shift
-
+    redirect_to calendar_path(@calendar)
   end
 
   def destroy
     @event.destroy
-    redirect_to events_path
+    redirect_to calendar_path(@calendar)
   end
 
   private
@@ -51,7 +58,7 @@ class EventsController < ApplicationController
     end
 
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.find(params[:event_id] || params[:id])
     end
 
     def event_params

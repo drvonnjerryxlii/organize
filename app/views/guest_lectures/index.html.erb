@@ -5,24 +5,19 @@
   </h1>
 
   <div class="row">
-  <% @guest_lectures.each_with_index do |guest_lecture, index| %>
-    <% if index % 3 == 0 %></div><div class="row"><% end %>
-    <div class="item col-sm-4 col-xs-12">
-      <div class="action-links col-sm-8 col-sm-offset-2 col-xs-12">
-        <h4><%= t("resources.actions") %></h4>
-        <%= link_to t("links.resources.show"), guest_lecture %>
-        <%= link_to t("links.resources.edit"), edit_guest_lecture_path(guest_lecture) %>
-        <%= link_to t("links.resources.delete"), guest_lecture, method: :delete, data: { confirm: t("confirmations.delete") } %>
+    <% @guest_lectures.each_with_index do |guest_lecture, index| %>
+      <% if index % 2 == 0 %></div><div class="row"><% end %>
+      <div class="item col-sm-6 col-xs-12">
+        <div class="action-links col-sm-10 col-sm-offset-1 col-xs-12">
+          <h4><%= link_to guest_lecture.title, guest_lecture %></h4>
+          <%= link_to t("links.resources.show"), guest_lecture %>
+          <%= link_to t("links.resources.edit"), edit_guest_lecture_path(guest_lecture) %>
+          <%= link_to t("links.resources.delete"), guest_lecture, method: :delete, data: { confirm: t("confirmations.delete") } %>
+        </div>
+        <div class="attributes col-sm-10 col-sm-offset-1 col-xs-12">
+          <div class="attribute-value col-xs-12"><%= guest_lecture.description %></div>
+        </div>
       </div>
-      <div class="attributes">
-        <div class="attribute-name col-xs-12"><%= t("attributes.title") %></div>
-        <div class="attribute-value col-xs-12"><%= link_to guest_lecture.title, guest_lecture %></div>
-      </div>
-      <div class="attributes">
-        <div class="attribute-name col-xs-12"><%= t("attributes.description") %></div>
-        <div class="attribute-value col-xs-12"><%= guest_lecture.description %></div>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </section>

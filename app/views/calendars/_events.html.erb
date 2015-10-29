@@ -1,0 +1,39 @@
+<div class="col-xs-12">
+  <% unless events.nil? || events.empty? %>
+    <section id="event-notifications" class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Event Notifications</h1>
+      </div>
+
+      <div class="panel-body">
+        <% events.each_with_index do |event, index| %>
+          <div class="item col-md-6 col-xs-12">
+            <div class="col-xs-12">
+              <div class="action-links col-xs-12">
+                <%= event.start_time.strftime("%a, %b %e") %>
+              </div>
+
+              <div class="col-xs-12">
+                <%= event.start_time.strftime("%l:%M %p") %> - <%= event.end_time.strftime("%l:%M %p") %><br />
+                <%= link_to event.title, user_path(event.user) %><br />
+
+                <%= link_to t("notifications.reject"),
+                  calendar_event_path(event.calendar_id, event),
+                  method: "delete",
+                  data: { confirm: t("confirmations.delete") }
+                %>
+
+                <i class="space fa fa-bolt"></i>
+
+                <%= link_to t("notifications.approve"),
+                  calendar_event_approve_path(event.calendar_id, event),
+                  method: "patch"
+                %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+</div>

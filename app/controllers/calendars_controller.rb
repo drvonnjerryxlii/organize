@@ -7,6 +7,9 @@ class CalendarsController < ApplicationController
 
   def show
     @events = @calendar.ta_events
+    @pending_events = @calendar.events.pending.limit(10).chronological
+    @events = @events + @pending_events
+    @volunteers = @calendar.volunteers
     @students = @calendar.students
   end
 

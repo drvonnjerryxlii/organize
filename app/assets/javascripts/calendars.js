@@ -9,10 +9,12 @@ $(document).ready(function() {
     var day = visibleDays[i];
     var tasRequired = 3 || $(day).attr('data-tas-required');
     var taCount = $(day).children('.event').length;
+    var pendingCount = $(day).children('.pending').length;
 
     // we don't care about weekends
     if (!$(day).hasClass('wday-0') && !$(day).hasClass('wday-6')) {
       addBattery(day, taCount, tasRequired);
+      addPending(day, pendingCount);
     }
   }
 
@@ -23,11 +25,8 @@ $(document).ready(function() {
 function addBattery(day, taCount, tasRequired) {
   var icon = $('<div class="icon"></div>');
 
-  if (taCount +1 == tasRequired) {
-    $(day).addClass('one-short');
-    icon.append('<i class="fa fa-battery-three-quarters"></i>');
-  } else if (taCount < tasRequired) {
-    $(day).addClass('two-plus-short');
+  if (taCount < tasRequired) {
+    $(day).addClass('low');
     icon.append('<i class="fa fa-battery-quarter"></i>');
     icon.append("-", tasRequired - taCount);
     $(day).append(icon);
@@ -42,14 +41,23 @@ function addBattery(day, taCount, tasRequired) {
   $(day).append(icon);
 }
 
+function addPending(day, pendingCount) {
+  if (pendingCount > 0) {
+    var bolt = ('<i class="fa fa-bolt"></i>');
+    $(day).append(bolt);
+  } else {
+    $(day).append('<br />');
+  }
+}
+
 function addLegend(legendDiv) {
-  var empty = $('<div class="two-plus-short left col-xs-4"></div>');
+  var empty = $('<div class="low left col-xs-4"></div>');
   empty.text(" = Not enough TAs.");
   empty.prepend('<i class="icon fa fa-battery-quarter"></i>');
 
-  var medium = $('<div class="one-short col-xs-4"></div>');
-  medium.text(" = Almost there.");
-  medium.prepend('<i class="icon fa fa-battery-three-quarters"></i>');
+  var medium = $('<div class="col-xs-4"></div>');
+  medium.text(" = Pending event.");
+  medium.prepend('<i class="fa fa-bolt"></i>');
 
   var full = $('<div class="full right col-xs-4"></div>');
   full.text(" = Full!");

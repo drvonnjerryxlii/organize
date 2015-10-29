@@ -3,18 +3,22 @@
       <h1 class="col-sm-6 col-xs-12">
         <%= t("resources.calendar_with_name", name: @calendar.name) %>
       </h1>
-      <h1 class="col-sm-6 hidden-xs">
+      <!-- <h1 class="col-sm-6 hidden-xs">
         <%= t("headings.all", plural_model_name: t("resources.users.student")) %>
-      </h1>
+      </h1> -->
     </div>
 
     <div class="calendar col-sm-6 col-xs-12">
 
-      <%= month_calendar events: @events do |date, events| %>
+      <%= month_calendar events: @events, pendings: @pending_events do |date, events, pendings| %>
         <%= date.day %>
 
         <% events.each do |event| %>
-          <div class="event"></div>
+          <% if event.approved %>
+            <div class="event"></div>
+          <% else %>
+            <div class="pending"></div>
+          <% end %>
         <% end %>
       <% end %>
 
@@ -34,6 +38,11 @@
     </div>
 
     <div class="col-sm-6 col-xs-12">
+      <% if @admin %>
+        <%= render partial: 'events', locals: { events: @pending_events } %>
+        <%= render partial: 'users', locals: { users: @volunteers, type: "volunteer" } %>
+      <% end %>
+
       <%= render partial: 'users', locals: { users: @students, type: "student" } %>
     </div>
 </section>

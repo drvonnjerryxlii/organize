@@ -8,7 +8,7 @@ $red: #f30;
 $light-blue: #abbade;
 $dark-blue: #162955;
 $light-green: #bbeeee;
-$middle-green: #3c8;
+$middle-green: #1a6;
 $dark-green: #0d4d4d;
 $light-yellow: #ffe3aa;
 $middle-yellow: #ddab12;
@@ -159,11 +159,7 @@ span.inactive {
   color: $middle-green;
 }
 
-.one-short .icon {
-  color: $middle-yellow;
-}
-
-.two-plus-short .icon {
+.low .icon {
   color: $red;
 }
 
@@ -181,4 +177,10 @@ span.inactive {
 
 .links {
   margin-top: 3rem;
+}
+
+#event-notifications {
+  .space {
+    padding: 0 2rem;
+  }
 }

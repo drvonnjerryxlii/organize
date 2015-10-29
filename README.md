@@ -1,10 +1,6 @@
-[![Code Climate](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/badges/cecbf42982df6abc5ae7/gpa.svg)](https://codeclimate.com/repos/562aaaa2e30ba0268600167e/feed)
+[![Code Climate](https://codeclimate.com/repos/563296bb69568058db003975/badges/608ff8044bbc891476e2/gpa.svg)](https://codeclimate.com/repos/563296bb69568058db003975/feed)
 
-<!--
-- add panel to forms?
-- Rating.skip_callback(:create, :after, :notify_admins)
-  - http://sparkmasterflex.com/seeding-like-a-boss/
--->
+I started this project for my capstone project while attending @Ada-Developers-Academy. It might be a good fit for any non-profit organization with a small to medium volunteer base. This app does not yet support tracking volunteer hours, so it may not be a good fit for some 501c3 reporting obligations. __This project is currently operating in development mode. For more details, see [the contributing guidelines](#contributing).__
 
 - - -
 > ## Setup
@@ -43,6 +39,20 @@ This app is configured to work with Postgres and takes advantage of the citext d
 You may need to explicitly enable citext (`CREATE EXTENSION citext;`).
 
 
+- - -
+> ## Contributing
+- - -
+
+### This project is not yet production ready, so make any pull requests against the `dev` branch.
+
+Before adding new features, please look for [related issues](https://github.com/drvonnjerryxlii/organize/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement). If you do not see the feature you wish to add, please make a new issue and consider working on another issue while waiting for a project maintainer to respond. If you have questions, feel free to open a new question issue or [tweet me](https://twitter.com/intent/tweet?screen_name=drvonnjerryxlii).
+
+1. Fork this project.
+2. Create your feature branch (`git checkout -b my-new-feature`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin my-new-feature`).
+5. Create new Pull Request __against the `dev` branch__.
+
 <!--
 
 - test suite setup:
@@ -71,17 +81,6 @@ You may need to explicitly enable citext (`CREATE EXTENSION citext;`).
 - setup jobs
 -->
 
-- - -
-> ## Contributing
-- - -
-
-<!-- https://github.com/thoughtbot/shoulda-matchers/blob/master/CONTRIBUTING.md -->
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
 
 <!--
 - - -

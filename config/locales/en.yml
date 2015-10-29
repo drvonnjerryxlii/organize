@@ -85,3 +85,8 @@ en:
     user_id: "Associated User"
 
   possessive: "'s"
+
+  notifications:
+    approve: "Approve"
+    event: "%{name} wants to TA for %{calendar} on %{start} to %{end}."
+    reject: "Reject"

@@ -1,6 +1,15 @@
 [![Code Climate](https://codeclimate.com/repos/563296bb69568058db003975/badges/608ff8044bbc891476e2/gpa.svg)](https://codeclimate.com/repos/563296bb69568058db003975/feed)
 
-I started this project for my capstone project while attending @Ada-Developers-Academy. It might be a good fit for any non-profit organization with a small to medium volunteer base. This app does not yet support tracking volunteer hours, so it may not be a good fit for some 501c3 reporting obligations. __This project is currently operating in development mode. For more details, see [the contributing guidelines](#contributing).__
+I started this project for my capstone project while attending
+[Ada Developers Academy][ada-gh]. It might be a good fit for any non-profit
+organization with a small to medium volunteer base. It is designed to work with
+Google Calendar for scheduling volunteers. This app does not yet support
+tracking volunteer hours, so it may not be a good fit for some 501c3 reporting
+obligations. __This project is currently operating in development mode.
+For more details, see [the contributing guidelines](#contributing).__
+
+[ada-gh]: https://github.com/Ada-Developers-Academy
+
 
 - - -
 > ## Setup

@@ -1,7 +1,8 @@
-<% content_for :stylin do %>"welcome"<% end %>
-
 <h1><%= t("site.name") %></h1>
 
 <h3><%= t("site.subtitle") %></h3>
 
-<%= render partial: "requires_approval", locals: { events: @events, categories: @categories } if @admin %>
+<%= render partial: "requires_approval", locals: {
+  calendars: @calendars, categories: @categories
+  } if @admin
+%>

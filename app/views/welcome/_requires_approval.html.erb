@@ -1,11 +1,37 @@
-<% @events.each do |event| %>
-  name: <%= event.title %><br />
-  start: <%= event.start_time %><br />
-  end: <%= event.end_time %><br />
-  <%= button_to "APPROVE ME" %>
-<% end %>
+<div class="col-md-8 col-md-offset-2 col-xs-12">
+  <% unless calendars.nil? || calendars.empty? %>
+    <section class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Event Notifications</h1>
+      </div>
+      <div class="panel-body">
+        <% calendars.each do |calendar| %>
+          <div class="item col-xs-12">
+            <%= link_to "#{ calendar.name.capitalize } has #{ calendar.events.pending.count } pending events requiring attention.", calendar_path(calendar) %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 
-<% @categories.each do |category| %>
-  name: <%= category.name %><br />
-  <%= button_to "APPROVE ME" %>
-<% end %>
+  <% unless categories.nil? || categories.empty? %>
+    <section class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Category Notifications</h1>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <% categories.each_with_index do |category, index| %>
+            <% if index % 3 == 0 %></div><div class="row"><% end %>
+
+            <div class="col-sm-4 col-xs-12">
+              name: <%= category.name %><br />
+              <%= button_to "APPROVE ME", root_path, class: "btn btn-primary", method: "patch" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+</div>

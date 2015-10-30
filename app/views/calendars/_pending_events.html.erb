@@ -2,14 +2,14 @@
   <div class="panel-heading collapsed" role="tab" id="heading-notifications"
     role="button" href="#collapse-notifications"
     data-toggle="collapse" data-parent="#accordion"
-    aria-expanded="false" aria-controls="collapse-notifications">
+    aria-expanded="<%= events.count > 0 %>" aria-controls="collapse-notifications">
       <h1 class="panel-title">
         <%= t("headings.notifications.event") %>
         <span class="badge"><%= events.count %></span>
       </h1>
   </div>
 
-  <div id="collapse-notifications" class="panel-collapse collapse"
+  <div id="collapse-notifications" class="panel-collapse collapse<%= ' in' if events.count > 0 %>"
     role="tabpanel" aria-labelledby="heading-notifications">
 
     <section id="event-notifications" class="panel-body">
@@ -21,7 +21,7 @@
       <% else %>
 
         <% events.each_with_index do |event, index| %>
-          <div class="item col-xs-12">
+          <div class="item col-md-6 col-xs-12">
 
             <div class="action-links col-xs-12">
               <%= event.start_time.strftime("%a, %b %e") %>

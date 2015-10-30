@@ -16,12 +16,8 @@ class CalendarsController < ApplicationController
     @pending_events = @calendar.events.pending.limit(10).chronological
     @events = @events + @pending_events
     @students = @calendar.students
-    
-    if @admin
-      @volunteers = @calendar.volunteers
-    else
-      @event = Event.new
-    end
+    @volunteers = @calendar.volunteers if @admin
+    @event = Event.new
   end
 
   private

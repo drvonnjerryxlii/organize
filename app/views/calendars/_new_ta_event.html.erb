@@ -2,11 +2,11 @@
   <div class="panel-heading collapsed" role="tab" id="heading-event"
     role="button" href="#collapse-event"
     data-toggle="collapse" data-parent="#accordion"
-    aria-expanded="<%= @admin ? 'false' : 'true' %>" aria-controls="collapse-event">
+    aria-expanded="true" aria-controls="collapse-event">
       <h1 class="panel-title"><%= t("forms.request_shift") %></h1>
   </div>
 
-  <div id="collapse-event" class="panel-collapse collapse<%= ' in' unless @admin %>"
+  <div id="collapse-event" class="panel-collapse collapse in"
     role="tabpanel" aria-labelledby="heading-event">
 
     <section class="panel-body">

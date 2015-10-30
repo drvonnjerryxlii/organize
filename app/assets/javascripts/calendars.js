@@ -86,7 +86,7 @@ function addLegend(legendDiv) {
   empty.prepend('<i class="icon fa fa-battery-quarter"></i>');
 
   var medium = $('<div class="col-xs-4"></div>');
-  medium.text(" = Pending event.");
+  medium.text(" = Pending shift.");
   medium.prepend('<i class="fa fa-bolt"></i>');
 
   var full = $('<div class="full right col-xs-4"></div>');

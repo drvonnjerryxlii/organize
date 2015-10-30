@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
         session[:updated_at] = Date.today
       end
 
-      @available_broadcast = Broadcast.find(session[:broadcasts].sample)
+      @available_broadcast = Broadcast.find(session[:broadcasts].sample) unless @admin
     end
 
     def require_login

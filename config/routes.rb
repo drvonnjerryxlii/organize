@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
     # normal resources
     resources :broadcasts
-    # resources :events
     resources :guest_lectures, :path => "lectures"
     resources :notes
     resources :users

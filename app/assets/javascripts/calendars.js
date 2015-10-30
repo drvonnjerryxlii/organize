@@ -1,6 +1,9 @@
 $(document).ready(function() {
   addIconsToCalendar();
+  setupDateTimePickers();
+})
 
+function setupDateTimePickers() {
   // ----- setup for bootstrap datetime pickers --------------------------------
   // 1. moment.js formats info: http://momentjs.com/docs/#/displaying/format/
   //    datetimepicker will use the format to adjust what pickers are displayed.
@@ -20,7 +23,7 @@ $(document).ready(function() {
     format: 'LT',
     enabledHours: [16, 17, 18, 19, 20],
   });
-})
+}
 
 // 1. when document is ready, check for event divs inside each date.
 // 2. for any weekday:

@@ -16,6 +16,33 @@ $middle-yellow: #ddab12;
 $dark-yellow: #804515;
 $black: #000;
 
+// twitter colors
+$twitter-black: #292f33;
+$twitter-blue: #55acee;
+$twitter-white: #fff;
+
+#flash, #broadcast {
+  text-align: center;
+}
+
+#twitter {
+  border: 0;
+  border-radius: 15%;
+  background-color: $twitter-white;
+  color: $twitter-blue;
+  padding: 0.5rem;
+
+  i {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  &:hover, &:active {
+    background-color: $twitter-blue;
+    color: $twitter-white;
+  }
+}
+
 a, a:link {
   border-bottom: 1px $black dotted;
   color: $black;

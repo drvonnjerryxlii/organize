@@ -4,7 +4,7 @@
     data-toggle="collapse" data-parent="#accordion"
     aria-expanded="false" aria-controls="collapse-notifications">
       <h1 class="panel-title">
-        Event Notifications
+        <%= t("headings.notifications.event") %>
         <span class="badge"><%= events.count %></span>
       </h1>
   </div>
@@ -15,38 +15,44 @@
     <section id="event-notifications" class="panel-body">
 
       <% if events.nil? || events.empty? %>
-        <div class="well">
-          No pending events!
-        </div>
+
+        <div class="well"><%= t("notifications.no_events") %></div>
+
       <% else %>
+
         <% events.each_with_index do |event, index| %>
-          <div class="item col-md-6 col-xs-12">
-            <div class="col-xs-12">
-              <div class="action-links col-xs-12">
-                <%= event.start_time.strftime("%a, %b %e") %>
-              </div>
+          <div class="item col-xs-12">
 
-              <div class="col-xs-12">
-                <%= event.start_time.strftime("%l:%M %p") %> - <%= event.end_time.strftime("%l:%M %p") %><br />
-                <%= link_to event.title, user_path(event.user) %><br />
-
-                <%= link_to t("notifications.reject"),
-                  calendar_event_path(event.calendar_id, event),
-                  method: "delete",
-                  data: { confirm: t("confirmations.delete") }
-                %>
-
-                <i class="space fa fa-bolt"></i>
-
-                <%= link_to t("notifications.approve"),
-                  calendar_event_approve_path(event.calendar_id, event),
-                  method: "patch"
-                %>
-              </div>
+            <div class="action-links col-xs-12">
+              <%= event.start_time.strftime("%a, %b %e") %>
             </div>
+
+            <div class="col-xs-12">
+              <%= event.start_time.strftime("%l:%M %p") %> -
+              <%= event.end_time.strftime("%l:%M %p") %><br />
+              <%= link_to event.title, user_path(event.user) %><br />
+
+              <%= link_to t("actions.reject"),
+                calendar_event_path(event.calendar_id, event),
+                method: "delete",
+                data: { confirm: t("actions.confirmations.delete") }
+              %>
+
+              <i class="space fa fa-bolt"></i>
+
+              <%= link_to t("actions.approve"),
+                calendar_event_approve_path(event.calendar_id, event),
+                method: "patch"
+              %>
+            </div>
+
           </div>
+
         <% end %>
-      </section>
-    </div>
-  <% end %>
+
+      <% end %>
+
+    </section>
+
+  </div>
 </div>

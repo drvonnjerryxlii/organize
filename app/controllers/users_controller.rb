@@ -27,11 +27,11 @@ class UsersController < ApplicationController
       user = User.find_by(id: oauth.user_id)
       session[:user_id] = user.id
       redirect_to root_path
-    else
-      @user = User.new(email: auth["info"]["email"], name: auth["info"]["name"])
-      @user.github = auth["info"]["nickname"] if auth["provider"] == "github"
-      session[:oauth] = { uid: auth["uid"], provider: auth["provider"] }
-      render :new
+    else # disabling this signup option for now
+      # @user = User.new(email: auth["info"]["email"], name: auth["info"]["name"])
+      # @user.github = auth["info"]["nickname"] if auth["provider"] == "github"
+      # session[:oauth] = { uid: auth["uid"], provider: auth["provider"] }
+      # render :new
     end
   end
 

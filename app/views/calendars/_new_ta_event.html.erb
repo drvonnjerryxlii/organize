@@ -3,7 +3,7 @@
     role="button" href="#collapse-event"
     data-toggle="collapse" data-parent="#accordion"
     aria-expanded="<%= @admin ? 'false' : 'true' %>" aria-controls="collapse-event">
-      <h1 class="panel-title">Request Shift</h1>
+      <h1 class="panel-title"><%= t("forms.request_shift") %></h1>
   </div>
 
   <div id="collapse-event" class="panel-collapse collapse<%= ' in' unless @admin %>"
@@ -61,7 +61,7 @@
         </div>
 
         <div class="actions col-xs-12">
-          <%= f.submit %>
+          <%= f.submit t("forms.request_shift") %>
         </div>
       <% end %>
     </section>

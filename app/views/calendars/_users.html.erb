@@ -1,30 +1,38 @@
 <div class="panel panel-default">
-    <div class="panel-heading collapsed" role="tab" id="heading-<%= type %>"
-      href="#collapse-<%= type %>" data-toggle="collapse" data-parent="#accordion"
-      aria-expanded="false" aria-controls="collapse-<%= type %>" role="button">
-      <h1 class="panel-title">
-        <%= t("headings.all", plural_model_name: t("resources.users.#{ type }")) %>
-      </h1>
-    </div>
+  <div class="panel-heading collapsed" role="tab" id="heading-<%= type %>"
+    href="#collapse-<%= type %>" data-toggle="collapse" data-parent="#accordion"
+    aria-expanded="false" aria-controls="collapse-<%= type %>" role="button">
 
-    <div id="collapse-<%= type %>" class="panel-collapse collapse"
-      role="tabpanel" aria-labelledby="heading-<%= type %>">
-        <section class="panel-body">
-          <div class="row">
-          <% users.each_with_index do |user, index| %>
-            <% if index % 3 == 0 %></div><div class="row"><% end %>
+    <h1 class="panel-title">
+      <%= t("headings.all", plural_model_name: t("resources.users.#{ type }")) %>
+    </h1>
 
-            <div class="item col-sm-4 col-xs-12">
-              <div class="col-xs-12"><%= link_to user.name, user_path(user) %></div>
-              <% if user.github %>
-                  <div class="col-xs-12">
-                    <i class="fa fa-github"></i>
-                    <%= link_to user.github, "https://github.com/#{ user.github }" %>
-                  </div>
-              <% end %>
-            </div>
-          <% end %>
+  </div>
+
+  <div id="collapse-<%= type %>" class="panel-collapse collapse"
+    role="tabpanel" aria-labelledby="heading-<%= type %>">
+
+    <section class="panel-body">
+
+      <div class="row">
+        <% users.each_with_index do |user, index| %>
+          <% if index % 3 == 0 %></div><div class="row"><% end %>
+
+          <div class="item col-sm-4 col-xs-12">
+            <div class="col-xs-12"><%= link_to user.name, user_path(user) %></div>
+            
+            <% if user.github %>
+                <div class="col-xs-12">
+                  <i class="fa fa-github"></i>
+                  <%= link_to user.github, "https://github.com/#{ user.github }" %>
+                </div>
+            <% end %>
           </div>
-        </section>
-    </div>
+
+        <% end %>
+      </div>
+
+    </section>
+
+  </div>
 </div>

@@ -3,22 +3,71 @@ en:
     name: "Ada Developers Academy"
     separator: ": "
     subtitle: "Volunteer Portal"
-    base_domain: "https://tranquil-scrubland-1984.herokuapp.com/"
+    base_domain: "http://volunteer-dev.adadevelopersacademy.org/"
 
   errors:
+    login: "Invalid username or password. Please try again."
+    request_shift: "Oops! Something went wrong. Please try again in a few minutes."
+    require_admin: "You don't have access to this page. If you believe you've received this message in error, please contact an admin."
     require_login: "Please login to view this page."
-    require_admin: "Oops! Only admin users can access this page."
+
+  success:
+    event_approved: "Approved %{event_title} on %{date}."
+    login: "Welcome, %{name}!"
+    logout: "See you later."
+    request_shift: "Thanks for signing up for that shift. You'll receive an email with a calendar invite when this request is processed."
+
+  notifications:
+    calendar: "%{name} has %{notifications} pending events requiring attention."
+    no_events: "No pending events!"
+
+  actions:
+    approve: "Approve"
+    approve?: "Approve?"
+    reject: "Reject"
+    reject?: "Reject?"
+    tweet: "Tweet"
+    confirmations:
+      delete: "Are you sure you want to delete this? You can't undo this operation."
 
   confirmations:
     delete: "Are you sure you want to delete this? You can't undo this operation."
 
   links:
+    admin:
+      broadcast: "Broadcasts"
+      calendar: "Cohort Schedules"
+      calendar_with_name: "%{name}'s Schedule"
+      category: "Categories"
+      event: "Events"
+      guest_lecture: "Guest Lectures"
+      note: "Notes"
+      schedule: "Schedules"
+      user: "Users"
+      users:
+        admin: "Admin"
+        student: "Students"
+        volunteer: "Volunteers"
+    broadcast: "Broadcasts"
+    calendar: "Schedule"
+    calendar_with_name: "%{name}'s Schedules"
+    category: "Categories"
+    event: "My Shifts"
+    guest_lecture: "My Guest Lectures"
+    schedule: "My Schedules"
+    users:
+      admin: "Admin"
+      student: "Students"
+      volunteer: "Volunteers"
+
     home: "Home"
     back: "<< Go back"
     login: "Login"
-    login-github: "Login via Github"
-    login-google: "Login via Google"
+    login-github: "Login with Github"
+    login-google: "Login with Google"
     logout: "Logout"
+    profile: "Profile"
+    settings: "Settings"
     resources:
       create: "+New %{model_name}"
       delete: "Delete"
@@ -30,11 +79,15 @@ en:
     all: "%{plural_model_name}"
     editing: "Editing %{model_name}"
     create: "Create a new %{model_name}"
+    notifications:
+      event: "Event Notifications"
+      category: "Category Notifications"
 
+  # delete these when updated
   resources:
     broadcast: "Broadcast"
-    calendar: "Calendar"
-    calendar_with_name: "%{name} Calendar"
+    calendar: "Schedule"
+    calendar_with_name: "%{name} Schedule"
     category: "Category"
     event: "Event"
     guest_lecture: "Guest Lecture"
@@ -49,6 +102,7 @@ en:
   forms:
     admin_only_categories: "Admin-only Categories"
     categories: "Categories"
+    request_shift: "Request Shift"
     placeholders:
       email: "shark1724@shark.com"
       password: "Super Secret Password"
@@ -85,8 +139,3 @@ en:
     user_id: "Associated User"
 
   possessive: "'s"
-
-  notifications:
-    approve: "Approve"
-    event: "%{name} wants to TA for %{calendar} on %{start} to %{end}."
-    reject: "Reject"

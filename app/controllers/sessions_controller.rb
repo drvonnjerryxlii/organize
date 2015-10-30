@@ -6,19 +6,26 @@ class SessionsController < ApplicationController
 
   def create # session, actually logging in
     user = User.find_by(email: params[:session][:email])
+    session[:failed_login_attempts] = nil
 
     if user && user.authenticate(params[:session][:password])
-      flash[:error] = "WELCOME, #{ user.name }" # FIXME: internationalize
+      flash[:success] = I18n.t("success.login", name: user.name)
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash.now[:error] = "Invalid username or password. Please try again." # FIXME: internationalize
+      flash.now[:error] = I18n.t("error.login")
       render :login
     end
   end
 
   def logout
+    flash[:success] = I18n.t("success.logout")
     session[:user_id] = nil
+
+    session[:failed_login_attempts] ?
+      session[:failed_login_attempts] += 1 :
+      session[:failed_login_attempts] = 1
+
     redirect_to root_path
   end
 end

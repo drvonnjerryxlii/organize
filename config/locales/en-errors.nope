@@ -1,0 +1,34 @@
+# class User < ActiveRecord::Base
+#   validates :name, presence: true
+# end
+
+# The key for the error message in this case is :blank.
+# Active Record will look up this key in the namespaces:
+
+# activerecord.errors.models.[model_name].attributes.[attribute_name]
+# activerecord.errors.models.user.attributes.name.blank
+
+# activerecord.errors.models.[model_name]
+# activerecord.errors.models.user.blank
+
+# activerecord.errors.messages
+# activerecord.errors.messages.blank
+
+# errors.attributes.[attribute_name]
+# errors.attributes.name.blank
+
+# errors.messages
+# errors.messages.blank
+
+# en:
+#   activerecord:
+#     errors:
+#       messages:
+#         blank: "%{attribute} cannot be blank!"
+#         too_short: "%{attribute} is too short!"
+#
+# The translated model name, translated attribute name, and value are always available for interpolation.
+#
+# validation => message: ("error.something.whatevs")
+#
+# [locale][msg]

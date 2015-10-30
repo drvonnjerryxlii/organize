@@ -37,10 +37,13 @@ class EventsController < ApplicationController
     @event = Event.new(ta_request_params)
 
     if @event.save
-      flash[:success] = "SHIFT REQUESTED YAYZERS" # FIXME: internationalize this
+      flash[:success] = I18n.t(
+        "success.request_shift",
+        event_title: @event.title,
+        date: @event.start_time.strftime("%a, %e %b")
+      )
     else
-      raise
-      flash[:error] = "OH NO SOME ERROR HAPPEN ;_;" # FIXME: internationalize this
+      flash[:error] = I18n.t("errors.request_shift")
     end
 
     redirect_to calendar_path(@calendar)
@@ -48,9 +51,9 @@ class EventsController < ApplicationController
 
   def approve
     if @event.approve
-      flash[:success] = "APPROVED" # FIXME: internationalize this
+      flash[:success] = I18n.t("success.event_approved")
     else
-      flash[:error] = "NOT APPROVED SOME ERROR HAPPEN" # FIXME: internationalize this
+      flash[:error] = I18n.t("errors.event_approved")
     end
 
     redirect_to calendar_path(@calendar)

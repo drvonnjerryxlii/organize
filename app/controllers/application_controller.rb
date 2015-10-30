@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
       # if not an admin user, do this
       # if no broadcasts, do this
       # if stale broadcasts, do this
-      if !@admin && (!session[:broadcasts] || (session[:updated_at] < Date.yesterday.to_s))
+      if !session[:broadcasts] || (session[:updated_at] < Date.yesterday.to_s)
         broadcasts = @logged_in_user.broadcasts.active
 
         # OPTIMIZE: only select desired attributes by chaining scopes or whatevs
@@ -41,12 +41,12 @@ class ApplicationController < ActionController::Base
         session[:updated_at] = Date.today
       end
 
-      @available_broadcast = Broadcast.find(session[:broadcasts].sample) unless @admin
+      @available_broadcast = Broadcast.find(session[:broadcasts].sample)
     end
 
     def require_login
       set_logged_in_user
-      set_broadcasts
+      set_broadcasts unless @admin
       set_admin
 
       unless @logged_in_user

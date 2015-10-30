@@ -68,7 +68,7 @@ puts "seeded broadcasts"
 calendars = CSV.read(file_base + "calendars.csv", { headers: true })
 calendars.each do |calendar|
   Calendar.create(
-    name: calendar["name"],
+    name: calendar["name"].capitalize,
     google_calendar_id: calendar["google_calendar_id"],
     curriculum_href: calendar["curriculum_href"]
   )

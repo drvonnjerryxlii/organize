@@ -9,9 +9,15 @@ class SessionsController < ApplicationController
     session[:failed_login_attempts] = nil
 
     if user && user.authenticate(params[:session][:password])
-      flash[:success] = I18n.t("success.login", name: user.name)
       session[:user_id] = user.id
-      redirect_to root_path
+      # FIXME: return this to normal view after presentation!
+      if user.class == Volunteer
+        redirect_to calendar_path(3)
+      else
+        flash[:success] = I18n.t("success.login", name: user.name)
+        raise
+        redirect_to root_path
+      end
     else
       flash.now[:error] = I18n.t("error.login")
       render :login

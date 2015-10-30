@@ -15,11 +15,10 @@ class SessionsController < ApplicationController
         redirect_to calendar_path(3)
       else
         flash[:success] = I18n.t("success.login", name: user.name)
-        raise
         redirect_to root_path
       end
     else
-      flash.now[:error] = I18n.t("error.login")
+      flash.now[:error] = I18n.t("errors.login")
       render :login
     end
   end

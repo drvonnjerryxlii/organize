@@ -46,8 +46,8 @@ class ApplicationController < ActionController::Base
 
     def require_login
       set_logged_in_user
-      set_broadcasts unless @admin
       set_admin
+      set_broadcasts unless @admin
 
       unless @logged_in_user
         flash[:error] = I18n.t("errors.require_login")

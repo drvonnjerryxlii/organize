@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale
   before_action :require_login
@@ -24,17 +22,14 @@ class ApplicationController < ActionController::Base
     end
 
     def set_broadcasts
-      # if not an admin user, do this
-      # if no broadcasts, do this
-      # if stale broadcasts, do this
+      # if no broadcasts or stale broadcasts
       if !session[:broadcasts] || (session[:updated_at] < Date.yesterday.to_s)
         broadcasts = @logged_in_user.broadcasts.active
 
         # OPTIMIZE: only select desired attributes by chaining scopes or whatevs
-        # make a special query to only grab title & description
-        broadcasts = broadcasts.map do |broadcast| # then you can destroy this superfluous enumerator
+        # make a special query to only grab id
+        broadcasts = broadcasts.map do |broadcast| # then you can destroy this enumerator
           broadcast.id
-          # { title: broadcast.title, description: broadcast.description }
         end
 
         session[:broadcasts] = broadcasts
@@ -51,7 +46,7 @@ class ApplicationController < ActionController::Base
 
       unless @logged_in_user
         flash[:error] = I18n.t("errors.require_login")
-        session[:return_to] = request.referer
+        session[:return_to] = request.referer # OPTIMIZE: delete this if not using
         redirect_to root_path
       end
     end

@@ -6,16 +6,20 @@ class WelcomeController < ApplicationController
 
   def index
     if @admin
-      prepare_calendars
+
+      @calendars = prepare_calendars
       @categories = Category.pending
+
     elsif @logged_in_user && @logged_in_user.events
+
       @events = @logged_in_user.events.future
+
     end
   end
 
   private
 
     def prepare_calendars
-      @calendars = Calendar.all.select { |c| c.events.pending.count > 0 }
+      Calendar.all.select { |c| c.events.pending.count > 0 }
     end
 end

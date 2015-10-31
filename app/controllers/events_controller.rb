@@ -37,11 +37,7 @@ class EventsController < ApplicationController
     @event = Event.new(ta_request_params)
 
     if @event.save
-      flash[:success] = I18n.t(
-        "success.request_shift",
-        event_title: @event.title,
-        date: @event.start_time.strftime("%a, %e %b")
-      )
+      flash[:success] = I18n.t("success.request_shift")
     else
       flash[:error] = I18n.t("errors.request_shift")
     end
@@ -51,7 +47,11 @@ class EventsController < ApplicationController
 
   def approve
     if @event.approve
-      flash[:success] = I18n.t("success.event_approved")
+      flash[:success] = I18n.t(
+        "success.event_approved",
+        event_title: @event.title,
+        date: @event.start_time.strftime("%a, %e %b")
+      )
     else
       flash[:error] = I18n.t("errors.event_approved")
     end

@@ -1,0 +1,9 @@
+= image_tag '/images/ada-brand-logo.svg', alt: t('site.name'), title: t('site.name')
+
+%h1
+  = t('site.name')
+
+%h3
+  = t('site.subtitle')
+
+= render partial: 'requires_approval', locals: { calendars: @calendars, categories: @categories } if @admin

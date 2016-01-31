@@ -1,0 +1,64 @@
+%html
+  %head
+    %title= t('site.name') + t('site.separator') + t('site.subtitle')
+    %meta { name: 'description', content: 'site.description'}
+    %meta { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    = favicon_link_tag '/images/favicon.ico'
+
+  %body
+    .container-fluid
+      %nav.nav.navbar.navbar-default.navbar-fixed-top
+        %ul.nav.navbar-nav
+          %li= link_to t('links.home'), root_path
+
+          = if @admin
+            / begin admin links
+            %li= link_to t('links.admin.calendar'), calendars_path
+            %li= link_to t('links.admin.broadcoast'), broadcasts_path
+            %li= link_to t('links.admin.category'), categories_path
+            %li= link_to t('links.admin.guest_lecture'), guest_lectures_path
+            %li= link_to t("links.admin.note"), notes_path
+            %li= link_to t("links.admin.user"), users_path
+            / end admin links
+
+          = if (@logged_in_user && !@admin)
+            / begin logged in user links %>
+            -# %li= link_to t("links.guest_lecture"), guest_lectures_path
+            %li= link_to t("links.calendar"), calendars_path
+            %li= link_to t("links.profile"), user_path(@logged_in_user)
+            %li= link_to t("links.settings"), edit_user_path(@logged_in_user)
+            / end logged in user links
+
+        %ul.nav.navbar-nav.navbar-right
+          = if (@logged_in_user)
+            %li= link_to t("links.logout"), logout_path, method: :delete
+
+          = if (!@logged_in_user)
+            %li= link_to t("links.login"), login_path
+
+    #spacer
+
+    = if @available_broadcast
+      #broadcast.panel.panel-default
+        .panel-heading
+          %h3.panel-title= @available_broadcast[:title]
+
+        .panel-body
+          = @available_broadcast[:description]
+          = link_to "https://twitter.com/intent/tweet?text=#{ @available_broadcast[:title] }#{ t("site.separator") }#{ @available_broadcast[:description] }", id: "twitter" do
+            %i.fa.fa-twitter
+            = t("actions.tweet")
+
+    = if (flash[:error] || flash[:success])
+      #flash.well.well-sm
+        = if flash[:error]
+          = flash[:error]
+
+        = if flash[:success]
+          = flash[:success]
+
+    %main
+      = yield

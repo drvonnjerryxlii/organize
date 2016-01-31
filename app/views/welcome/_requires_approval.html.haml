@@ -1,0 +1,25 @@
+.col-md-8.col-md-offset-2.col-xs-12
+  = unless calendars.nil? || calendars.empty?
+    %section.panel.panel-default
+      .panel-heading
+        %h1.panel-title
+          = t('headings.notifications.event')
+      .panel-body
+        = calendars.each do |calendar|
+          .item.col-xs-12
+            = link_to t('notifications.calendar', name: calendar.name, notifications: calendar.events.pending.count), calendar_path(calendar)
+
+  = unless categories.nil? || categories.empty?
+    %section.panel.panel-default
+      .panel-heading
+        %h1.panel-title
+          t('headings.notifications.category')
+      .panel-body
+        .row
+          = categories.each_with_index do |category, index|
+            = if index % 3 == 0
+              </div><div class='row'> -# hard coding the row here, because haml indentation rules aren't compatible
+            .col-sm-4.col-xs-12
+              = category.name
+              %br
+              = button_to t('actions.approve'), root_path, class: 'btn btn-primary', method: 'patch'

@@ -1,0 +1,25 @@
+#login.col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
+  .panel.panel-default
+
+    .panel-heading
+      %h1.panel-title= t('links.login')
+
+    .panel-body
+      = form_for :session, role: 'form' do |f|
+        .form-group
+          = f.label t('attributes.email')
+          = f.text_field :email, placeholder: t('forms.placeholders.email'), class: 'form-control'
+        .form-group
+          = f.label t('attributes.password')
+          = f.password_field :password, placeholder: t('forms.placeholders.password'), class: 'form-control'
+        = f.submit t('links.login'), class: 'btn btn-default'
+
+      %p
+        = link_to '/auth/github', class: 'btn btn-default' do
+          %i.fa.fa-github-alt
+          = t('links.login-github')
+
+      %p
+        = link_to '/auth/google_oauth2', class: 'btn btn-default' do
+          %i.fa.fa-google-plus
+          = t('links.login-google')

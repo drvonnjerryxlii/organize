@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-# this seems sorta useful, yep
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.3' # this seems sorta useful
 gem 'rails_12factor' # for heroku
 
 # calendar helpers
@@ -9,6 +8,9 @@ gem 'google-api-client'
 gem 'simple_calendar'
 gem 'momentjs-rails' # specifically for forms
 gem 'bootstrap3-datetimepicker-rails'
+
+# view helpers
+gem 'haml'
 
 # authentication & secrets
 gem 'dotenv-rails', :groups => [:development, :test]

@@ -100,6 +100,8 @@ GEM
       memoist (~> 0.12)
       multi_json (~> 1.11)
       signet (~> 0.6)
+    haml (4.0.7)
+      tilt
     hashie (3.4.2)
     i18n (0.7.0)
     jquery-rails (4.0.5)
@@ -266,6 +268,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-sass
   google-api-client
+  haml
   jquery-rails
   momentjs-rails
   omniauth
